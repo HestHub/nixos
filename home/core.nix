@@ -5,6 +5,11 @@
   inputs,
   ...
 }: {
+  imports = [
+    ./programs/ghostty.nix
+    ./programs/git.nix
+    #./programs/fish.nix
+  ];
   home.username = "hest";
   home.homeDirectory = "/home/hest";
 
@@ -25,7 +30,6 @@
     radeontop
     xclip
     neofetch
-
     cargo
 
     # basics
@@ -71,11 +75,6 @@
   ];
 
   home.stateVersion = "25.05";
-
-  programs.ghostty = {
-    enable = true;
-    enableFishIntegration = true;
-  };
 
   programs.neovim = {
     enable = true;
