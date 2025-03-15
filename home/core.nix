@@ -8,7 +8,7 @@
   imports = [
     ./programs/ghostty.nix
     ./programs/git.nix
-    #./programs/fish.nix
+    ./programs/fish.nix
   ];
   home.username = "hest";
   home.homeDirectory = "/home/hest";
