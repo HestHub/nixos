@@ -24,7 +24,7 @@
           home-manager.useGlobalPkgs = true;
 	  home-manager.useUserPackages = true;
 
-	  home-manager.users.hest = import ./home.nix;
+	  home-manager.users.hest = import ./home;
 	  home-manager.extraSpecialArgs = { inherit inputs; system = "x86_64-linux";};
 	}
 

@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     inputs.zen-browser.packages."${system}".default
 
+    gcc
     # CLI
     jq
     yq
@@ -70,6 +71,10 @@
   home.stateVersion = "25.05";
 
 
+  programs.ghostty = {
+    enable = true;
+    enableFishIntegration = true;
+  };
   
   programs.neovim = {
     enable = true;
