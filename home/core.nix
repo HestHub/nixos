@@ -9,6 +9,7 @@
     ./programs/ghostty.nix
     ./programs/git.nix
     ./programs/fish.nix
+    ./programs/mise.nix
   ];
   home.username = "hest";
   home.homeDirectory = "/home/hest";
