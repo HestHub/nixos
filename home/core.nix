@@ -1,6 +1,10 @@
-{ config, pkgs, system, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  system,
+  inputs,
+  ...
+}: {
   home.username = "hest";
   home.homeDirectory = "/home/hest";
 
@@ -22,10 +26,9 @@
     xclip
     neofetch
 
+    cargo
 
-  # ------------ new
-
-  # basics
+    # basics
     wget
     vim
     gnomeExtensions.pop-shell
@@ -65,17 +68,15 @@
 
     # Nix
     alejandra
-
   ];
 
   home.stateVersion = "25.05";
-
 
   programs.ghostty = {
     enable = true;
     enableFishIntegration = true;
   };
-  
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
