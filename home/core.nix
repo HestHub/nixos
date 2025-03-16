@@ -10,6 +10,7 @@
     ./programs/git.nix
     ./programs/fish.nix
     ./programs/mise.nix
+    ./programs/gnome.nix
   ];
   home.username = "hest";
   home.homeDirectory = "/home/hest";
@@ -36,8 +37,6 @@
     # basics
     wget
     vim
-    gnomeExtensions.pop-shell
-    gnome-tweaks
 
     # gpu controller
     lact
@@ -84,6 +83,25 @@
     vimAlias = true;
     vimdiffAlias = true;
   };
+
+  programs.bat = {
+    enable = true;
+    config = {
+      theme = "Nord";
+      style = "numbers,changes,header";
+    };
+  };
+
+  programs.eza = {
+    enable = true;
+    git = true;
+    icons = "auto";
+  };
+
+  programs.zoxide = {
+    enable = true;
+  };
+
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

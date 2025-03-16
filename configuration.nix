@@ -44,6 +44,9 @@
     # Enable the X11 windowing system.
     xserver.enable = true;
 
+    # Enable sound with pipewire.
+    pulseaudio.enable = false;
+
     # Enable the GNOME Desktop Environment.
     xserver.displayManager.gdm.enable = true;
     xserver.desktopManager.gnome.enable = true;
@@ -71,9 +74,6 @@
   hardware = {
     # enable zsa udev rules
     keyboard.zsa.enable = true;
-
-    # Enable sound with pipewire.
-    pulseaudio.enable = false;
   };
 
   security.rtkit.enable = true;
@@ -88,14 +88,14 @@
       "wheel"
     ];
   };
-  
+
   systemd = {
     # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
     services."getty@tty1".enable = false;
     services."autovt@tty1".enable = false;
     services.NetworkManager-wait-online.enable = false;
 
-    # lact AMD GPU controller 
+    # lact AMD GPU controller
     services.lact = {
       description = "AMDGPU Control Daemon";
       after = ["multi-user.target"];
