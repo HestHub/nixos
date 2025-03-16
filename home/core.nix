@@ -1,76 +1,25 @@
-{
-  config,
-  pkgs,
-  system,
-  inputs,
-  ...
-}: {
-  imports = [
-    ./programs/ghostty.nix
-    ./programs/git.nix
-    ./programs/fish.nix
-    ./programs/mise.nix
-    ./programs/gnome.nix
-  ];
+{pkgs, ...}: {
   home.username = "hest";
   home.homeDirectory = "/home/hest";
 
-  # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
-    inputs.zen-browser.packages."${system}".default
-
-    gcc
-    # CLI
     jq
-    yq
-    lf
-    bat
-    eza
-    fzf
-    zellij
-    tre-command
-    radeontop
-    xclip
-    neofetch
-    cargo
-
-    # basics
     wget
-    vim
-
-    # gpu controller
-    lact
-
-    # pw-manager
-    bitwarden
-
-    # coms
-    discord
-    slack
-
-    # media
-    supersonic
-    spotube
-
-    # containers
-    docker-compose
-
-    # Emulation
-    wineWowPackages.waylandFull # windows
-    virtiofsd
-
-    # dev
     git
     gh
-    mise
-
-    # VPN
-    tailscale
-
-    # zsa keymapper for moonlander
-    keymapp
-
-    # Nix
+    tre-command
+    tldr
+    unixtools.watch
+    lf
+    fzf
+    zellij
+    watchexec
+    cargo
+    cargo-nextest
+    lazydocker
+    gotop
+    discord
+    slack
     alejandra
   ];
 
@@ -102,6 +51,6 @@
     enable = true;
   };
 
-  # Let home Manager install and manage itself.
+  programs.ripgrep.enable = true;
   programs.home-manager.enable = true;
 }
