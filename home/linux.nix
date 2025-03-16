@@ -12,6 +12,9 @@
     ./programs/gnome.nix
   ];
 
+  home.username = "hest";
+  home.homeDirectory = "/home/hest";
+
   home.packages = with pkgs; [
     inputs.zen-browser.packages."${system}".default
     gcc

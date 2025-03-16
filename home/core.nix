@@ -1,7 +1,4 @@
 {pkgs, ...}: {
-  home.username = "hest";
-  home.homeDirectory = "/home/hest";
-
   home.packages = with pkgs; [
     jq
     wget
