@@ -152,6 +152,7 @@
     gnome-connections # remote desktop
     epiphany # web browser
     totem # video player
+    gnome-system-monitor
   ];
 
   nix = {

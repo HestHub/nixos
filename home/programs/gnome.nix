@@ -2,7 +2,21 @@
   home.packages = with pkgs; [
     gnomeExtensions.pop-shell
     gnome-tweaks
+    gnomeExtensions.vitals
   ];
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Nordic";
+      package = pkgs.nordic;
+    };
+    iconTheme = {
+      name = "Nordic-bluish";
+      package = pkgs.nordic;
+    };
+  };
+
   dconf = {
     enable = true;
     settings = {
@@ -11,8 +25,9 @@
         disable-user-extensions = false;
         enabled-extensions = [
           "pop-shell@system76.com"
-          "system-monitor@gnome-shell-extensions.gcampax.github.com"
           "status-icons@gnome-shell-extensions.gcampax.github.com"
+          "user-theme@gnome-shell-extensions.gcampax.github.com"
+          "Vitals@CoreCoding.com"
         ];
       };
     };
