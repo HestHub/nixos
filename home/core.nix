@@ -16,6 +16,7 @@
     lazydocker
     gotop
     discord
+    lazygit
     slack
     alejandra
   ];

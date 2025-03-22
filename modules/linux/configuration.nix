@@ -133,7 +133,25 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
+  environment.gnome.excludePackages = with pkgs; [
+    geary # email client
+    seahorse # password manager
+    yelp # help tool
+    evince # document viewer
+    gnome-weather
+    gnome-maps
+    gnome-music
+    gnome-photos
+    gnome-calendar
+    gnome-contacts
+    gnome-music
+    simple-scan # document scanner
+    cheese # web cam
+    gnome-clocks
+    gnome-tour
+    gnome-connections # remote desktop
+    epiphany # web browser
+    totem # video player
   ];
 
   nix = {

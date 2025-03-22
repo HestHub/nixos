@@ -72,6 +72,20 @@
             };
           };
         }
+        {
+          condition = "gitdir:~/.config/**";
+          contents = {
+            safe = {
+              directory = ["*"];
+            };
+
+            core.sshCommand = "ssh -i ~/.ssh/id_ed25519";
+            user = {
+              name = "hest";
+              email = "${builtins.getEnv "G_MAIL"}";
+            };
+          };
+        }
       ];
 
     extraConfig = {
