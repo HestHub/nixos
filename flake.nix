@@ -10,6 +10,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # TODO https://github.com/cachix/git-hooks.nix?tab=readme-ov-file
+    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
   };
 
   outputs = {

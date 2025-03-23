@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  home.sessionVariables.GTK_THEME = "Nordic";
   home.packages = with pkgs; [
     gnomeExtensions.pop-shell
     gnome-tweaks
