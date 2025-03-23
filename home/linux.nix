@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./core.nix
+    ./dots.nix
     ./programs/ghostty.nix
     ./programs/git.nix
     ./programs/fish.nix

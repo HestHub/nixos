@@ -176,6 +176,12 @@
           extraOutputsToInstall = ["dev"];
         }))
   ];
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc
+    ];
+  };
 
   nix = {
     settings.experimental-features = [

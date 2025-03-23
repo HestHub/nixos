@@ -59,7 +59,7 @@
       ]
       else [
         {
-          condition = "gitdir:/etc/nixos/**";
+          condition = "gitdir:~/Dev/**";
           contents = {
             safe = {
               directory = ["*"];
