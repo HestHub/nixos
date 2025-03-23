@@ -1,0 +1,23 @@
+;; Caps to escape/control
+
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+ caps
+)
+
+(defvar
+  tap-time 150
+  hold-time 200
+)
+
+;; alias defenitions
+(defalias
+  escctrl (tap-hold $tap-time $hold-time esc lctl)
+)
+
+(deflayer base
+ @escctrl
+)
