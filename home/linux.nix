@@ -27,8 +27,14 @@
     bitwarden
     xclip
 
+    # LSPs
     go
     python314
     lua
+    vtsls
+    unzip
+    nodejs
+    nil
+    pkgs.dotnetCorePackages.dotnet_9.sdk
   ];
 }

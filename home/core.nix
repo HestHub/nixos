@@ -1,24 +1,26 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    jq
-    wget
-    git
-    gh
-    tre-command
-    tldr
-    unixtools.watch
-    lf
-    fzf
-    zellij
-    watchexec
+    alejandra
     cargo
     cargo-nextest
-    lazydocker
-    gotop
     discord
+    fzf
+    gh
+    git
+    gotop
+    jq
+    just
+    lazydocker
     lazygit
+    lf
+    nushell
     slack
-    alejandra
+    tldr
+    tre-command
+    unixtools.watch
+    watchexec
+    wget
+    zellij
   ];
 
   home.stateVersion = "25.05";
