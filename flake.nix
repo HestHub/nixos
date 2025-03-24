@@ -1,10 +1,16 @@
 {
-  description = "NixOS with flakes";
+  description = "Nix with flakes";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    darwin = {
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -18,6 +24,7 @@
   outputs = {
     self,
     nixpkgs,
+    darwin,
     home-manager,
     zen-browser,
     ...
@@ -37,6 +44,28 @@
           home-manager.extraSpecialArgs = {
             inherit inputs;
             system = "x86_64-linux";
+          };
+        }
+      ];
+    };
+  
+    darwinConfigurations.mbp = darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      modules = [
+        ./modules/darwin/nix-core.nix
+        ./modules/darwin/system.nix
+        ./modules/darwin/apps.nix
+        ./modules/darwin/host-users.nix
+
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+
+          home-manager.users.hest = import ./home/darwin.nix;
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
+            system = "aarch64-darwin";
           };
         }
       ];
