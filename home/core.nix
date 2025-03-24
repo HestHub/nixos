@@ -66,6 +66,11 @@
     enable = true;
   };
 
+  ssh = {
+    enable = true;
+    addKeysToAgent = "yes";
+  };
+
   programs.ripgrep.enable = true;
   programs.home-manager.enable = true;
 }

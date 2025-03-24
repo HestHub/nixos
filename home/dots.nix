@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   ...
 }: let
   nvimPath = "${config.home.homeDirectory}/Dev/nixos/dotfiles/nvim";

@@ -1,8 +1,18 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  username = "hest";
+in {
   imports = [
     ./programs/core.nix
   ];
-  home.packages = with pkgs; [
+
+  xdg.enable = true;
+  xdg.configHome = "/Users/${username}/.config";
+
+  home = {
+    username = "${username}";
+    homeDirectory = "/Users/${username}";
+  
+  packages = with pkgs; [
     kubectl
     dotnetPackages.Nuget
     tinygo
@@ -15,5 +25,7 @@
     zoom-us
     supersonic
     spotube
+    awscli
   ];
+};
 }
