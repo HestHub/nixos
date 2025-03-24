@@ -1,12 +1,7 @@
 # wont install tools automaticly
 # mise activate fish | source
 # mise use --global go@1.21.4
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{...}: {
   programs.mise = {
     enable = true;
     enableFishIntegration = true;
