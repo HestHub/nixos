@@ -12,6 +12,7 @@
     just
     lazydocker
     lazygit
+    gitui
     lf
     nushell
     slack
