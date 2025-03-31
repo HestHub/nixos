@@ -3,6 +3,7 @@
     alejandra
     cargo
     cargo-nextest
+    deadnix
     discord
     fzf
     gh

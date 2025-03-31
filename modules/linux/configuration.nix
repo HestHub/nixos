@@ -15,8 +15,7 @@
   };
 
   networking = {
-    hostName = "nixos"; # Define your hostname.
-    # Enable networking
+    hostName = "nixos";
     networkmanager.enable = true;
   };
 
@@ -38,6 +37,14 @@
       LC_TELEPHONE = "sv_SE.UTF-8";
       LC_TIME = "sv_SE.UTF-8";
     };
+  };
+
+  fonts = {
+    packages = with pkgs; [
+      material-design-icons
+      font-awesome
+      fira-code
+    ];
   };
 
   services = {
