@@ -6,7 +6,6 @@ default:
 
 # update flakes
 [group('nix')]
-[linux]
 update:
   nix flake update
 
@@ -17,7 +16,47 @@ update:
 build:
   sudo nixos-rebuild switch --flake .
 
+
+# rebuild system
+[group('nix')]
+[macos]
+build:
+  nix build .#darwinConfigurations.mbp.system \
+		--extra-experimental-features 'nix-command flakes'
+	./result/sw/bin/darwin-rebuild switch --impure --flake .#mbp
+
+
+
 alias b := build
+
+# debug build
+[group('nix')]
+[linux]
+debug:
+  nixos-rebuild switch --flake . --show-trace --verbose
+
+# bootstrap darwin system
+[group('nix')]
+[macos]
+bootstrap:
+  # 	install nix
+	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+  # 	install homebrew
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# setup ssh keys 
+[group('nix')]
+[macos]
+ssh_keys:
+  #	Generate ssh keys
+	ssh-keygen -t ed25519 -C "$$M_MAIL" -f ~/.ssh/$$M_ID -N $$PASSWORD
+	ssh-keygen -t rsa -C "$$G_MAIL" -f ~/.ssh/$$G_ID -N $$PASSWORD
+	ssh-keygen -t ed25519 -C "$$C_MAIL" -f ~/.ssh/$$C_ID -N $$PASSWORD
+  # 	add keys to ssh-agent
+	ssh-add --apple-use-keychain ~/.ssh/$$M_ID
+	ssh-add --apple-use-keychain ~/.ssh/$$C_ID
+	ssh-add --apple-use-keychain ~/.ssh/$$G_ID
+
 
 # show old profiles
 [group('nix')]
@@ -25,12 +64,6 @@ alias b := build
 history:
   nix profile history --profile /nix/var/nix/profiles/system
 
-
-# debug build
-[group('nix')]
-[linux]
-debug:
-  nixos-rebuild switch --flake . --show-trace --verbose
 
 
 # remove old profiles
