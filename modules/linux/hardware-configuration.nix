@@ -24,6 +24,16 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+  fileSystems."/mnt/spel" =
+    { device = "/dev/disk/by-uuid/17a50a65-0cf0-43f3-ad12-c04a35e5e00d";
+      fsType = "ext4";
+    };
+
+  fileSystems."/mnt/nvme-spel" =
+    { device = "/dev/disk/by-uuid/bb0d0a4f-d7af-44ad-8dda-89bd4b8b646b";
+      fsType = "ext4";
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/5b028edc-7974-4c47-a1ab-6a05789eca9b"; }
     ];
@@ -33,7 +43,9 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp38s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.tailscale0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

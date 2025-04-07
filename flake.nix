@@ -11,7 +11,6 @@
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,7 +47,7 @@
         }
       ];
     };
-  
+
     darwinConfigurations.mbp = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [

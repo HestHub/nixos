@@ -36,6 +36,7 @@ in {
       xclip
 
       # LSPs
+      rustup
       go
       python314
       lua

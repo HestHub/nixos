@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     alejandra
-    cargo
     cargo-nextest
     deadnix
     discord
@@ -12,6 +11,7 @@
     jq
     just
     lazydocker
+    neofetch
     lazygit
     gitui
     lf
