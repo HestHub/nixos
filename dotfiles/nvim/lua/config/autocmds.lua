@@ -1,14 +1,77 @@
--- Autocmds are automatically loaded on the VeryLazy event
--- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
---
--- Add any additional autocmds here
--- with `vim.api.nvim_create_autocmd`
---
--- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
--- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
---
---
+-- local harpoon_auto_manage_group = vim.api.nvim_create_augroup("HarpoonAutoManage", { clear = true })
 
--- Create a custom autocommand group
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--   group = harpoon_auto_manage_group,
+--   pattern = "*",
+--   callback = function(ev)
+--     local list = require("harpoon"):list()
+--     if not list then
+--       return
+--     end
+--
+--     local file_path = vim.api.nvim_buf_get_name(ev.buf)
+--     local buftype = vim.bo[ev.buf].buftype
+--
+--     if file_path == "" or not vim.bo[ev.buf].buflisted then
+--       return
+--     end
+--
+--     local ignored_buffers = {
+--       terminal = true,
+--       quickfix = true,
+--       prompt = true,
+--       help = true,
+--       nofile = true,
+--       nowrite = true,
+--     }
+--     if ignored_buffers[buftype] then
+--       return
+--     end
+--
+--     local ok, err = pcall(function()
+--       list.add(list)
+--     end)
+--
+--     if not ok then
+--       vim.notify("Harpoon error: " .. tostring(err), vim.log.levels.ERROR)
+--     end
+--   end,
+--   desc = "Add buffer to Harpoon on enter",
+-- })
 
--- Run the Dashboard command when a new tab is created
+-- vim.api.nvim_create_autocmd("BufDelete", {
+--   group = harpoon_auto_manage_group,
+--   pattern = "*",
+--   callback = function(ev)
+--     local list = require("harpoon"):list()
+--     if not list then
+--       return
+--     end
+--
+--     local file_path = vim.api.nvim_buf_get_name(ev.buf)
+--
+--     if file_path ~= "" then
+--       local index_to_remove = nil
+--       for i, item in ipairs(list.items) do
+--         local abs_path = vim.fn.fnamemodify(item.value, ":p")
+--         if abs_path == file_path then
+--           index_to_remove = i
+--           break
+--         end
+--       end
+--
+--       if index_to_remove then
+--         print(index_to_remove)
+--         -- pcall(list.remove_at, list, index_to_remove)
+--         local ok, err = pcall(function()
+--           list:remove_at(index_to_remove)
+--         end)
+--
+--         if not ok then
+--           vim.notify("Harpoon error: " .. tostring(err), vim.log.levels.ERROR)
+--         end
+--       end
+--     end
+--   end,
+--   desc = "Remove buffer from Harpoon on delete",
+-- })
