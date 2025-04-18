@@ -41,7 +41,7 @@ return {
 
       used_space = used_space - (filename_w + filetype_w)
 
-      local term_width = vim.opt.columns:get()
+      local term_width = vim.fn.winwidth(0)
 
       local fill = string.rep(" ", math.floor((term_width - filename_w - filetype_w) / 2) - used_space)
       return fill
