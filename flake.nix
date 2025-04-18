@@ -51,10 +51,8 @@
     darwinConfigurations.mbp = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
-        ./modules/darwin/nix-core.nix
         ./modules/darwin/system.nix
         ./modules/darwin/apps.nix
-        ./modules/darwin/host-users.nix
 
         home-manager.darwinModules.home-manager
         {

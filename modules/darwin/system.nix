@@ -1,18 +1,31 @@
-{pkgs, ...}:
-###################################################################################
-#
-#  macOS's System configuration
-#
-#  All the configuration options are documented here:
-#    https://daiderd.com/nix-darwin/manual/index.html#sec-options
-#  and see the source code of this project to get more undocumented options:
-#    https://github.com/rgcr/m-cli
-#
-###################################################################################
-{
-  system = {
+{pkgs, ...} @ args: let
+  hostname = "mbp";
+  username = "hest";
+in {
+  nix.enable = false;
+  nixpkgs.config.allowUnfree = true;
+  nix.settings.trusted-users = [username];
 
-    stateVersion =  5;
+  networking.hostName = hostname;
+  networking.computerName = hostname;
+  system.defaults.smb.NetBIOSName = hostname;
+
+  users.users."${username}" = {
+    home = "/Users/${username}";
+    description = username;
+    shell = "/etc/profiles/per-user/hest/bin/fish";
+  };
+
+  ###################################################################################
+  #  macOS's System configuration
+  #
+  #  All the configuration options are documented here:
+  #    https://daiderd.com/nix-darwin/manual/index.html#sec-options
+  #  and see the source code of this project to get more undocumented options:
+  #    https://github.com/rgcr/m-cli
+  ###################################################################################
+  system = {
+    stateVersion = 5;
 
     # activationScripts are executed every time you boot the system or run `nixos-rebuild` / `darwin-rebuild`.
     activationScripts.postUserActivation.text = ''
@@ -61,7 +74,6 @@
         InitialKeyRepeat = 15; # normal minimum is 15 (225 ms), maximum is 120 (1800 ms)
         # sets how fast it repeats once it starts.
         KeyRepeat = 3; # normal minimum is 2 (30 ms), maximum is 120 (1800 ms)
-
 
         NSAutomaticCapitalizationEnabled = false; # disable auto capitalization(自动大写)
         NSAutomaticDashSubstitutionEnabled = false; # disable auto dash substitution(智能破折号替换)
@@ -124,7 +136,6 @@
     };
   };
 
-
   programs.fish.enable = true;
   environment.shells = [
     pkgs.fish
@@ -133,7 +144,7 @@
     packages = with pkgs; [
       material-design-icons
       font-awesome
-      fira-code 
+      fira-code
     ];
   };
 }

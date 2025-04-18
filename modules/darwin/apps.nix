@@ -69,7 +69,6 @@
     '';
   };
 
-
   services.yabai = {
     enable = true;
     package = pkgs.yabai;
@@ -114,7 +113,6 @@
       yabai -m space 2 --label ii
       yabai -m space 3 --label iii
       yabai -m space 4 --label iv
-      yabai -m space 5 --label v
 
       yabai -m rule --add app="^System Preferences$" manage=off
       yabai -m rule --add app="^Calculator$" manage=off
@@ -137,19 +135,13 @@
       Amphetamine = 937984704;
     };
 
-    taps = [
-      "homebrew/services"
-    ];
-
     brews = [
       "mas"
       "curl" # no not install curl via nixpkgs, it's not working well on macOS!
     ];
 
     casks = [
-      "bitwarden" # not available on arm
-      "jetbrains-toolbox" # not available on arm
-      "openlens" # not available after 24.05 channel
+      #"bitwarden" # not available on arm
       "tailscale" # easier to manage
       "mqttx" # not available on arm
       "microsoft-teams" # old version only on nix

@@ -27,16 +27,6 @@
           };
         }
         {
-          condition = "gitdir:~/.config/";
-          contents = {
-            core.sshCommand = "ssh -i ~/.ssh/${builtins.getEnv "M_ID"}";
-            user = {
-              name = "${builtins.getEnv "M_USER"}";
-              email = "${builtins.getEnv "M_MAIL"}";
-            };
-          };
-        }
-        {
           condition = "gitdir:${builtins.getEnv "C_DIR"}";
           contents = {
             core.sshCommand = "ssh -i ~/.ssh/${builtins.getEnv "C_ID"}";

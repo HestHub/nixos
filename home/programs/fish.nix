@@ -25,7 +25,7 @@ in
 
         set -l os (uname)
         if test "$os" = Darwin
-            /Users/hest/.local/bin/mise activate fish | source
+            # /Users/hest/.local/bin/mise activate fish | source
         else if test "$os" = Linux
             # do things for Linux
         else
