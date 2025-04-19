@@ -1,10 +1,21 @@
-{pkgs, ...} @ args: let
+{
+  pkgs,
+  lib,
+  ...
+} @ args: let
   hostname = "mbp";
   username = "hest";
 in {
-  nix.enable = false;
+  nix.enable = true;
   nixpkgs.config.allowUnfree = true;
   nix.settings.trusted-users = ["root" username];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.gc = {
+    automatic = lib.mkDefault true;
+    options = lib.mkDefault "--delete-older-than 1w";
+  };
+
+  nix.optimise.automatic = true;
 
   networking.hostName = hostname;
   networking.computerName = hostname;

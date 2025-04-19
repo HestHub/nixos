@@ -141,10 +141,10 @@
     ];
 
     casks = [
-      #"bitwarden" # not available on arm
       "tailscale" # easier to manage
       "mqttx" # not available on arm
       "microsoft-teams" # old version only on nix
+      "microsoft-auto-update"
       "raycast" # todo
       "sanesidebuttons"
       "steam"

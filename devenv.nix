@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-  cachix.enable = false;
   dotenv.enable = true;
   packages = [pkgs.git];
 

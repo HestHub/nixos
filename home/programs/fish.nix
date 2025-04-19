@@ -47,6 +47,7 @@ in
         g = "git";
         cd = "z";
         j = "z";
+        lg = "lazygit";
         cat = "bat";
         vi = "nvim";
         vim = "nvim";
