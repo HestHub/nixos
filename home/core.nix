@@ -23,10 +23,33 @@
     watchexec
     wget
     zellij
+    devenv
+
+    # LSPS
+    rustup
+    go
+    python314
+    lua
+    vtsls
+    unzip
+    nodejs
+    nil
+    pkgs.dotnetCorePackages.dotnet_9.sdk
   ];
 
   home.stateVersion = "25.05";
   programs = {
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      silent = true;
+      config = {
+        hide_env_diff = true;
+        log_format = "";
+        global.load_dotenv = true;
+      };
+    };
+
     neovim = {
       enable = true;
       defaultEditor = true;

@@ -34,17 +34,6 @@ in {
       virtiofsd
       bitwarden
       xclip
-
-      # LSPs
-      rustup
-      go
-      python314
-      lua
-      vtsls
-      unzip
-      nodejs
-      nil
-      pkgs.dotnetCorePackages.dotnet_9.sdk
     ];
   };
 }
