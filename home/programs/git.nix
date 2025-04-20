@@ -1,79 +1,10 @@
 {gitIncludes ? [], ...}: {
-  # home.activation.removeExistingGitconfig = lib.hm.dag.entryBefore ["checkLinkTargets"] ''
-  #   rm -f ~/.gitconfig
-  # '';
-
   programs.git = {
     enable = true;
     lfs.enable = true;
     diff-so-fancy.enable = true;
 
     includes = gitIncludes;
-
-    # includes =
-    #   if pkgs.stdenv.isDarwin
-    #   then [
-    #     {
-    #       condition = "gitdir:${builtins.getEnv "M_DIR"}";
-    #       contents = {
-    #         core.sshCommand = "ssh -i ~/.ssh/${builtins.getEnv "M_ID"}";
-    #         user = {
-    #           name = "${builtins.getEnv "M_USER"}";
-    #           email = "${builtins.getEnv "M_MAIL"}";
-    #         };
-    #       };
-    #     }
-    #     {
-    #       condition = "gitdir:${builtins.getEnv "C_DIR"}";
-    #       contents = {
-    #         core.sshCommand = "ssh -i ~/.ssh/${builtins.getEnv "C_ID"}";
-    #         user = {
-    #           name = "${builtins.getEnv "C_USER"}";
-    #           email = "${builtins.getEnv "C_MAIL"}";
-    #         };
-    #       };
-    #     }
-    #     {
-    #       condition = "gitdir:${builtins.getEnv "G_DIR"}";
-    #       contents = {
-    #         core.sshCommand = "ssh -i ~/.ssh/${builtins.getEnv "G_ID"}";
-    #         user = {
-    #           name = "${builtins.getEnv "G_USER"}";
-    #           email = "${builtins.getEnv "G_MAIL"}";
-    #         };
-    #       };
-    #     }
-    #   ]
-    #   else [
-    #     {
-    #       condition = "gitdir:~/Dev/**";
-    #       contents = {
-    #         safe = {
-    #           directory = ["*"];
-    #         };
-    #
-    #         core.sshCommand = "ssh -i ~/.ssh/id_ed25519";
-    #         user = {
-    #           name = "hest";
-    #           email = "${builtins.getEnv "G_MAIL"}";
-    #         };
-    #       };
-    #     }
-    #     {
-    #       condition = "gitdir:~/.config/**";
-    #       contents = {
-    #         safe = {
-    #           directory = ["*"];
-    #         };
-    #
-    #         core.sshCommand = "ssh -i ~/.ssh/id_ed25519";
-    #         user = {
-    #           name = "hest";
-    #           email = "${builtins.getEnv "G_MAIL"}";
-    #         };
-    #       };
-    #     }
-    #   ];
 
     extraConfig = {
       init.defaultBranch = "main";

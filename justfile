@@ -8,7 +8,7 @@ default:
 [group('nix')]
 update:
   nix flake update
-
+  nvim --headless "+Lazy! sync" +qa
 
 # rebuild system
 [group('nix')]
@@ -23,9 +23,6 @@ build:
 build:
   nix build .#darwinConfigurations.mbp.system --extra-experimental-features 'nix-command flakes'
   ./result/sw/bin/darwin-rebuild switch --impure --flake .#mbp
-
-
-
 alias b := build
 
 # debug build
@@ -47,14 +44,9 @@ bootstrap:
 [group('nix')]
 [macos]
 ssh_keys:
-  #	Generate ssh keys
-  ssh-keygen -t ed25519 -C "$M_MAIL" -f ~/.ssh/$M_ID -N $PASSWORD
-  ssh-keygen -t rsa -C "$G_MAIL" -f ~/.ssh/$G_ID -N $PASSWORD
-  ssh-keygen -t ed25519 -C "$C_MAIL" -f ~/.ssh/$C_ID -N $PASSWORD
-  # 	add keys to ssh-agent
-  ssh-add --apple-use-keychain ~/.ssh/$M_ID
-  ssh-add --apple-use-keychain ~/.ssh/$C_ID
-  ssh-add --apple-use-keychain ~/.ssh/$G_ID
+  ssh-add --apple-use-keychain ~/.ssh/id_me
+  ssh-add --apple-use-keychain ~/.ssh/id_c
+  ssh-add --apple-use-keychain ~/.ssh/id_g
 
 
 # show old profiles

@@ -23,11 +23,11 @@
     "dot-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1745166106,
-        "narHash": "sha256-AnQzSaPkqX/nk5096c2e5g4yJVq6JgCKRur3B3rf7tY=",
+        "lastModified": 1745182032,
+        "narHash": "sha256-WJD4Nopsd1hYtSSvSq3tFiUsJCyDXnLBcOzv53mm/FU=",
         "ref": "refs/heads/main",
-        "rev": "5e94ba75b0ab9fca7809c20d40172a23d16b54ce",
-        "revCount": 2,
+        "rev": "9ed8d0e519138814666734c65267d54f210e6554",
+        "revCount": 5,
         "type": "git",
         "url": "ssh://git@github.com/HestHub/dot-secrets.git"
       },
@@ -80,11 +80,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1745128386,
-        "narHash": "sha256-xnNxL9lZC5Ez8AxTgHZZu8pYSNM34+5GD5jGSs8Vq4M=",
+        "lastModified": 1745182065,
+        "narHash": "sha256-9k2A67zKJYO6VGyDf/s31C8Cd0e4TS4X0ZRGwJWCLfo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "f98314bb064cf8f8446c44afbadaaad2505875a7",
+        "rev": "a0461b67ff657b6b6e51bb4a547ad98907d28dc8",
         "type": "github"
       },
       "original": {

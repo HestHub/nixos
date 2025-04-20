@@ -12,6 +12,14 @@
       condition = "gitdir:~/dev/me/";
       path = "${config.home.homeDirectory}/.config/git/include_me";
     }
+    {
+      condition = "gitdir:~/dev/c*/";
+      path = "${config.home.homeDirectory}/.config/git/include_c";
+    }
+    {
+      condition = "gitdir:~/dev/g*/";
+      path = "${config.home.homeDirectory}/.config/git/include_g";
+    }
   ];
 in {
   imports = [
@@ -27,9 +35,19 @@ in {
     defaultSopsFile = "${inputs.dot-secrets}/secrets.yaml";
     secrets = {
       # private ssh
-      "me/ssh_private".path = "${config.home.homeDirectory}/.ssh/id_me";
-      "me/ssh_public".path = "${config.home.homeDirectory}/.ssh/id_me.pub";
-      "me/ssh_config".path = "${config.home.homeDirectory}/.config/git/include_me";
+      "me/key".path = "${config.home.homeDirectory}/.ssh/id_me";
+      "me/pub".path = "${config.home.homeDirectory}/.ssh/id_me.pub";
+      "me/config".path = "${config.home.homeDirectory}/.config/git/include_me";
+
+      # c... ssh
+      "c/key".path = "${config.home.homeDirectory}/.ssh/id_c";
+      "c/pub".path = "${config.home.homeDirectory}/.ssh/id_c.pub";
+      "c/config".path = "${config.home.homeDirectory}/.config/git/include_c";
+
+      # c... ssh
+      "g/key".path = "${config.home.homeDirectory}/.ssh/id_g";
+      "g/pub".path = "${config.home.homeDirectory}/.ssh/id_g.pub";
+      "g/config".path = "${config.home.homeDirectory}/.config/git/include_g";
     };
   };
 
