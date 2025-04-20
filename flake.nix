@@ -15,7 +15,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix.url = "github:Mic92/sops-nix";
 
+    dot-secrets = {
+      url = "git+ssh://git@github.com/HestHub/dot-secrets.git";
+      flake = false;
+    };
     # TODO https://github.com/cachix/git-hooks.nix?tab=readme-ov-file
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
   };
@@ -26,6 +31,7 @@
     darwin,
     home-manager,
     zen-browser,
+    sops-nix,
     ...
   } @ inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -38,6 +44,9 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.sharedModules = [
+            sops-nix.homeManagerModules.sops
+          ];
 
           home-manager.users.hest = import ./home/linux.nix;
           home-manager.extraSpecialArgs = {
@@ -58,6 +67,9 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.sharedModules = [
+            sops-nix.homeManagerModules.sops
+          ];
 
           home-manager.users.hest = import ./home/darwin.nix;
           home-manager.extraSpecialArgs = {
