@@ -25,6 +25,8 @@
     zellij
     devenv
 
+    age
+    sops
     # LSPS
     rustup
     go

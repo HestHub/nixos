@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # home.activation.removeExistingGitconfig = lib.hm.dag.entryBefore ["checkLinkTargets"] ''
   #   rm -f ~/.gitconfig
   # '';
@@ -124,6 +119,18 @@
       "build/"
       "out/"
       "**/.DS_Store"
+      ".devenv*"
+      "devenv.local.nix"
+      ".direnv"
+      ".pre-commit-config.yaml"
+      ".devenv*"
+      "devenv.local.nix"
+      ".direnv"
+      ".pre-commit-config.yaml"
+      ".devenv*"
+      "devenv.local.nix"
+      ".direnv"
+      ".pre-commit-config.yaml"
     ];
   };
 }

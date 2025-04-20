@@ -1,9 +1,10 @@
 {pkgs, ...}: {
   dotenv.enable = true;
-  packages = [pkgs.git];
+  packages = [pkgs.just];
 
   languages = {
     nix.enable = true;
     lua.enable = true;
+    shell.enable = true;
   };
 }
