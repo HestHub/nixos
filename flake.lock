@@ -23,11 +23,11 @@
     "dot-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1745182032,
-        "narHash": "sha256-WJD4Nopsd1hYtSSvSq3tFiUsJCyDXnLBcOzv53mm/FU=",
+        "lastModified": 1745183460,
+        "narHash": "sha256-Uyt6amRahA74uDgfjj7xgB3f736DMEiQMmvyJLbeyrs=",
         "ref": "refs/heads/main",
-        "rev": "9ed8d0e519138814666734c65267d54f210e6554",
-        "revCount": 5,
+        "rev": "dd82fa3b98139381ce6d7aaacecbc0e6e5cbbce1",
+        "revCount": 8,
         "type": "git",
         "url": "ssh://git@github.com/HestHub/dot-secrets.git"
       },
