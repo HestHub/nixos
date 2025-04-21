@@ -7,7 +7,7 @@
     fzf
     gh
     git
-    gotop
+    bottom
     jq
     just
     lazydocker
@@ -24,7 +24,7 @@
     wget
     zellij
     devenv
-
+    viu
     age
     sops
     # LSPS

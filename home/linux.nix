@@ -51,6 +51,7 @@ in {
       virtiofsd
       bitwarden
       xclip
+      icu77
     ];
   };
 }

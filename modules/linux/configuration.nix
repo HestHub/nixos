@@ -187,10 +187,12 @@
     enable = true;
     libraries = with pkgs; [
       stdenv.cc.cc
+      icu
     ];
   };
 
   nix = {
+    settings.trusted-users = ["root" "hest"];
     settings.experimental-features = [
       "nix-command"
       "flakes"

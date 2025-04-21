@@ -3,7 +3,6 @@ set shell := ["nu", "-c" ]
 default:
     @just --list
 
-
 # update flakes
 [group('nix')]
 update:
@@ -15,7 +14,6 @@ update:
 [linux]
 build:
   sudo nixos-rebuild switch --flake .
-
 
 # rebuild system
 [group('nix')]
@@ -56,12 +54,10 @@ history:
   nix profile history --profile /nix/var/nix/profiles/system
 
 
-
 # remove old profiles
 [group('nix')]
 clean:
   sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d
-
 
 # gc system and user nix store
 [group('nix')]
