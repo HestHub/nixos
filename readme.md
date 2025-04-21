@@ -2,10 +2,6 @@
 <h2 align="center">:snowflake: Hest's Nix Config :snowflake:</h2>
 
 <p align="center">
-  <span title="nord0: #2E3440" style="background-color: #2E3440; color: #2E3440;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span title="nord1: #3B4252" style="background-color: #3B4252; color: #3B4252;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span title="nord2: #434C5E" style="background-color: #434C5E; color: #434C5E;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span title="nord3: #4C566A" style="background-color: #4C566A; color: #4C566A;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span title="nord4: #D8DEE9" style="background-color: #D8DEE9; color: #D8DEE9;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span title="nord5: #E5E9F0" style="background-color: #E5E9F0; color: #E5E9F0;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span title="nord6: #ECEFF4" style="background-color: #ECEFF4; color: #ECEFF4;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span title="nord7: #8FBCBB" style="background-color: #8FBCBB; color: #8FBCBB;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span title="nord8: #88C0D0" style="background-color: #88C0D0; color: #88C0D0;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span title="nord9: #81A1C1" style="background-color: #81A1C1; color: #81A1C1;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span title="nord10: #5E81AC" style="background-color: #5E81AC; color: #5E81AC;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span title="nord11: #BF616A" style="background-color: #BF616A; color: #BF616A;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span title="nord12: #D08770" style="background-color: #D08770; color: #D08770;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span title="nord13: #EBCB8B" style="background-color: #EBCB8B; color: #EBCB8B;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span title="nord14: #A3BE8C" style="background-color: #A3BE8C; color: #A3BE8C;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span title="nord15: #B48EAD" style="background-color: #B48EAD; color: #B48EAD;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-</p>
-
-<p align="center">
     <a href="https://nixos.org/">
         <img src="https://img.shields.io/badge/NixOS-unstable-informational.svg?style=for-the-badge&logo=nixos&color=F2CDCD&logoColor=D9E0EE&labelColor=302D41"></a>
   <a href="https://github.com/nix-community/home-manager">
@@ -27,17 +23,14 @@
 
 </div>
 
-</br>
-</br>
-
-> This config is tailored to my needs, and is not meant to be a tutorial, but if you do find
-> anything you like, feel free to yank it :)
+> This config is tailored to my needs, and is not meant to be a tutorial,
+> but if you do find anything you like, feel free to yank it :)
 
 This repository is home to the nix code that builds my systems:
 
 1. NixOS Desktop: NixOS with Flakes, Home-manager, Sops-Nix, etc.
-2. macOS Laptop: nix-darwin with home-manager, share the same home-manager configuration with
-   NixOS.
+2. macOS Laptop: nix-darwin with home-manager,
+  share the same home-manager configuration with NixOS.
 3. HomeLab server (Todo)
 4. Rpi-HomeAssistant (Todo)
 
