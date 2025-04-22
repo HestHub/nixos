@@ -48,6 +48,8 @@ in {
       "g/key".path = "${config.home.homeDirectory}/.ssh/id_g";
       "g/pub".path = "${config.home.homeDirectory}/.ssh/id_g.pub";
       "g/config".path = "${config.home.homeDirectory}/.config/git/include_g";
+
+      "nuget".path = "${config.home.homeDirectory}/.config/nuget/nuget.config";
     };
   };
 

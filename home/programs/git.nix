@@ -64,6 +64,8 @@
       "devenv.local.nix"
       ".direnv"
       ".pre-commit-config.yaml"
+      ".envrc"
+      "devenv.nix"
     ];
   };
 }

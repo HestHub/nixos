@@ -36,7 +36,7 @@
     unzip
     nodejs
     nil
-    pkgs.dotnetCorePackages.dotnet_9.sdk
+    pkgs.dotnetCorePackages.dotnet_8.sdk
   ];
 
   home.stateVersion = "25.05";
