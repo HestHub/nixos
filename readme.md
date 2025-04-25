@@ -1,26 +1,29 @@
-
 <h2 align="center">:snowflake: Hest's Nix Config :snowflake:</h2>
 
 <p align="center">
-    <a href="https://nixos.org/">
-        <img src="https://img.shields.io/badge/NixOS-unstable-informational.svg?style=for-the-badge&logo=nixos&color=F2CDCD&logoColor=D9E0EE&labelColor=302D41"></a>
+  <a href="https://nixos.org/">
+    <img src="https://img.shields.io/badge/NixOS-unstable-informational.svg?style=for-the-badge&logo=nixos&color=5277C3&logoColor=D9E0EE&labelColor=302D41"
+      alt="NixOS">
+  </a>
   <a href="https://github.com/nix-community/home-manager">
-        <img src="https://img.shields.io/badge/Home_manager-informational.svg?style=for-the-badge&logo=nixos&color=F2CDCD&logoColor=D9E0EE&labelColor=302D41"></a>
+    <img src="https://img.shields.io/badge/Home_manager-informational.svg?style=for-the-badge&logo=nixos&color=F2CDCD&logoColor=D9E0EE&labelColor=302D41"
+      alt="home-manager">
+  </a>
   <a href="https://github.com/nix-darwin/nix-darwin">
-        <img src="https://img.shields.io/badge/Nix_Darwin-informational.svg?style=for-the-badge&logo=nixos&color=F2CDCD&logoColor=D9E0EE&labelColor=302D41"></a>
+    <img src="https://img.shields.io/badge/Nix_Darwin-informational.svg?style=for-the-badge&logo=nixos&color=F2CDCD&logoColor=D9E0EE&labelColor=302D41"
+      alt="nix-darwin">
   </a>
 </p>
-
 <p align="center">
 <a href="https://github.com/HestHub/nixos/blob/main/LICENSE">
-  <img alt="License" src="https://img.shields.io/github/license/HestHub/nixos?style=for-the-badge&logo=starship&color=A1C999&logoColor=D9E0EE&labelColor=252733" />
-</a>
-<img alt="Last commit" src="https://img.shields.io/github/last-commit/HestHub/nixos?&style=for-the-badge&color=8D748C&logoColor=D9E0EE&labelColor=252733">
-<img alt="Repo Size" src="https://img.shields.io/github/repo-size/HestHub/nixos?color=%23DDB&label=SIZE&logo=codesandbox&style=for-the-badge&logoColor=D9E0EE&labelColor=252733">
-
+  <img alt="License"
+       src="https://img.shields.io/github/license/HestHub/nixos?style=for-the-badge&logo=starship&color=A1C999&logoColor=D9E0EE&labelColor=252733" />
+  <img alt="Last commit"
+    src="https://img.shields.io/github/last-commit/HestHub/nixos?&style=for-the-badge&color=8D748C&logoColor=D9E0EE&labelColor=252733">
+  <img alt="Repo Size"
+    src="https://img.shields.io/github/repo-size/HestHub/nixos?color=%23DDB&label=SIZE&logo=codesandbox&style=for-the-badge&logoColor=D9E0EE&labelColor=252733">
+  </a>
 </p>
-
-</div>
 
 ## 📖 Overview
 
@@ -29,28 +32,28 @@
 
 This repository is home to the nix code that builds my systems:
 
-1. NixOS Desktop: NixOS with Flakes, Home-manager, Sops-Nix, etc.
-2. MacOS Laptop: nix-darwin with home-manager,
+- **NixOS Desktop:** NixOS with Flakes, Home-manager, Sops-Nix, etc.
+- **MacOS Laptop:** nix-darwin with home-manager,
   share the same home-manager configuration with NixOS.
-3. HomeLab server (Todo)
-4. Rpi-HomeAssistant (Todo)
+- **HomeLab server:** (TODO)
+- **Rpi-HomeAssistant:** (TODO)
 
 ## 📦 Main Components
 
-|                             | NixOS                                   | MacOS  |
-| --------------------------- | ---------------------------------------------- | ------------- |
-| **Window Manager**          | [PopShell](https://github.com/pop-os/shell)    | [Yabai](https://github.com/koekeishiya/yabai)  |
-| **Terminal**       |  [Ghostty](https://ghostty.org/) |[Ghostty](https://ghostty.org/) |
-| **Multiplexer**       | [Zellij](https://zellij.dev/) | [Zellij](https://zellij.dev/)                                                           |
-| **Launcher**    | Default                             | [Raycast](https://www.raycast.com/) |
-| **Color Scheme**            | [Nord](https://www.nordtheme.com/)             | [Nord](https://www.nordtheme.com/)                                                                  |
-| **VPN**                     | [Tailscale](https://tailscale.com/)            | [Tailscale](https://tailscale.com/)                                                                    |
-| **Input remapper**          | N/A                                            |    [Kanata](https://github.com/jtroo/kanata) |
-| **File Manager**            | [lf](https://github.com/gokcehan/lf)           | [lf](https://github.com/gokcehan/lf)                                                                     |
-| **Shell**                   | [Fish](https://fishshell.com/) + [Nushell](https://www.nushell.sh/)     | [Fish](https://fishshell.com/) + [Nushell](https://www.nushell.sh/)                                                                     |
-| **Editor**             | [Neovim](https://neovim.io/)                   | [Neovim](https://neovim.io/)                                                                     |
-| **Fonts**                   | [Fira Code](https://github.com/tonsky/FiraCode)| [Fira Code](https://github.com/tonsky/FiraCode)      |
-| **Dev environment**         | [direnv](https://direnv.net/) + [devenv](https://devenv.sh/) | [direnv](https://direnv.net/) + [devenv](https://devenv.sh/) |
+| Component                    | NixOS               | MacOS               |
+| ------------------- | ------------------- | ------------------- |
+| **Color Scheme**    | [Nord]              | [Nord]              |
+| **Dev environment** | [direnv] + [devenv] | [direnv] + [devenv] |
+| **Editor**          | [Neovim]            | [Neovim]            |
+| **File Manager**    | [lf]                | [lf]                |
+| **Fonts**           | [Fira Code]         | [Fira Code]         |
+| **Input remapper**  | N/A                 | [Kanata]            |
+| **Launcher**        | Default             | [Raycast]           |
+| **Multiplexer**     | [Zellij]            | [Zellij]            |
+| **Shell**           | [Fish] + [Nushell]  | [Fish] + [Nushell]  |
+| **Terminal**        | [Ghostty]           | [Ghostty]           |
+| **VPN**             | [Tailscale]         | [Tailscale]         |
+| **Window Manager**  | [PopShell]          | [Yabai]             |
 
 ## 📷 Screenshots
 
@@ -239,7 +242,7 @@ Sops will create new files with the content found in the `secrets.yaml` file
 
 ### adding new hosts
 
-To allow a new host to decrypt the secrets, it has to be added as a new sops recipiant
+To allow a new host to decrypt the secrets, it has to be added as a new sops recipient
 
 ``` yaml
 keys:
@@ -349,6 +352,7 @@ the secrets management in home manager and swap host-names and user-names.
 - [ ] [Nushell](https://www.nushell.sh/)
 - [ ] [Disko](https://github.com/nix-community/disko)
 - [ ] Cleanup
+- [ ] CI
 - [ ] Move scripts to repo
 - [ ] Security hardening
 - [ ] adding server to combined config
@@ -368,6 +372,22 @@ Good reads and dotfiles that inspired me:
   - [budimanjojo/nix-config](https://github.com/budimanjojo/nix-config)
   - [Misterio77/nix-config](https://github.com/Misterio77/nix-config)
   - [Awesome-nix](https://github.com/nix-community/awesome-nix)
-- Neovim/Lazyvim
+- NeoVim/LazyVim
   - [LazyVim distro](https://www.lazyvim.org/)
   - [LazyVim for Ambitious Developers](https://lazyvim-ambitious-devs.phillips.codes/course/chapter-1/)
+  
+[PopShell]:https://github.com/pop-os/shell
+[Yabai]:https://github.com/koekeishiya/yabai
+[Ghostty]:https://ghostty.org/
+[Zellij]:https://zellij.dev/
+[Raycast]:https://www.raycast.com/
+[Nord]:https://www.nordtheme.com/
+[Tailscale]:https://tailscale.com/
+[Kanata]:https://github.com/jtroo/kanata
+[lf]:https://github.com/gokcehan/lf
+[Fish]:https://fishshell.com/
+[Nushell]:https://www.nushell.sh/
+[Neovim]:https://neovim.io/
+[Fira Code]:https://github.com/tonsky/FiraCode
+[direnv]:https://direnv.net/
+[devenv]:https://devenv.sh/
