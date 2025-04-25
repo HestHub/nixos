@@ -1,21 +1,22 @@
 {pkgs, ...}: let
-  ghosttyConfig = {
+  ghosttySettings = {
     "font-size" = 14;
     theme = "nord";
     title = "";
+    "window-decoration" = "none";
     "macos-titlebar-style" = "tabs";
     "mouse-hide-while-typing" = true;
   };
+
+  ghosttyToml = (pkgs.formats.toml {}).generate "ghostty-config" ghosttySettings;
 in {
-  # Linux: install and configure
+  # Linux: install and configure Ghostty
   programs.ghostty = pkgs.lib.mkIf pkgs.stdenv.isLinux {
     enable = true;
     enableFishIntegration = true;
-    settings = ghosttyConfig;
+    settings = ghosttySettings;
   };
 
-  # macOS: don't install, just write config
-  xdg.configFile."ghostty/config.toml" = pkgs.lib.mkIf pkgs.stdenv.isDarwin {
-    text = pkgs.lib.generators.toTOML {} ghosttyConfig;
-  };
+  # macOS: write TOML config to XDG_CONFIG_HOME
+  xdg.configFile."ghostty/config".source = pkgs.lib.mkIf pkgs.stdenv.isDarwin ghosttyToml;
 }

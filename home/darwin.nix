@@ -27,6 +27,7 @@ in {
     ./core.nix
     (import ./programs/git.nix {inherit pkgs gitIncludes;})
     ./programs/k9s.nix
+    ./programs/ghostty.nix
     ./programs/fish.nix
   ];
 
