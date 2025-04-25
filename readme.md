@@ -9,7 +9,6 @@
   <a href="https://github.com/nix-darwin/nix-darwin">
         <img src="https://img.shields.io/badge/Nix_Darwin-informational.svg?style=for-the-badge&logo=nixos&color=F2CDCD&logoColor=D9E0EE&labelColor=302D41"></a>
   </a>
-
 </p>
 
 <p align="center">
@@ -95,6 +94,44 @@ To evaluate the packages installed system-wide:
 ``` bash
 nix eval .#darwinConfigurations.<HOST>.config.environment.systemPackages --json | jq
 ```
+
+## ✏️ Editor
+
+[NeoVim](https://neovim.io/) is configured directly in this repo and symlinked to
+`$XDG_CONFIG_HOME/nvim` when built.
+
+// TODO PICTURE
+
+Nvim config can be found here => [./dotfiles/nvim/](./dotfiles/nvim/)
+
+## 🖥️ Terminal
+
+[Ghostty](https://ghostty.org/) enabled using `home-manager`
+
+Currently there are some build issues on darwin,
+so on darwin, Ghostty is install using Homebrew
+and only configured by `home-manager`
+
+`./home/programs/ghostty.nix`
+
+## 🐚 Shell
+
+[Fish](https://fishshell.com/) enabled using `home-manager`
+
+On darwin, the default shell needs to be updated using
+
+`chsh -s /etc/profiles/per-user/hest/bin/fish`
+
+Plugins:
+
+- [autopair](https://github.com/jorgebucaran/autopair.fish)
+- [done](https://github.com/franciscolourenco/done)
+- [fzf](https://github.com/PatrickF1/fzf.fish)
+- [grc](https://github.com/oh-my-fish/plugin-grc)
+- [sponge](https://github.com/meaningful-ooo/sponge)
+- [puffer](https://github.com/nickeb96/puffer-fish)
+
+[Nushell](https://www.nushell.sh/) - WIP
 
 ## 🔐 Secrets Management
 
@@ -233,23 +270,6 @@ but Sops seemed to be the safe choice for Darwin.
 
 </details>
 
-## ✏️ Editor
-
-[![Neovim](https://img.shields.io/badge/Neovim-58A143?logo=neovim&logoColor=fff)](#)
-is configured directly in this repo and symlinked to `XDG_CONFIG` when build.
-
-TODO PICTURE
-
-Look here => [./dotfiles/nvim/](./dotfiles/nvim/)
-
-## 🖥️ Terminal
-
-Ghostty
-
-## 🐚 Shell
-
-Fish + Nushell
-
 ## 📜 Cheatsheet / How to Deploy this Flake?
 
 > :red_circle: **IMPORTANT**: **Do not try to deploy this flake as is :exclamation:
@@ -326,6 +346,7 @@ the secrets management in home manager and swap host-names and user-names.
 
 ## 🚧 Roadmap
 
+- [ ] [Nushell](https://www.nushell.sh/)
 - [ ] [Disko](https://github.com/nix-community/disko)
 - [ ] Cleanup
 - [ ] Move scripts to repo

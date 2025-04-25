@@ -12,6 +12,7 @@ in
       fishPlugins.fzf
       fishPlugins.grc
       fishPlugins.sponge
+      fishPlugins.puffer
     ];
 
     programs.fish = {
@@ -22,17 +23,6 @@ in
 
       interactiveShellInit = ''
         insulter
-
-        set -l os (uname)
-        if test "$os" = Darwin
-            # /Users/hest/.local/bin/mise activate fish | source
-        else if test "$os" = Linux
-            # do things for Linux
-        else
-            # do things for other operating systems
-        end
-
-
 
         set fish_greeting # Disable greeting
 
@@ -105,6 +95,10 @@ in
         {
           name = "sponge";
           src = pkgs.fishPlugins.sponge.src;
+        }
+        {
+          name = "puffer";
+          src = pkgs.fishPlugins.puffer.src;
         }
       ];
     };
