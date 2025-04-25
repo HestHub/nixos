@@ -20,6 +20,7 @@ in {
     (import ./programs/git.nix {inherit pkgs gitIncludes;})
     ./programs/fish.nix
     ./programs/gnome.nix
+    ./programs/markdown.nix
   ];
 
   sops = {
