@@ -14,6 +14,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    walker.url = "github:abenz1267/walker";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     sops-nix.url = "github:Mic92/sops-nix";
@@ -33,6 +34,7 @@
     home-manager,
     zen-browser,
     sops-nix,
+    walker,
     ...
   } @ inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {

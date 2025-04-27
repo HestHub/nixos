@@ -21,6 +21,7 @@ in {
     ./programs/fish.nix
     ./programs/gnome.nix
     ./programs/markdown.nix
+    ./programs/walker.nix
   ];
 
   sops = {
@@ -51,7 +52,7 @@ in {
       wineWowPackages.waylandFull
       virtiofsd
       bitwarden
-      xclip
+      wl-clipboard
       icu77
     ];
   };
