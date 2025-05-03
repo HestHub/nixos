@@ -4,6 +4,8 @@
     gnomeExtensions.pop-shell
     gnome-tweaks
     gnomeExtensions.vitals
+    gnomeExtensions.clipboard-history
+    gnomeExtensions.rounded-window-corners-reborn
   ];
 
   gtk = {
@@ -29,10 +31,13 @@
           "status-icons@gnome-shell-extensions.gcampax.github.com"
           "user-theme@gnome-shell-extensions.gcampax.github.com"
           "Vitals@CoreCoding.com"
+          "clipboard-history@alexsaveau.dev"
         ];
       };
     };
   };
 }
 # https://github.com/nix-community/dconf2nix?tab=readme-ov-file
+# gnome-extensions list
+# to get UUID for installed extentions
 
