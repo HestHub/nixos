@@ -78,6 +78,9 @@ in {
       supersonic
       spotube
       awscli
+      azure-cli
+      socat
+      aider-chat
     ];
   };
 }

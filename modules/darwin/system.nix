@@ -2,7 +2,7 @@
   pkgs,
   lib,
   ...
-} @ args: let
+}: let
   hostname = "mbp";
   username = "hest";
 in {
