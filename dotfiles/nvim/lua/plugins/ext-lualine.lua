@@ -55,8 +55,24 @@ return {
         section_separators = "",
         globalstatus = vim.o.laststatus == 1,
         disabled_filetypes = {
-          statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" },
-          winbar = { "dashboard", "alpha", "ministarter", "snacks_dashboard" },
+          statusline = {
+            "dashboard",
+            "alpha",
+            "ministarter",
+            "snacks_dashboard",
+            "dap-view",
+            "dap-repl",
+            "dap-view-term",
+          },
+          winbar = {
+            "dashboard",
+            "alpha",
+            "ministarter",
+            "snacks_dashboard",
+            "dap-view",
+            "dap-repl",
+            "dap-view-term",
+          },
         },
       },
       sections = {
