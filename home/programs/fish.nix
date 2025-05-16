@@ -19,6 +19,7 @@ in
       enable = true;
 
       shellInit = ''
+        set -gx DOTNET_ROOT (dirname (realpath (which dotnet)))
       '';
 
       interactiveShellInit = ''

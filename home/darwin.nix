@@ -81,6 +81,9 @@ in {
       azure-cli
       socat
       aider-chat
+      mono
+      netcoredbg
+      omnisharp-roslyn
     ];
   };
 }

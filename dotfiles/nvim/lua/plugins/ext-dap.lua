@@ -1,8 +1,11 @@
 return {
-  --   "Cliffback/netcoredbg-macOS-arm64.nvim",
-  --   dependencies = { "mfussenegger/nvim-dap" },
-  --
-  --   init = function()
-  --     require("netcoredbg-macOS-arm64").setup(require("dap"))
-  --   end,
+  "mfussenegger/nvim-dap",
+  opts = function()
+    require("dap").adapters["netcoredbg"] = {
+      type = "executable",
+      -- Use globally installed netcoredbg for ARM machines
+      command = vim.trim(vim.fn.system("which netcoredbg")),
+      args = { "--interpreter=vscode" },
+    }
+  end,
 }
