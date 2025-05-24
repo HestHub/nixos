@@ -77,15 +77,7 @@ return {
       },
       sections = {
         lualine_a = {
-          { -- show current vim mode single character
-            function()
-              local mode = vim.api.nvim_get_mode()["mode"]
-              return "" .. string.format("%-1s", mode)
-            end,
-            fmt = function(str)
-              return add_width(str, "mode")
-            end,
-          },
+          {},
         },
         lualine_b = {},
         lualine_c = {
@@ -227,12 +219,7 @@ return {
         },
 
         lualine_y = {},
-        lualine_z = {
-          function()
-            local mode = vim.api.nvim_get_mode()["mode"]
-            return "" .. string.format("%-1s", mode)
-          end,
-        },
+        lualine_z = {},
       },
       inactive_sections = {
         lualine_a = {},
