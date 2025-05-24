@@ -20,7 +20,7 @@ build:
 [macos]
 build:
   nix build .#darwinConfigurations.mbp.system --extra-experimental-features 'nix-command flakes' --show-trace --verbose
-  ./result/sw/bin/darwin-rebuild switch --impure --flake .#mbp --show-trace --verbose
+  sudo ./result/sw/bin/darwin-rebuild switch --impure --flake .#mbp --show-trace --verbose
 alias b := build
 
 # debug build

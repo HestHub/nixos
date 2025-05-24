@@ -19,7 +19,12 @@ in
       enable = true;
 
       shellInit = ''
-        set -gx DOTNET_ROOT (dirname (realpath (which dotnet)))
+        # Check if the operating system is macOS (Darwin)
+        if test (uname) = "Darwin"
+          # Set DOTNET_ROOT only on macOS
+          set -gx DOTNET_ROOT (dirname (realpath (which dotnet)))
+          fish_add_path /opt/homebrew/bin
+        end
       '';
 
       interactiveShellInit = ''

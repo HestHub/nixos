@@ -114,9 +114,8 @@
       yabai -m space 3 --label iii
       yabai -m space 4 --label iv
 
-      yabai -m rule --add app="^System Preferences$" manage=off
+      yabai -m rule --add app="^System Settings$" manage=off
       yabai -m rule --add app="^Calculator$" manage=off
-      yabai -m rule --add app="^JetBrains Toolbox$" manage=off
       yabai -m rule --add app="^Simulator$" manage=off
     '';
   };
@@ -141,6 +140,7 @@
     ];
 
     casks = [
+      "alt-tab"
       "tailscale" # easier to manage
       "mqttx" # not available on arm
       "microsoft-teams" # old version only on nix

@@ -67,7 +67,6 @@ in {
     packages = with pkgs; [
       kubectl
       dotnetPackages.Nuget
-      tinygo
       wasmtime
       docker
       colima
@@ -84,6 +83,7 @@ in {
       mono
       netcoredbg
       omnisharp-roslyn
+      ollama
     ];
   };
 }
