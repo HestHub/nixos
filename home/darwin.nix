@@ -74,11 +74,8 @@ in {
       kubelogin
       postman
       zoom-us
-      supersonic
-      spotube
       awscli
       azure-cli
-      socat
       aider-chat
       mono
       netcoredbg

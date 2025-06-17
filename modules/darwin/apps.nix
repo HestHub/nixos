@@ -74,7 +74,7 @@
     package = pkgs.yabai;
     enableScriptingAddition = true;
     config = {
-      focus_follows_mouse = "autoraise";
+      focus_follows_mouse = "autofocus";
       window_placement = "second_child";
       window_topmost = "off";
       window_shadow = "on";
@@ -94,7 +94,7 @@
       mouse_drop_action = "swap";
       mouse_follows_focus = "on";
       layout = "bsp";
-      top_padding = "10";
+      top_padding = "05";
       bottom_padding = "10";
       left_padding = "10";
       right_padding = "10";
@@ -109,14 +109,24 @@
       # yabai -m space --create
       # yabai -m space --create
 
-      yabai -m space 1 --label i
+      yabai -m space 1 --label i --layout stack
       yabai -m space 2 --label ii
       yabai -m space 3 --label iii
       yabai -m space 4 --label iv
 
-      yabai -m rule --add app="^System Settings$" manage=off
-      yabai -m rule --add app="^Calculator$" manage=off
-      yabai -m rule --add app="^Simulator$" manage=off
+      yabai -m rule --add app="^System Settings$" manage=off layer=above
+      yabai -m rule --add app="^Calculator$" manage=off layer=above
+      yabai -m rule --add app="^Simulator$" manage=off layer=above
+
+      yabai -m rule --add app="Microsoft Teams$" space=1
+      yabai -m rule --add app="Slack$" space=1
+      yabai -m rule --add app="Mail$" space=1
+
+      yabai -m rule --add app="Safari$" space=2
+      yabai -m rule --add app="Ghostty$" space=3
+
+      ## focus previous window when window destroyed
+      yabai -m signal --add event=window_destroyed action="yabai -m window --focus mouse"
     '';
   };
 
