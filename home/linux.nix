@@ -53,6 +53,7 @@ in {
       bitwarden
       wl-clipboard
       icu77
+      sqlitebrowser
     ];
   };
 }

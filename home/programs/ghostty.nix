@@ -60,10 +60,9 @@ in {
   programs.ghostty = pkgs.lib.mkIf pkgs.stdenv.isLinux {
     enable = true;
     enableFishIntegration = true;
-    settings = config;
   };
 
   # macOS: write TOML config to XDG_CONFIG_HOME
-  xdg.configFile."ghostty/config".text = pkgs.lib.mkIf pkgs.stdenv.isDarwin config;
-  xdg.configFile."ghostty/themes/nordic".text = pkgs.lib.mkIf pkgs.stdenv.isDarwin theme;
+  xdg.configFile."ghostty/config".text = config;
+  xdg.configFile."ghostty/themes/nordic".text = theme;
 }
