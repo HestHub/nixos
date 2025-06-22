@@ -17,7 +17,7 @@ in {
   imports = [
     ./core.nix
     ./programs/ghostty.nix
-    (import ./programs/git.nix {inherit pkgs gitIncludes;})
+    (import ./programs/git.nix {inherit pkgs gitIncludes config;})
     ./programs/fish.nix
     ./programs/gnome.nix
     ./programs/markdown.nix

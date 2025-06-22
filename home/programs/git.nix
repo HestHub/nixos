@@ -6,7 +6,7 @@
   xdg.configFile."git/templates/hooks/pre-commit" = {
     enable = true;
     text = ''
-      #!/bin/bash
+      #!/bin/sh
 
       echo "Running gitleaks check..."
       gitleaks git --pre-commit --staged
