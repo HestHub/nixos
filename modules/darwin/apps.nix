@@ -142,6 +142,7 @@
       Keynote = 409183694;
       MonitorControl-Lite = 1595464182;
       Amphetamine = 937984704;
+      Numbers = 409203825;
     };
 
     brews = [

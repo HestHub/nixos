@@ -1,4 +1,38 @@
-{gitIncludes ? [], ...}: {
+{
+  gitIncludes ? [],
+  config,
+  ...
+}: {
+  xdg.configFile."git/templates/hooks/pre-commit" = {
+    enable = true;
+    text = ''
+      #!/bin/bash
+
+      echo "Running gitleaks check..."
+      gitleaks git --pre-commit --staged
+
+      # Check the exit code of the gitleaks command
+      if [ $? -ne 0 ]; then
+          echo "Gitleaks found issues or failed to run"
+          exit 1
+      fi
+
+      echo "Gitleaks check passed"
+
+      echo "Running trufflehog check..."
+      trufflehog git file://. --since-commit HEAD --results=verified,unknown --fail
+
+      # Check the exit code of the trufflehog command
+      if [ $? -ne 0 ]; then
+          echo "Trufflehog found issues or failed to run"
+          exit 1
+      fi
+
+      echo "All security checks passed"
+      exit 0 '';
+    executable = true;
+  };
+
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -8,6 +42,7 @@
 
     extraConfig = {
       init.defaultBranch = "main";
+      init.templateDir = "${config.xdg.configHome}/git/templates";
       push.autoSetupRemote = true;
       pull.rebase = true;
     };
@@ -65,7 +100,6 @@
       ".direnv"
       ".pre-commit-config.yaml"
       ".envrc"
-      "devenv.nix"
     ];
   };
 }

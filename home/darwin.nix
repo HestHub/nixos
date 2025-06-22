@@ -25,7 +25,7 @@ in {
   imports = [
     inputs.sops-nix.homeManagerModules.sops
     ./core.nix
-    (import ./programs/git.nix {inherit pkgs gitIncludes;})
+    (import ./programs/git.nix {inherit pkgs gitIncludes config;})
     ./programs/k9s.nix
     ./programs/ghostty.nix
     ./programs/fish.nix

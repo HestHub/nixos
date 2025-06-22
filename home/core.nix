@@ -37,6 +37,11 @@
     nodejs
     nil
     pkgs.dotnetCorePackages.dotnet_9.sdk
+    scaleway-cli
+    sqlitebrowser
+    serverless
+    trufflehog
+    gitleaks
   ];
 
   home.stateVersion = "25.05";
