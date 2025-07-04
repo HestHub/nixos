@@ -69,7 +69,6 @@ in {
       dotnetPackages.Nuget
       wasmtime
       docker
-      colima
       docker-credential-helpers
       kubelogin
       postman
@@ -81,6 +80,9 @@ in {
       netcoredbg
       omnisharp-roslyn
       ollama
+      socat
+      minicom
+      usbutils
     ];
   };
 }

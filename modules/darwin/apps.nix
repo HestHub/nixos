@@ -148,6 +148,8 @@
     brews = [
       "mas"
       "curl" # no not install curl via nixpkgs, it's not working well on macOS!
+      "lima-additional-guestagents"
+      "colima"
     ];
 
     casks = [

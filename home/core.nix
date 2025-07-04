@@ -42,6 +42,9 @@
     serverless
     trufflehog
     gitleaks
+    yazi
+    tdf
+    gemini-cli
   ];
 
   home.stateVersion = "25.05";

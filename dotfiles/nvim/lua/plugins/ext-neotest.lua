@@ -6,6 +6,7 @@ return {
     "rouge8/neotest-rust",
     "Issafalcon/neotest-dotnet",
     "nvim-neotest/neotest-jest",
+    "rcasia/neotest-java",
   },
   opts = function()
     return {
@@ -15,6 +16,7 @@ return {
         require("neotest-rust"),
         require("neotest-go"),
         require("neotest-jest"),
+        require("neotest-java"),
       },
     }
   end,
