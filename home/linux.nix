@@ -54,6 +54,7 @@ in {
       wl-clipboard
       icu77
       sqlitebrowser
+      easyeffects
     ];
   };
 }
