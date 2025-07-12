@@ -44,9 +44,13 @@ in
         cd = "z";
         j = "z";
         lg = "lazygit";
+        lzd = "lazydocker";
+        ldo = "lazydocker";
+        lq = "lazysql";
         cat = "bat";
         vi = "nvim";
         vim = "nvim";
+        gfp = "git fetch && git pull";
         ls = "eza -1 -F --group-directories-first";
         lsa = "eza -1 -F --group-directories-first -a";
         ll = "eza -1 -F --group-directories-first -l --git";

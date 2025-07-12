@@ -46,6 +46,7 @@
     tdf
     gemini-cli
     skopeo
+    lazysql
   ];
 
   home.stateVersion = "25.05";
