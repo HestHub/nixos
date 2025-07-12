@@ -45,6 +45,7 @@
     yazi
     tdf
     gemini-cli
+    skopeo
   ];
 
   home.stateVersion = "25.05";
