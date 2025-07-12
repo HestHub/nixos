@@ -1,4 +1,26 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}: let
+  projectRoot = "${config.home.homeDirectory}/dev/me/nixos";
+  nvimPath = "${projectRoot}/dotfiles/nvim";
+  zellijPath = "${projectRoot}/dotfiles/zellij";
+in {
+  imports = [
+    inputs.sops-nix.homeManagerModules.sops
+  ];
+
+  sops = {
+    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
+    defaultSopsFile = "${inputs.dot-secrets}/secrets.yaml";
+  };
+
+  xdg.enable = true;
+  xdg.configFile."zellij".source = config.lib.file.mkOutOfStoreSymlink zellijPath;
+  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink nvimPath;
+
   home.packages = with pkgs; [
     alejandra
     cargo-nextest

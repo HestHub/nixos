@@ -5,8 +5,6 @@
   config,
   ...
 }: let
-  nvimPath = "${config.home.homeDirectory}/dev/nixos/dotfiles/nvim";
-  zellijPath = "${config.home.homeDirectory}/dev/nixos/dotfiles/zellij";
   gitIncludes = [
     {
       condition = "gitdir:~/dev/";
@@ -23,19 +21,12 @@ in {
     ./programs/markdown.nix
   ];
 
-  sops = {
-    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
-    defaultSopsFile = "${inputs.dot-secrets}/secrets.yaml";
-    secrets = {
-      # private ssh
-      "me/key".path = "${config.home.homeDirectory}/.ssh/id_me";
-      "me/pub".path = "${config.home.homeDirectory}/.ssh/id_me.pub";
-      "me/config".path = "${config.home.homeDirectory}/.config/git/include_me";
-    };
+  sops.secrets = {
+    # private ssh
+    "me/key".path = "${config.home.homeDirectory}/.ssh/id_me";
+    "me/pub".path = "${config.home.homeDirectory}/.ssh/id_me.pub";
+    "me/config".path = "${config.home.homeDirectory}/.config/git/include_me";
   };
-
-  xdg.configFile."zellij".source = config.lib.file.mkOutOfStoreSymlink zellijPath;
-  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink nvimPath;
 
   home = {
     username = "hest";
