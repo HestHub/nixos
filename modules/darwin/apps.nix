@@ -33,6 +33,12 @@
       # toggle window float
       shift + alt - t : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2
 
+      # focus windows
+      ctrl + h : yabai -m window --focus west
+      ctrl + j : yabai -m window --focus south
+      ctrl + k : yabai -m window --focus north
+      ctrl + l : yabai -m window --focus east
+
       # fast focus desktop
       alt+shift - 1 : yabai -m space --focus    i
       alt+shift - 2 : yabai -m space --focus   ii

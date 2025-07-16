@@ -86,6 +86,8 @@
       "bin/"
       "build/"
       "out/"
+      "obj/"
+      "old-gc/"
       "**/.DS_Store"
       ".devenv*"
       "devenv.local.nix"
@@ -100,6 +102,7 @@
       ".direnv"
       ".pre-commit-config.yaml"
       ".envrc"
+      "GEMINI.md"
     ];
   };
 }

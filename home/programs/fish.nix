@@ -43,13 +43,14 @@ in
         g = "git";
         cd = "z";
         j = "z";
-        lg = "lazygit";
-        lzd = "lazydocker";
+        lgi = "lazygit";
         ldo = "lazydocker";
-        lq = "lazysql";
+        lsq = "lazysql";
         cat = "bat";
         vi = "nvim";
         vim = "nvim";
+        cp = "cp -i";
+        rm = "rm -i";
         gfp = "git fetch && git pull";
         ls = "eza -1 -F --group-directories-first";
         lsa = "eza -1 -F --group-directories-first -a";
@@ -57,10 +58,6 @@ in
         lla = "eza -1 -F --group-directories-first -l -a --git";
         lt = "eza -1 -F -T";
         gitbt = "git log --graph --simplify-by-decoration --pretty=format:'%d' --all";
-        azlistdev = "az containerapp list --subscription ${builtins.getEnv "AZ_SUB_DEV"} --resource-group ${builtins.getEnv "AZ_RG_DEV"} | jq '.[] | \"\\(.properties.runningStatus) \\(.name)\"'";
-        azlistprod = "az containerapp list --subscription ${builtins.getEnv "AZ_SUB_PROD"} --resource-group ${builtins.getEnv "AZ_RG_PROD"} | jq '.[] | \"\\(.properties.runningStatus) \\(.name)\"'";
-        azdev = "az containerapp logs show --subscription ${builtins.getEnv "AZ_SUB_DEV"} --resource-group ${builtins.getEnv "AZ_RG_DEV"} --follow --format text -n";
-        azprod = "az containerapp logs show --subscription ${builtins.getEnv "AZ_SUB_PROD"} --resource-group ${builtins.getEnv "AZ_RG_PROD"} --follow --format text -n";
       };
 
       functions = {
