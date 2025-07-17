@@ -22,18 +22,12 @@
 in {
   imports = [
     ./core.nix
-    (import ./programs/git.nix {inherit pkgs gitIncludes config;})
     ./programs/k9s.nix
     ./programs/ghostty.nix
     ./programs/fish.nix
   ];
 
   sops.secrets = {
-    # private ssh
-    "me/key".path = "${config.home.homeDirectory}/.ssh/id_me";
-    "me/pub".path = "${config.home.homeDirectory}/.ssh/id_me.pub";
-    "me/config".path = "${config.home.homeDirectory}/.config/git/include_me";
-
     # c... ssh
     "c/key".path = "${config.home.homeDirectory}/.ssh/id_c";
     "c/pub".path = "${config.home.homeDirectory}/.ssh/id_c.pub";
@@ -46,8 +40,6 @@ in {
 
     "nuget".path = "${config.home.homeDirectory}/.config/nuget/nuget.config";
   };
-
-  xdg.configHome = "/Users/${username}/.config";
 
   home = {
     username = "${username}";

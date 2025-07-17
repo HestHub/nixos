@@ -10,11 +10,41 @@
 in {
   imports = [
     inputs.sops-nix.homeManagerModules.sops
+    (import ./programs/git.nix {
+      inherit pkgs config;
+      gitIncludes =
+        if pkgs.stdenv.isDarwin
+        then [
+          {
+            condition = "gitdir:~/dev/me/";
+            path = "${config.home.homeDirectory}/.config/git/include_me";
+          }
+          {
+            condition = "gitdir:~/dev/c*/";
+            path = "${config.home.homeDirectory}/.config/git/include_c";
+          }
+          {
+            condition = "gitdir:~/dev/g*/";
+            path = "${config.home.homeDirectory}/.config/git/include_g";
+          }
+        ]
+        else [
+          {
+            condition = "gitdir:~/dev/";
+            path = "${config.home.homeDirectory}/.config/git/include_me";
+          }
+        ];
+    })
   ];
 
   sops = {
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
     defaultSopsFile = "${inputs.dot-secrets}/secrets.yaml";
+    secrets = {
+      "me/key".path = "${config.home.homeDirectory}/.ssh/id_me";
+      "me/pub".path = "${config.home.homeDirectory}/.ssh/id_me.pub";
+      "me/config".path = "${config.home.homeDirectory}/.config/git/include_me";
+    };
   };
 
   xdg.enable = true;
