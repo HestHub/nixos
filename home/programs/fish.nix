@@ -43,6 +43,7 @@ in
         g = "git";
         cd = "z";
         j = "z";
+        c = "clear";
         lgi = "lazygit";
         ldo = "lazydocker";
         lsq = "lazysql";

@@ -60,7 +60,6 @@ in {
       mono
       netcoredbg
       omnisharp-roslyn
-      ollama
       socat
       minicom
       usbutils
