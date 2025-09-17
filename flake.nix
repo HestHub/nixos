@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    fancontrol-gui.url = "github:Maldela/fancontrol-gui";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -33,6 +34,7 @@
     home-manager,
     zen-browser,
     sops-nix,
+    fancontrol-gui,
     ...
   } @ inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {

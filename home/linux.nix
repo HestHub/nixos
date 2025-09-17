@@ -18,6 +18,7 @@ in {
     ./programs/fish.nix
     ./programs/gnome.nix
     ./programs/markdown.nix
+    ./programs/fancontrol-gui.nix
   ];
 
   
