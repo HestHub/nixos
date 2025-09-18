@@ -1,10 +1,14 @@
 {...}: {
   imports = [
-    ./yabai.nix
+    #./yabai.nix
   ];
   environment.variables.EDITOR = "nvim";
 
   services.tailscale.enable = true;
+
+  services.aerospace = {
+    enable = true;
+  };
 
   homebrew = {
     enable = true;

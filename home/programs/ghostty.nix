@@ -2,11 +2,12 @@
   config = ''
     font-size = 14
     theme = "nordic"
-    macos-titlebar-style = "tabs"
+    macos-titlebar-style = "hidden"
     font-family = "Fira Code"
     #background-blur = true
     #background-opacity = 0.95
     quick-terminal-position = center
+    mouse-hide-while-typing = true
 
     keybind = super+h=goto_split:left
     keybind = super+j=goto_split:bottom
@@ -17,6 +18,7 @@
     keybind = cmd+d>j=new_split:down
     keybind = cmd+d>k=new_split:up
     keybind = cmd+d>l=new_split:right
+    keybind = cmd+d>d=close_surface
 
     keybind = cmd+shift+h=resize_split:left,10
     keybind = cmd+shift+j=resize_split:down,10
@@ -28,7 +30,14 @@
 
     keybind = global:cmd+grave_accent=toggle_quick_terminal
 
-    mouse-hide-while-typing = true
+
+    keybind = cmd+t=unbind
+    keybind = cmd+w=unbind
+    keybind = cmd+1=unbind
+    keybind = cmd+2=unbind
+    keybind = cmd+3=unbind
+    keybind = cmd+4=unbind
+    keybind = cmd+5=unbind
   '';
 
   theme = ''

@@ -30,6 +30,10 @@ in
       interactiveShellInit = ''
         insulter
 
+        if status is-interactive
+          eval (zellij setup --generate-auto-start fish | string collect)
+        end
+
         set fish_greeting # Disable greeting
 
         abbr -a -- .. "cd .."

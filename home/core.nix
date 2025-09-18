@@ -7,6 +7,7 @@
   projectRoot = "${config.home.homeDirectory}/dev/me/nixos";
   nvimPath = "${projectRoot}/dotfiles/nvim";
   zellijPath = "${projectRoot}/dotfiles/zellij";
+  aerospacePath = "${projectRoot}/dotfiles/aerospace";
 in {
   imports = [
     inputs.sops-nix.homeManagerModules.sops
@@ -50,6 +51,7 @@ in {
   xdg.enable = true;
   xdg.configFile."zellij".source = config.lib.file.mkOutOfStoreSymlink zellijPath;
   xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink nvimPath;
+  xdg.configFile."aerospace".source = config.lib.file.mkOutOfStoreSymlink aerospacePath;
 
   home.packages = with pkgs; [
     alejandra
