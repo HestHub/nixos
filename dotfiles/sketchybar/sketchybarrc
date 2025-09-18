@@ -1,0 +1,14 @@
+#!/bin/bash
+
+sketchybar --bar position=top height=40 blur_radius=30 color=0x44511110
+
+sketchybar --add item logo left \
+  --set logo icon= \
+  icon.color=0xff010101 \
+  icon.padding_left=16 \
+  icon.padding_right=16 \
+  icon.font="ZeroCode:Regular:18.0" \
+  background.color=0xff91d7e3 \
+  background.padding_right=8 \
+  background.padding_left=4 \
+  click_script="sketchybar --update"
