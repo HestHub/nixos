@@ -13,7 +13,7 @@ require("items")
 -- Add a new item that is running a script
 sbar.add("item", "clock", "right")
 sbar.set("clock", {
-  script = "$HOME/.config/sketchybar/scripts/clock.sh", 
+  script = "$CONFIG_DIR/scripts/clock.sh", 
   update_freq = 10,
 })
 

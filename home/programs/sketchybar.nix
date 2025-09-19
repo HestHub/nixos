@@ -1,4 +1,13 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: let
+  projectRoot = "${config.home.homeDirectory}/dev/me/nixos";
+  sketchybarPath = "${projectRoot}/dotfiles/sketchybar";
+in {
+  xdg.configFile."sketchybar".source = config.lib.file.mkOutOfStoreSymlink sketchybarPath;
+
   programs.sketchybar = {
     enable = true;
     service = {
@@ -9,9 +18,5 @@
     configType = "lua";
     luaPackage = pkgs.lua5_4;
     sbarLuaPackage = pkgs.sbarlua;
-    config = {
-      source = ../../dotfiles/sketchybar;
-      recursive = true;
-    };
   };
 }
