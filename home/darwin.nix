@@ -25,6 +25,7 @@ in {
     ./programs/k9s.nix
     ./programs/ghostty.nix
     ./programs/fish.nix
+    ./programs/sketchybar.nix
   ];
 
   sops.secrets = {

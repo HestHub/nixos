@@ -18,6 +18,12 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 automatically-unhide-macos-hidden-apps = true
 
 
+exec-on-workspace-change = [
+    '/bin/bash',
+    '-c',
+    '/etc/profiles/per-user/hest/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+]
+
 # App specficics 
 
 [[on-window-detected]]
@@ -48,7 +54,7 @@ inner.horizontal = 5
 inner.vertical = 5
 outer.left = 5
 outer.bottom = 5
-outer.top = 5
+outer.top = 0
 outer.right = 5
 
 

@@ -45,6 +45,7 @@
       "keymapp"
       "krita"
       "ghostty"
+      "font-sketchybar-app-font"
     ];
   };
 }
