@@ -3,8 +3,7 @@
   config,
   ...
 }: let
-  projectRoot = "${config.home.homeDirectory}/dev/me/nixos";
-  sketchybarPath = "${projectRoot}/dotfiles/sketchybar";
+  sketchybarPath = "${config.home.homeDirectory}/dev/me/nixos/dotfiles/sketchybar";
 in {
   xdg.configFile."sketchybar".source = config.lib.file.mkOutOfStoreSymlink sketchybarPath;
 
