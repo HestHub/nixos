@@ -1,7 +1,6 @@
 require("items.apple")
-require("items.menus")
 require("items.workspaces")
+require("items.utils")
 require("items.calendar")
 require("items.widgets")
-require("items.utils2")
 require("items.media")
