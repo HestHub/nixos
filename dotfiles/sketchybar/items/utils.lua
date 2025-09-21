@@ -86,7 +86,7 @@ for _, item in ipairs(items_to_add) do
 	table.insert(collection_items, item.name)
 end
 
-sbar.add("bracket", "collection", collection_items, {
+local collection_bracket = sbar.add("bracket", "collection", collection_items, {
 	background = {
 		color = colors.bg1,
 	},
@@ -100,4 +100,16 @@ control_button:subscribe("mouse.clicked", function()
 			alias:set({ drawing = menu_visible })
 		end
 	end)
+end)
+
+-- Strange bug, must leave right side of monitor to trigger
+collection_bracket:subscribe("mouse.exited.global", function()
+	if menu_visible then
+		menu_visible = false
+		sbar.animate("spring", 15, function()
+			for _, alias in ipairs(aliases_to_toggle) do
+				alias:set({ drawing = false })
+			end
+		end)
+	end
 end)

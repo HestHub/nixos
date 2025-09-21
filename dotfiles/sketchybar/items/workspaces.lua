@@ -165,7 +165,7 @@ sbar.exec(query_workspaces, function(workspaces_and_monitors)
 				drawing = true,
 				font = "sketchybar-app-font:Regular:16.0",
 				highlight_color = colors.green,
-				padding_left = 2,
+				padding_left = 4,
 				padding_right = 12,
 				y_offset = -1,
 			},

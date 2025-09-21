@@ -15,96 +15,37 @@ local apple_logo = sbar.add("item", {
 	label = { drawing = false },
 	popup = {
 		height = 25,
-		padding_left = 15,
 	},
 })
 
-local apple_prefs = sbar.add("item", {
-	padding_left = 10,
-	position = "popup." .. apple_logo.name,
-	background = {
-		border_width = 0,
-		color = colors.transparent,
-	},
-	icon = {
-		string = "􀺽",
-	},
-	label = "Settings",
-})
-
-apple_prefs:subscribe("mouse.clicked", function(_)
-	sbar.exec("open -a 'System Preferences'")
+apple_logo:subscribe({ "mouse.exited.global" }, function()
 	apple_logo:set({ popup = { drawing = false } })
 end)
 
-local apple_lock = sbar.add("item", {
-	padding_left = 10,
-	position = "popup." .. apple_logo.name,
-	background = {
-		border_width = 0,
-		color = colors.transparent,
-	},
-	icon = {
-		string = "􀒳",
-	},
-	label = "Lock",
-})
+local function create_popup_item(icon, label, command)
+	local item = sbar.add("item", {
+		padding_left = 10,
+		position = "popup." .. apple_logo.name,
+		background = {
+			border_width = 0,
+			color = colors.transparent,
+		},
+		icon = { string = icon },
+		label = label,
+	})
+	item:subscribe("mouse.clicked", function(_)
+		sbar.exec(command)
+		apple_logo:set({ popup = { drawing = false } })
+	end)
+	return item
+end
 
-apple_lock:subscribe("mouse.clicked", function(_)
-	sbar.exec('osascript -e \'tell application "System Events" to keystroke "q" using {command down, control down}\'')
-	apple_logo:set({ popup = { drawing = false } })
-end)
-
-local apple_shutdown = sbar.add("item", {
-	padding_left = 10,
-	position = "popup." .. apple_logo.name,
-	background = {
-		border_width = 0,
-		color = colors.transparent,
-	},
-	icon = {
-		string = "􀷄",
-	},
-	label = "Shut down",
-})
-
-apple_shutdown:subscribe("mouse.clicked", function(_)
-	sbar.exec("osascript -e 'tell app \"System Events\" to shut down'")
-	apple_logo:set({ popup = { drawing = false } })
-end)
-
-local apple_restart = sbar.add("item", {
-	padding_left = 10,
-	position = "popup." .. apple_logo.name,
-	background = {
-		border_width = 0,
-		color = colors.transparent,
-	},
-	icon = {
-		string = "􀷃",
-	},
-	label = "Restart",
-})
-
-apple_restart:subscribe("mouse.clicked", function(_)
-	sbar.exec("osascript -e 'tell app \"System Events\" to restart'")
-	apple_logo:set({ popup = { drawing = false } })
-end)
-
-local apple_sleep = sbar.add("item", {
-	padding_left = 10,
-	position = "popup." .. apple_logo.name,
-	background = {
-		border_width = 0,
-		color = colors.transparent,
-	},
-	icon = {
-		string = "􀥦",
-	},
-	label = "Sleep",
-})
-
-apple_sleep:subscribe("mouse.clicked", function(_)
-	sbar.exec("osascript -e 'tell app \"System Events\" to sleep'")
-	apple_logo:set({ popup = { drawing = false } })
-end)
+create_popup_item("􀺽", "Settings", "open -a 'System Preferences'")
+create_popup_item(
+	"􀒳",
+	"Lock",
+	'osascript -e \'tell application "System Events" to keystroke "q" using {command down, control down}\''
+)
+create_popup_item("􀷄", "Shut down", "osascript -e 'tell app \"System Events\" to shut down'")
+create_popup_item("􀷃", "Restart", "osascript -e 'tell app \"System Events\" to restart'")
+create_popup_item("􀥦", "Sleep", "osascript -e 'tell app \"System Events\" to sleep'")
