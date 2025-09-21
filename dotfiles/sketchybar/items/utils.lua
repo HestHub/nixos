@@ -35,12 +35,16 @@ local items_to_add = {
 		icon = icons.amphetamine,
 		click_script = 'osascript -e \'tell application "System Events" to tell process "Amphetamine" to click menu bar item 1 of menu bar 2\'',
 	},
+	{
+		name = "Control Center,BentoBox",
+		click_script = 'osascript -e \'tell application "System Events" to tell process "Control Center" to click menu bar item 2 of menu bar 1\'',
+	},
 }
 
 local aliases_to_toggle = {}
 
 for _, item in ipairs(items_to_add) do
-	local alias_item = sbar.add("alias", item.name, {
+	local config = {
 		position = "right",
 		label = {
 			string = "",
@@ -48,14 +52,19 @@ for _, item in ipairs(items_to_add) do
 			padding_right = 0,
 		},
 		icon = {
-			string = item.icon,
 			font = "FiraCode Nerd Font:Bold:12.0",
-			padding_left = 1,
-			padding_right = 1,
+			padding_left = 0,
+			padding_right = 0,
 		},
 		drawing = false,
 		click_script = item.click_script,
-	})
+	}
+
+	if item.icon then
+		config.icon.string = item.icon
+	end
+
+	local alias_item = sbar.add("alias", item.name, config)
 	table.insert(aliases_to_toggle, alias_item)
 	table.insert(collection_items, item.name)
 end
