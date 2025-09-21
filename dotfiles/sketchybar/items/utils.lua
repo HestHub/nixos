@@ -1,20 +1,38 @@
 local sbar = require("sketchybar")
 local icons = require("icons")
 local colors = require("colors")
+local settings = require("settings")
 
 local collection_items = {}
+
+sbar.add("item", "space", {
+	position = "right",
+	label = {
+		drawing = false,
+	},
+	icon = {
+		string = "",
+		padding_left = 10,
+	},
+	background = {
+		border_width = 0,
+		color = colors.transparent,
+	},
+})
 
 local control_button = sbar.add("item", "c.control", {
 	position = "right",
 	label = {
-		string = "",
-		padding_left = 0,
-		padding_right = 0,
+		drawing = false,
+	},
+	background = {
+		border_width = 0,
+		color = colors.transparent,
 	},
 	icon = {
 		string = "⚙️",
-		padding_left = 1,
-		padding_right = 1,
+		padding_left = settings.padding.icon_item.icon.padding_left - 4,
+		padding_right = settings.padding.icon_item.icon.padding_right - 4,
 	},
 })
 table.insert(collection_items, "c.control")
@@ -47,14 +65,13 @@ for _, item in ipairs(items_to_add) do
 	local config = {
 		position = "right",
 		label = {
-			string = "",
-			padding_left = 0,
-			padding_right = 0,
+			drawing = false,
 		},
 		icon = {
 			font = "FiraCode Nerd Font:Bold:12.0",
-			padding_left = 0,
-			padding_right = 0,
+		},
+		background = {
+			border_width = 0,
 		},
 		drawing = false,
 		click_script = item.click_script,
@@ -71,9 +88,7 @@ end
 
 sbar.add("bracket", "collection", collection_items, {
 	background = {
-		height = 25,
 		color = colors.bg1,
-		corner_radius = 5,
 	},
 })
 

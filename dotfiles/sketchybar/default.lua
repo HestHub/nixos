@@ -4,10 +4,10 @@ local colors = require("colors")
 -- Equivalent to the --default domain
 sbar.default({
 	background = {
-		border_color = colors.accent_bright,
-		border_width = 0,
+		border_color = colors.black,
+		border_width = 3,
 		color = colors.bg1,
-		corner_radius = 6,
+		corner_radius = 20,
 		height = settings.height,
 		image = {
 			corner_radius = 9,
@@ -37,15 +37,16 @@ sbar.default({
 		padding_right = settings.paddings,
 	},
 	popup = {
-		align = "center",
+		align = "left",
 		background = {
-			border_width = 0,
-			corner_radius = 6,
+			border_width = 2,
+			corner_radius = 15,
 			color = colors.popup.bg,
+			border_color = colors.popup.border,
 			shadow = { drawing = true },
 		},
 		blur_radius = 50,
-		y_offset = 5,
+		y_offset = 10,
 	},
 	padding_left = 3,
 	padding_right = 3,

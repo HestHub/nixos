@@ -161,10 +161,10 @@ sbar.exec(query_workspaces, function(workspaces_and_monitors)
 				drawing = false,
 			},
 			label = {
-				color = colors.with_alpha(colors.white, 0.3),
+				color = colors.with_alpha(colors.blue2, 0.7),
 				drawing = true,
 				font = "sketchybar-app-font:Regular:16.0",
-				highlight_color = colors.white,
+				highlight_color = colors.green,
 				padding_left = 2,
 				padding_right = 12,
 				y_offset = -1,
