@@ -4,14 +4,64 @@ local app_icons = require("helpers.app_icons")
 
 local prefix = "/run/current-system/sw/bin/aerospace "
 
-local notifications = {}
-
 local query_workspaces = ""
 	.. prefix
 	.. "list-workspaces --all --format '%{workspace}%{monitor-appkit-nsscreen-screens-id}' --json"
 -- Root is used to handle event subscriptions
 local root = sbar.add("item", { drawing = false })
 local workspaces = {}
+
+local function get_notifications_and_update(open_windows, focused_workspaces, visible_workspaces, f)
+	local apps_to_check = {}
+	for _, apps in pairs(open_windows) do
+		for _, app in ipairs(apps) do
+			apps_to_check[app] = true
+		end
+	end
+
+	local app_count = 0
+	for _ in pairs(apps_to_check) do
+		app_count = app_count + 1
+	end
+
+	if app_count == 0 then
+		local args = {
+			open_windows = open_windows,
+			focused_workspaces = focused_workspaces,
+			visible_workspaces = visible_workspaces,
+			notifications = {}, -- no apps, so no notifications
+		}
+		f(args)
+		return
+	end
+
+	local notifications = {}
+	local completed_checks = 0
+
+	for app, _ in pairs(apps_to_check) do
+		sbar.exec('lsappinfo info -only StatusLabel "' .. app .. '"', function(result)
+			local label = ""
+			if result then
+				local extracted_value = result:match('"label"=s*"([^"]*)"')
+				if extracted_value and extracted_value ~= "kCFNULL" and extracted_value ~= "NULL" then
+					label = "º"
+				end
+			end
+			notifications[app] = label
+			completed_checks = completed_checks + 1
+
+			if completed_checks == app_count then
+				local args = {
+					open_windows = open_windows,
+					focused_workspaces = focused_workspaces,
+					visible_workspaces = visible_workspaces,
+					notifications = notifications,
+				}
+				f(args)
+			end
+		end)
+	end
+end
 
 local function withWindows(f)
 	local open_windows = {}
@@ -60,27 +110,9 @@ local function withWindows(f)
 
 		sbar.exec(get_focus_workspaces, function(focused_workspaces)
 			sbar.exec(query_visible_workspaces, function(visible_workspaces)
-				local args = {
-					open_windows = open_windows,
-					focused_workspaces = focused_workspaces,
-					visible_workspaces = visible_workspaces,
-				}
-				f(args)
+				get_notifications_and_update(open_windows, focused_workspaces, visible_workspaces, f)
 			end)
 		end)
-	end)
-end
-
-local function check_notification(app)
-	sbar.exec('lsappinfo info -only StatusLabel "' .. app .. '"', function(result, exit_code)
-		local label = ""
-		if result then
-			local extracted_value = result:match('"label"=s*"([^"]*)"')
-			if extracted_value and extracted_value ~= "kCFNULL" and extracted_value ~= "NULL" then
-				label = " " .. extracted_value
-			end
-		end
-		notifications[app] = label
 	end)
 end
 
@@ -88,6 +120,7 @@ local function updateWindow(workspace_index, args)
 	local open_windows = args.open_windows[workspace_index]
 	local focused_workspaces = args.focused_workspaces
 	local visible_workspaces = args.visible_workspaces
+	local notifications = args.notifications
 
 	if open_windows == nil then
 		open_windows = {}
@@ -101,10 +134,9 @@ local function updateWindow(workspace_index, args)
 		local lookup = app_icons[app]
 		local icon = ((lookup == nil) and app_icons["Default"] or lookup)
 
-		local notify = notifications[app] or "EMPTY"
+		local notify = notifications[app] or ""
 
 		icon_line = icon_line .. " " .. icon .. notify
-		check_notification(app)
 	end
 
 	sbar.animate("tanh", 10, function()
@@ -233,3 +265,4 @@ sbar.exec(query_workspaces, function(workspaces_and_monitors)
 		})
 	end)
 end)
+
