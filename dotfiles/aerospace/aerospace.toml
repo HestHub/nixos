@@ -73,17 +73,11 @@ alt-f = [
 ] # Toggle between floating and tiling layout
 
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#focus
-alt-h = [
-  'focus left --boundaries-action wrap-around-the-workspace',
-  'workspace prev',
-]
+alt-h = 'exec-and-forget /bin/sh -c "/run/current-system/sw/bin/aerospace focus --boundaries-action fail left || /run/current-system/sw/bin/aerospace workspace prev"'
+alt-l = 'exec-and-forget /bin/sh -c "/run/current-system/sw/bin/aerospace focus --boundaries-action fail right || /run/current-system/sw/bin/aerospace workspace next"'
+
 alt-j = 'focus down --boundaries-action wrap-around-the-workspace'
 alt-k = 'focus up --boundaries-action wrap-around-the-workspace'
-alt-l = [
-  'focus right --boundaries-action wrap-around-the-workspace',
-  'workspace next',
-]
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 alt-shift-h = 'move left'

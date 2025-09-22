@@ -4,6 +4,8 @@ local app_icons = require("helpers.app_icons")
 
 local prefix = "/run/current-system/sw/bin/aerospace "
 
+local notifications = {}
+
 local query_workspaces = ""
 	.. prefix
 	.. "list-workspaces --all --format '%{workspace}%{monitor-appkit-nsscreen-screens-id}' --json"
@@ -69,6 +71,19 @@ local function withWindows(f)
 	end)
 end
 
+local function check_notification(app)
+	sbar.exec('lsappinfo info -only StatusLabel "' .. app .. '"', function(result, exit_code)
+		local label = ""
+		if result then
+			local extracted_value = result:match('"label"=s*"([^"]*)"')
+			if extracted_value and extracted_value ~= "kCFNULL" and extracted_value ~= "NULL" then
+				label = " " .. extracted_value
+			end
+		end
+		notifications[app] = label
+	end)
+end
+
 local function updateWindow(workspace_index, args)
 	local open_windows = args.open_windows[workspace_index]
 	local focused_workspaces = args.focused_workspaces
@@ -85,7 +100,11 @@ local function updateWindow(workspace_index, args)
 		local app = open_window
 		local lookup = app_icons[app]
 		local icon = ((lookup == nil) and app_icons["Default"] or lookup)
-		icon_line = icon_line .. " " .. icon
+
+		local notify = notifications[app] or "EMPTY"
+
+		icon_line = icon_line .. " " .. icon .. notify
+		check_notification(app)
 	end
 
 	sbar.animate("tanh", 10, function()
