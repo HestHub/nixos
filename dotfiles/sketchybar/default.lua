@@ -4,9 +4,9 @@ local colors = require("colors")
 -- Equivalent to the --default domain
 sbar.default({
 	background = {
-		border_color = colors.black,
-		border_width = 3,
-		color = colors.bg1,
+		border_color = colors.black1,
+		border_width = 2,
+		color = colors.bg2,
 		corner_radius = 20,
 		height = settings.height,
 		image = {
@@ -21,7 +21,7 @@ sbar.default({
 			style = settings.font_icon.style_map["Bold"],
 			size = settings.font_icon.size,
 		},
-		color = colors.white,
+		color = colors.white0_normal,
 		highlight_color = colors.bg1,
 		padding_left = 0,
 		padding_right = 0,
@@ -32,7 +32,7 @@ sbar.default({
 			style = settings.font.style_map["Semibold"],
 			size = settings.font.size,
 		},
-		color = colors.white,
+		color = colors.white0_normal,
 		padding_left = settings.paddings,
 		padding_right = settings.paddings,
 	},

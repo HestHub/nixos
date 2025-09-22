@@ -11,6 +11,7 @@ local apple_logo = sbar.add("item", {
 		padding_left = settings.padding.icon_item.icon.padding_left,
 		padding_right = settings.padding.icon_item.icon.padding_right,
 		string = icons.apple,
+		color = colors.magenta.base,
 	},
 	label = { drawing = false },
 	popup = {
@@ -30,7 +31,10 @@ local function create_popup_item(icon, label, command)
 			border_width = 0,
 			color = colors.transparent,
 		},
-		icon = { string = icon },
+		icon = {
+			string = icon,
+			color = colors.blue1,
+		},
 		label = label,
 	})
 	item:subscribe("mouse.clicked", function(_)

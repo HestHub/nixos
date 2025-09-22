@@ -1,4 +1,5 @@
 local settings = require("settings")
+local colors = require("colors")
 
 local cal = sbar.add("item", {
 	icon = {
@@ -7,6 +8,7 @@ local cal = sbar.add("item", {
 			style = settings.font.style_map["Regular"],
 			size = settings.font.size,
 		},
+		color = colors.orange.dim,
 		padding_left = 8,
 	},
 	label = {
@@ -16,6 +18,7 @@ local cal = sbar.add("item", {
 			style = settings.font.style_map["Regular"],
 			size = settings.font.size,
 		},
+		color = colors.orange.dim,
 		padding_right = 10,
 	},
 	position = "right",
