@@ -44,7 +44,7 @@ local function get_notifications_and_update(open_windows, focused_workspaces, vi
 			if result then
 				local extracted_value = result:match('"label"=s*"([^"]*)"')
 				if extracted_value and extracted_value ~= "kCFNULL" and extracted_value ~= "NULL" then
-					label = "º"
+					label = "˚"
 				end
 			end
 			notifications[app] = label
@@ -136,7 +136,7 @@ local function updateWindow(workspace_index, args)
 
 		local notify = notifications[app] or ""
 
-		icon_line = icon_line .. " " .. icon .. notify
+		icon_line = icon_line .. " " .. icon .. notify .. "  "
 	end
 
 	sbar.animate("tanh", 10, function()
@@ -212,7 +212,7 @@ sbar.exec(query_workspaces, function(workspaces_and_monitors)
 				drawing = false,
 			},
 			label = {
-				color = colors.with_alpha(colors.blue2, 0.7),
+				color = colors.with_alpha(colors.blue2, 0.8),
 				drawing = true,
 				font = "sketchybar-app-font:Regular:16.0",
 				highlight_color = colors.green.base,
@@ -265,4 +265,3 @@ sbar.exec(query_workspaces, function(workspaces_and_monitors)
 		})
 	end)
 end)
-
