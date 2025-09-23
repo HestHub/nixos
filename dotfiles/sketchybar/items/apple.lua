@@ -28,7 +28,7 @@ apple_logo:subscribe("COLORS_UPDATED", function()
 	if color_state.use_color then
 		apple_logo:set({
 			icon = { color = colors.magenta.base },
-			background = { color = colors.black1 },
+			background = { color = colors.bg1 },
 		})
 	else
 		apple_logo:set({

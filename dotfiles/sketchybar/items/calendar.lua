@@ -37,7 +37,7 @@ cal:subscribe("COLORS_UPDATED", function()
 		cal:set({
 			icon = { color = colors.orange.dim },
 			label = { color = colors.orange.dim },
-			background = { color = colors.black1 },
+			background = { color = colors.bg1 },
 		})
 	else
 		cal:set({

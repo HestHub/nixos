@@ -279,8 +279,28 @@ end)
 
 root:subscribe("COLORS_UPDATED", function()
 	if color_state.use_color then
-	-- set colors for each visable item
+		for _, workspace in pairs(workspaces) do
+			workspace:set({
+				label = {
+					color = colors.with_alpha(colors.blue2, 0.8),
+					highlight_color = colors.green.base,
+				},
+				background = {
+					color = colors.bg1,
+				},
+			})
+		end
 	else
-		-- set colors for each visable item
+		for _, workspace in pairs(workspaces) do
+			workspace:set({
+				label = {
+					color = colors.black1,
+					highlight_color = colors.white0_normal,
+				},
+				background = {
+					color = colors.with_alpha(colors.blue0, 0.8),
+				},
+			})
+		end
 	end
 end)

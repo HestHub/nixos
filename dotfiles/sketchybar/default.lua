@@ -4,7 +4,7 @@ local colors = require("colors")
 -- Equivalent to the --default domain
 sbar.default({
 	background = {
-		border_color = colors.black1,
+		border_color = colors.black0,
 		border_width = 2,
 		color = colors.bg2,
 		corner_radius = 20,
