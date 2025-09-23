@@ -64,6 +64,7 @@ in {
       socat
       minicom
       usbutils
+      youtube-music
     ];
   };
 }

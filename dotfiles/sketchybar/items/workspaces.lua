@@ -8,7 +8,7 @@ local query_workspaces = ""
 	.. prefix
 	.. "list-workspaces --all --format '%{workspace}%{monitor-appkit-nsscreen-screens-id}' --json"
 -- Root is used to handle event subscriptions
-local root = sbar.add("item", { drawing = false })
+local root = sbar.add("item", { drawing = false, update_freq = 10 })
 local workspaces = {}
 
 local function get_notifications_and_update(open_windows, focused_workspaces, visible_workspaces, f)
@@ -43,7 +43,12 @@ local function get_notifications_and_update(open_windows, focused_workspaces, vi
 			local label = ""
 			if result then
 				local extracted_value = result:match('"label"=s*"([^"]*)"')
-				if extracted_value and extracted_value ~= "kCFNULL" and extracted_value ~= "NULL" then
+				if
+					extracted_value
+					and extracted_value ~= "kCFNULL"
+					and extracted_value ~= "NULL"
+					and extracted_value ~= ""
+				then
 					label = "˚"
 				end
 			end
@@ -249,6 +254,11 @@ sbar.exec(query_workspaces, function(workspaces_and_monitors)
 
 	-- Subscribe to front app changes too
 	root:subscribe("front_app_switched", function()
+		updateWindows()
+	end)
+
+	-- Subscribe to routine to update notifications
+	root:subscribe("routine", function()
 		updateWindows()
 	end)
 
