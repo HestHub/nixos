@@ -1,6 +1,7 @@
 local colors = require("colors")
 local settings = require("settings")
 local app_icons = require("helpers.app_icons")
+local color_state = require("color_state")
 
 local prefix = "/run/current-system/sw/bin/aerospace "
 
@@ -212,7 +213,7 @@ sbar.exec(query_workspaces, function(workspaces_and_monitors)
 				drawing = true,
 			},
 			click_script = "" .. prefix .. "workspace " .. workspace_index,
-			drawing = false, -- Hide all items at first
+			drawing = false,
 			icon = {
 				drawing = false,
 			},
@@ -274,4 +275,12 @@ sbar.exec(query_workspaces, function(workspaces_and_monitors)
 			label = { highlight = true },
 		})
 	end)
+end)
+
+root:subscribe("COLORS_UPDATED", function()
+	if color_state.use_color then
+	-- set colors for each visable item
+	else
+		-- set colors for each visable item
+	end
 end)

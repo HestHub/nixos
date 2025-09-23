@@ -1,6 +1,7 @@
 local icons = require("icons")
 local settings = require("settings")
 local colors = require("colors")
+local color_state = require("color_state")
 
 local popup_toggle = "sketchybar --set $NAME popup.drawing=toggle"
 
@@ -21,6 +22,20 @@ local apple_logo = sbar.add("item", {
 
 apple_logo:subscribe({ "mouse.exited.global" }, function()
 	apple_logo:set({ popup = { drawing = false } })
+end)
+
+apple_logo:subscribe("COLORS_UPDATED", function()
+	if color_state.use_color then
+		apple_logo:set({
+			icon = { color = colors.magenta.base },
+			background = { color = colors.black1 },
+		})
+	else
+		apple_logo:set({
+			icon = { color = colors.black1 },
+			background = { color = colors.magenta.base },
+		})
+	end
 end)
 
 local function create_popup_item(icon, label, command)

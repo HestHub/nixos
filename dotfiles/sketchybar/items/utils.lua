@@ -2,8 +2,14 @@ local sbar = require("sketchybar")
 local icons = require("icons")
 local colors = require("colors")
 local settings = require("settings")
+local color_state = require("color_state")
 
 local collection_items = {}
+
+local function toggle()
+	color_state.use_color = not color_state.use_color
+	sbar.exec("sketchybar --trigger COLORS_UPDATED")
+end
 
 sbar.add("item", "space", {
 	position = "right",
@@ -30,7 +36,7 @@ local control_button = sbar.add("item", "c.control", {
 		color = colors.transparent,
 	},
 	icon = {
-		string = "􀧲",
+		string = "􀆔",
 		padding_left = settings.padding.icon_item.icon.padding_left - 4,
 		padding_right = settings.padding.icon_item.icon.padding_right - 4,
 		color = colors.yellow.base,
@@ -94,7 +100,12 @@ local collection_bracket = sbar.add("bracket", "collection", collection_items, {
 })
 
 local menu_visible = false
-control_button:subscribe("mouse.clicked", function()
+control_button:subscribe("mouse.clicked", function(env)
+	if env["BUTTON"] == "right" then
+		toggle()
+		return
+	end
+
 	menu_visible = not menu_visible
 	sbar.animate("spring", 15, function()
 		for _, alias in ipairs(aliases_to_toggle) do
@@ -112,5 +123,22 @@ collection_bracket:subscribe("mouse.exited.global", function()
 				alias:set({ drawing = false })
 			end
 		end)
+	end
+end)
+
+control_button:subscribe("COLORS_UPDATED", function()
+	if color_state.use_color then
+		control_button:set({
+			icon = { color = colors.yellow.base },
+			background = { color = colors.transparent },
+		})
+		collection_bracket:set({
+			background = { color = colors.transparent },
+		})
+	else
+		control_button:set({
+			icon = { color = colors.black1 },
+			background = { color = colors.yellow.base },
+		})
 	end
 end)
