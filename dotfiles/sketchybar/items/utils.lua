@@ -39,7 +39,7 @@ local control_button = sbar.add("item", "c.control", {
 		string = "􀆔",
 		padding_left = settings.padding.icon_item.icon.padding_left - 4,
 		padding_right = settings.padding.icon_item.icon.padding_right - 4,
-		color = colors.yellow.base,
+		color = colors.yellow.dim,
 	},
 })
 table.insert(collection_items, "c.control")
@@ -129,7 +129,7 @@ end)
 control_button:subscribe("COLORS_UPDATED", function()
 	if color_state.use_color then
 		control_button:set({
-			icon = { color = colors.yellow.base },
+			icon = { color = colors.yellow.dim },
 			background = { color = colors.transparent },
 		})
 		collection_bracket:set({
@@ -138,7 +138,7 @@ control_button:subscribe("COLORS_UPDATED", function()
 	else
 		control_button:set({
 			icon = { color = colors.black1 },
-			background = { color = colors.yellow.base },
+			background = { color = colors.yellow.dim },
 		})
 	end
 end)
