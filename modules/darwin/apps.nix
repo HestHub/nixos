@@ -4,7 +4,7 @@
   ];
   environment.variables.EDITOR = "nvim";
 
-  services.tailscale.enable = true;
+  #services.tailscale.enable = true;
 
   services.aerospace = {
     enable = true;
@@ -31,6 +31,7 @@
       "lima-additional-guestagents"
       "colima"
       "mender-artifact"
+      "media-control"
     ];
 
     casks = [

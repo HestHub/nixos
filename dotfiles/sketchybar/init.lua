@@ -7,7 +7,8 @@ sbar = require("sketchybar")
 -- Bundle the entire initial configuration into a single message to sketchybar
 sbar.begin_config()
 
-sbar.add("event", "COLORS_UPDATED")
+sbar.add("event", "colors_toggled")
+sbar.add("event", "media_stream_changed")
 require("bar")
 require("default")
 require("items")

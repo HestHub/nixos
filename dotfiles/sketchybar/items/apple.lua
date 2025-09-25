@@ -24,7 +24,7 @@ apple_logo:subscribe({ "mouse.exited.global" }, function()
 	apple_logo:set({ popup = { drawing = false } })
 end)
 
-apple_logo:subscribe("COLORS_UPDATED", function()
+apple_logo:subscribe("colors_toggled", function()
 	if color_state.use_color then
 		apple_logo:set({
 			icon = { color = colors.magenta.base },

@@ -277,7 +277,7 @@ sbar.exec(query_workspaces, function(workspaces_and_monitors)
 	end)
 end)
 
-root:subscribe("COLORS_UPDATED", function()
+root:subscribe("colors_toggled", function()
 	if color_state.use_color then
 		for _, workspace in pairs(workspaces) do
 			workspace:set({

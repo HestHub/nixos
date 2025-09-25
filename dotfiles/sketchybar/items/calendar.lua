@@ -32,7 +32,7 @@ cal:subscribe({ "forced", "routine", "system_woke" }, function(env)
 	cal:set({ icon = os.date("%d %b"), label = os.date("%H:%M") })
 end)
 
-cal:subscribe("COLORS_UPDATED", function()
+cal:subscribe("colors_toggled", function()
 	if state.use_color then
 		cal:set({
 			icon = { color = colors.orange.dim },

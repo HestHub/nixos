@@ -8,7 +8,7 @@ local collection_items = {}
 
 local function toggle()
 	color_state.use_color = not color_state.use_color
-	sbar.exec("sketchybar --trigger COLORS_UPDATED")
+	sbar.exec("sketchybar --trigger colors_toggled")
 end
 
 sbar.add("item", "space", {
@@ -126,7 +126,7 @@ collection_bracket:subscribe("mouse.exited.global", function()
 	end
 end)
 
-control_button:subscribe("COLORS_UPDATED", function()
+control_button:subscribe("colors_toggled", function()
 	if color_state.use_color then
 		control_button:set({
 			icon = { color = colors.yellow.dim },
