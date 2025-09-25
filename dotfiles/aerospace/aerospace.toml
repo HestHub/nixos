@@ -1,7 +1,8 @@
 # Availabl commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-  'exec-and-forget /etc/profiles/per-user/hest/bin/sketchybar --reload',
-  'exec-and-forget open -a Tailscale',
+  # 'exec-and-forget /bin/sh -c "sleep 10 && /etc/profiles/per-user/hest/bin/sketchybar --reload"',
+  # 'exec-and-forget /bin/sh -c "sleep 10 && ~/.config/sketchybar/scripts/media-stream.sh"',
+  # 'exec-and-forget open -a Tailscale',
 ]
 
 start-at-login = true
@@ -39,7 +40,7 @@ run = ['move-node-to-workspace 2']
 
 [[on-window-detected]]
 if.app-id = 'com.github.th-ch.youtube-music'
-run = ['move-node-to-workspace 2']
+run = ['move-node-to-workspace 4']
 
 
 # ToDO set layout v_accordioin when restrictions are lifted:

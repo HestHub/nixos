@@ -2,6 +2,7 @@ local colors = require("colors")
 local settings = require("settings")
 
 local media = sbar.add("item", {
+	drawing = "off",
 	icon = {
 		string = "􀑪",
 		font = {
@@ -37,6 +38,7 @@ media:subscribe("mouse.clicked", function()
 end)
 
 media:subscribe("media_stream_changed", function(env)
+	media:set({ drawing = "on" })
 	if env.playing:match("true") then
 		media:set({ icon = { string = " 􀊆 " } })
 	else
@@ -55,3 +57,9 @@ media:subscribe("media_stream_changed", function(env)
 		media:set({ label = { string = label, padding_right = 16 } })
 	end
 end)
+
+media:subscribe("media_app_inactive", function()
+	print("INACTIVE")
+	media:set({ drawing = "off" })
+end)
+
