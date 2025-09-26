@@ -1,5 +1,6 @@
 local colors = require("colors")
 local settings = require("settings")
+local state = require("color_state")
 
 local media = sbar.add("item", {
 	drawing = "off",
@@ -59,6 +60,21 @@ media:subscribe("media_stream_changed", function(env)
 end)
 
 media:subscribe("media_app_inactive", function()
-	print("INACTIVE")
 	media:set({ drawing = "off" })
+end)
+
+media:subscribe("colors_toggled", function()
+	if state.use_color then
+		media:set({
+			icon = { color = colors.green.dim },
+			label = { color = colors.green.dim },
+			background = { color = colors.bg1 },
+		})
+	else
+		media:set({
+			icon = { color = colors.black1 },
+			label = { color = colors.black1 },
+			background = { color = colors.green.dim },
+		})
+	end
 end)
