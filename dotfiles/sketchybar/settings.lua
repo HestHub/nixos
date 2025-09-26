@@ -1,8 +1,9 @@
 return {
+	aerospace = "/run/current-system/sw/bin/aerospace ",
 	font = {
 		text = "SF Pro",
 		numbers = "SF Pro",
-		size = 14.0,
+		size = 12.0,
 		style_map = {
 			["Regular"] = "Regular",
 			["Semibold"] = "Semibold",
@@ -23,7 +24,7 @@ return {
 			["Black"] = "Black",
 		},
 	},
-	height = 30,
+	height = 34,
 	paddings = 8,
 	group_paddings = 4,
 	padding = {

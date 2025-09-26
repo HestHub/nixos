@@ -9,5 +9,5 @@ sbar.bar({
 	padding_left = 3,
 	sticky = "on",
 	topmost = "window",
-	y_offset = 3,
+	y_offset = 2,
 })

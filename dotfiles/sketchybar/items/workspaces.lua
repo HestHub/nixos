@@ -1,11 +1,12 @@
 local colors = require("colors")
 local app_icons = require("helpers.app_icons")
 local color_state = require("color_state")
+local settings = require("settings")
 
-local prefix = "/run/current-system/sw/bin/aerospace "
+local aerospace = settings.aerospace
 
 local query_workspaces = ""
-	.. prefix
+	.. aerospace
 	.. "list-workspaces --all --format '%{workspace}%{monitor-appkit-nsscreen-screens-id}' --json"
 -- Root is used to handle event subscriptions
 local root = sbar.add("item", { drawing = false, update_freq = 10 })
@@ -73,13 +74,13 @@ local function withWindows(f)
 	-- Include the window ID in the query so we can track unique windows
 
 	local get_windows = ""
-		.. prefix
+		.. aerospace
 		.. "list-windows --monitor all --format '%{workspace}%{app-name}%{window-id}' --json"
 
 	local query_visible_workspaces = ""
-		.. prefix
+		.. aerospace
 		.. "list-workspaces --visible --monitor all --format '%{workspace}%{monitor-appkit-nsscreen-screens-id}' --json"
-	local get_focus_workspaces = "" .. prefix .. "list-workspaces --focused"
+	local get_focus_workspaces = "" .. aerospace .. "list-workspaces --focused"
 	sbar.exec(get_windows, function(workspace_and_windows)
 		-- Use a set to track unique window IDs
 		local processed_windows = {}
@@ -211,7 +212,7 @@ sbar.exec(query_workspaces, function(workspaces_and_monitors)
 				color = colors.bg1,
 				drawing = true,
 			},
-			click_script = "" .. prefix .. "workspace " .. workspace_index,
+			click_script = "" .. aerospace .. "workspace " .. workspace_index,
 			drawing = false,
 			icon = {
 				drawing = false,
@@ -267,7 +268,7 @@ sbar.exec(query_workspaces, function(workspaces_and_monitors)
 		updateWindows()
 	end)
 
-	sbar.exec("" .. prefix .. "list-workspaces --focused", function(focused_workspace)
+	sbar.exec("" .. aerospace .. "list-workspaces --focused", function(focused_workspace)
 		local focused_workspace = focused_workspace:match("^%s*(.-)%s*$")
 		workspaces[focused_workspace]:set({
 			icon = { highlight = true },

@@ -3,7 +3,7 @@ local settings = require("settings")
 local state = require("color_state")
 
 local media = sbar.add("item", {
-	drawing = "off",
+	scroll_texts = "off",
 	icon = {
 		string = "􀑪",
 		font = {
@@ -12,10 +12,13 @@ local media = sbar.add("item", {
 			size = settings.font.size,
 		},
 		color = colors.green.dim,
-		padding_left = 8,
+		padding_left = 10,
+		padding_right = 10,
 	},
 	label = {
+		drawing = "off",
 		align = "left",
+		max_chars = 55,
 		font = {
 			family = settings.font.text,
 			style = settings.font.style_map["Bold"],
@@ -29,21 +32,36 @@ local media = sbar.add("item", {
 })
 
 media:subscribe("mouse.clicked", function()
-	sbar.exec("media-control toggle-play-pause && media-control get | jq -r '.playing'", function(playing)
-		if playing:match("true") then
-			media:set({ icon = { string = " 􀊆 " } })
-		else
-			media:set({ icon = { string = " 􀊄 " } })
+	sbar.exec(settings.aerospace .. "list-apps | grep 'youtube-music'", function(_, exitCode)
+		if exitCode == 1 then
+			sbar.exec("open -a 'Youtube Music'")
+			return
 		end
+
+		sbar.exec("media-control toggle-play-pause && media-control get | jq -r '.playing'", function(playing)
+			if playing:match("true") then
+				media:set({ icon = { string = " 􀊆 " } })
+			else
+				media:set({ icon = { string = " 􀊄 " } })
+			end
+		end)
 	end)
+end)
+
+media:subscribe("mouse.entered", function()
+	media:set({ scroll_texts = "on" })
+end)
+
+media:subscribe("mouse.exited", function()
+	media:set({ scroll_texts = "off" })
 end)
 
 media:subscribe("media_stream_changed", function(env)
 	media:set({ drawing = "on" })
 	if env.playing:match("true") then
-		media:set({ icon = { string = " 􀊆 " } })
+		media:set({ icon = { string = " 􀊆 ", padding_right = 5 } })
 	else
-		media:set({ icon = { string = " 􀊄 " } })
+		media:set({ icon = { string = " 􀊄 ", padding_right = 5 } })
 	end
 
 	if
@@ -55,12 +73,22 @@ media:subscribe("media_stream_changed", function(env)
 		and env.title ~= "null"
 	then
 		local label = " " .. env.artist .. " • " .. env.title .. "  "
-		media:set({ label = { string = label, padding_right = 16 } })
+		media:set({ label = { string = label, padding_right = 16, drawing = "on" } })
 	end
 end)
 
 media:subscribe("media_app_inactive", function()
-	media:set({ drawing = "off" })
+	media:set({
+		label = {
+			drawing = "off",
+			string = "",
+		},
+		icon = {
+			string = "􀑪",
+			padding_left = 10,
+			padding_right = 10,
+		},
+	})
 end)
 
 media:subscribe("colors_toggled", function()

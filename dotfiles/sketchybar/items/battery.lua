@@ -1,17 +1,14 @@
 local colors = require("colors")
 local settings = require("settings")
 
--- Define the paths to the heart images
 local asset_dir = "/Users/hest/dev/me/nixos/dotfiles/sketchybar/assets/battery/"
 local heart_full = asset_dir .. "hearts2.png"
 local heart_half = asset_dir .. "hearts2.png"
 local heart_empty = asset_dir .. "hearts2.png"
 local heart_charging = asset_dir .. "hearts2.png"
 
--- Create a root item for event subscriptions
 local root = sbar.add("item", { drawing = false })
 
--- Create three items for the hearts
 local heart3 = sbar.add("item", "widgets.battery.1", {
 	position = "right",
 	width = 24,
@@ -49,7 +46,6 @@ local heart1 = sbar.add("item", "widgets.battery.3", {
 	},
 })
 
--- Time remaining popup item, attached to the third heart
 local remaining_time = sbar.add("item", {
 	position = "popup." .. heart3.name,
 	icon = {
@@ -69,7 +65,6 @@ local remaining_time = sbar.add("item", {
 	},
 })
 
--- Battery update function
 local function update_battery()
 	sbar.exec("pmset -g batt", function(batt_info)
 		local charge_str, _, _ = batt_info:find("(%d+)%%")
@@ -102,9 +97,7 @@ local function update_battery()
 			return
 		end
 
-		-- Logic to determine heart states
 		local hearts = {}
-		-- 3 hearts, 2 health points each (full, half). Total 6 health.
 		local total_health = 6
 		local current_health = math.floor(charge / 100 * total_health)
 
@@ -131,8 +124,7 @@ root:subscribe({ "routine", "power_source_change", "system_woke" }, function()
 	update_battery()
 end)
 
--- Click handler for popup
-heart3:subscribe("mouse.clicked", function(env)
+heart3:subscribe("mouse.clicked", function()
 	local drawing = heart3:query().popup.drawing
 	heart3:set({ popup = { drawing = "toggle" } })
 
@@ -145,6 +137,4 @@ heart3:subscribe("mouse.clicked", function(env)
 	end
 end)
 
--- Initial update
 update_battery()
-
