@@ -1,8 +1,8 @@
 # Availabl commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-  # 'exec-and-forget /bin/sh -c "sleep 10 && /etc/profiles/per-user/hest/bin/sketchybar --reload"',
-  # 'exec-and-forget /bin/sh -c "sleep 10 && ~/.config/sketchybar/scripts/media-stream.sh"',
-  # 'exec-and-forget open -a Tailscale',
+  'exec-and-forget /bin/sh -c "sleep 10 && /etc/profiles/per-user/hest/bin/sketchybar --reload"',
+  'exec-and-forget /bin/sh -c "sleep 10 && ~/.config/sketchybar/scripts/media-stream.sh"',
+  'exec-and-forget open -a Tailscale',
 ]
 
 start-at-login = true

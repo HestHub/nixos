@@ -62,4 +62,3 @@ media:subscribe("media_app_inactive", function()
 	print("INACTIVE")
 	media:set({ drawing = "off" })
 end)
-
