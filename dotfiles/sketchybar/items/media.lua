@@ -57,7 +57,6 @@ media:subscribe("mouse.exited", function()
 end)
 
 media:subscribe("media_stream_changed", function(env)
-	media:set({ drawing = "on" })
 	if env.playing:match("true") then
 		media:set({ icon = { string = " 􀊆 ", padding_right = 5 } })
 	else

@@ -42,6 +42,7 @@ local control_button = sbar.add("item", "c.control", {
 		color = colors.yellow.dim,
 	},
 })
+
 table.insert(collection_items, "c.control")
 
 local items_to_add = {
@@ -49,6 +50,10 @@ local items_to_add = {
 		name = "Tailscale",
 		icon = icons.tailscale,
 		click_script = 'osascript -e \'tell application "System Events" to tell process "Tailscale" to click menu bar item 1 of menu bar 2\'',
+	},
+	{
+		name = "Control Center,WiFi",
+		click_script = 'osascript -e \'tell application "System Events" to tell process "Control Center" to click menu bar item 1 of menu bar 2\'',
 	},
 	{
 		name = "Tunnelblick",

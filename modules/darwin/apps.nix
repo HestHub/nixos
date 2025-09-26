@@ -23,6 +23,7 @@
       MonitorControl-Lite = 1595464182;
       Amphetamine = 937984704;
       Numbers = 409203825;
+      Tailscale = 1475387142;
     };
 
     brews = [
@@ -36,7 +37,6 @@
 
     casks = [
       "alt-tab"
-      "tailscale" # easier to manage
       "mqttx" # not available on arm
       "microsoft-teams" # old version only on nix
       "microsoft-auto-update"
