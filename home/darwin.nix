@@ -65,6 +65,7 @@ in {
       minicom
       usbutils
       youtube-music
+      blueutil
     ];
   };
 }

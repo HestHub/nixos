@@ -46,7 +46,7 @@ sbar.default({
 			shadow = { drawing = true },
 		},
 		blur_radius = 50,
-		y_offset = 10,
+		y_offset = 0,
 	},
 	padding_left = 3,
 	padding_right = 3,

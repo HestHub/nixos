@@ -1,5 +1,6 @@
 return {
 	aerospace = "/run/current-system/sw/bin/aerospace ",
+	blueutil = "/etc/profiles/per-user/hest/bin/blueutil ",
 	font = {
 		text = "SF Pro",
 		numbers = "SF Pro",
