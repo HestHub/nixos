@@ -168,7 +168,7 @@ M.button:subscribe({
 			end
 
 			-- Fetch connected devices
-			sbar.exec("blueutil --connected", function(connected)
+			sbar.exec(blueutil .. "--connected", function(connected)
 				M.connected.header = sbar.add("item", "bluetooth.connected.header", {
 					icon = {
 						drawing = false,

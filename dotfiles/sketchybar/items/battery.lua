@@ -2,10 +2,9 @@ local colors = require("colors")
 local settings = require("settings")
 
 local asset_dir = "/Users/hest/dev/me/nixos/dotfiles/sketchybar/assets/battery/"
-local heart_full = asset_dir .. "hearts2.png"
-local heart_half = asset_dir .. "hearts2.png"
-local heart_empty = asset_dir .. "hearts2.png"
-local heart_charging = asset_dir .. "hearts2.png"
+local heart_4 = asset_dir .. "heart_4.png"
+local heart_2 = asset_dir .. "heart_2.png"
+local heart_0 = asset_dir .. "heart_0.png"
 
 local root = sbar.add("item", { drawing = false })
 
@@ -13,8 +12,7 @@ local heart3 = sbar.add("item", "widgets.battery.1", {
 	position = "right",
 	width = 24,
 	background = {
-		drawing = "on",
-		color = colors.transparent,
+		color = colors.bg1,
 		border_color = colors.transparent,
 		padding_left = 2,
 		padding_right = 2,
@@ -26,8 +24,7 @@ local heart2 = sbar.add("item", "widgets.battery.2", {
 	position = "right",
 	width = 24,
 	background = {
-		drawing = "on",
-		color = colors.transparent,
+		color = colors.bg1,
 		border_color = colors.transparent,
 		padding_left = 2,
 		padding_right = 2,
@@ -38,9 +35,8 @@ local heart1 = sbar.add("item", "widgets.battery.3", {
 	position = "right",
 	width = 24,
 	background = {
-
+		color = colors.bg1,
 		border_color = colors.transparent,
-		drawing = "off",
 		padding_left = 2,
 		padding_right = 2,
 	},
@@ -75,47 +71,12 @@ local function update_battery()
 
 		local charging, _, _ = batt_info:find("AC Power")
 
-		if charging then
-			heart1:set({
-				background = {
-					color = colors.transparent,
-					image = { string = heart_charging, scale = 0.8, border_width = 0 },
-				},
-			})
-			heart2:set({
-				background = {
-					color = colors.transparent,
-					image = { string = heart_charging, scale = 0.8, border_width = 0 },
-				},
-			})
-			heart3:set({
-				background = {
-					color = colors.transparent,
-					image = { string = heart_charging, scale = 0.8, border_width = 0 },
-				},
-			})
-			return
-		end
-
-		local hearts = {}
 		local total_health = 6
 		local current_health = math.floor(charge / 100 * total_health)
 
-		for i = 1, 3 do
-			if current_health >= 2 then
-				hearts[i] = heart_full
-				current_health = current_health - 2
-			elseif current_health == 1 then
-				hearts[i] = heart_half
-				current_health = current_health - 1
-			else
-				hearts[i] = heart_empty
-			end
-		end
-
-		heart1:set({ background = { image = hearts[1] } })
-		heart2:set({ background = { image = hearts[2] } })
-		heart3:set({ background = { image = hearts[3] } })
+		heart1:set({ background = { image = heart_4 } })
+		heart2:set({ background = { image = heart_2 } })
+		heart3:set({ background = { image = heart_0 } })
 	end)
 end
 
