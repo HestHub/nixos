@@ -3,42 +3,44 @@ local settings = require("settings")
 
 local asset_dir = "/Users/hest/dev/me/nixos/dotfiles/sketchybar/assets/battery/"
 local heart_4 = asset_dir .. "heart_4.png"
+local heart_3 = asset_dir .. "heart_3.png"
 local heart_2 = asset_dir .. "heart_2.png"
+local heart_1 = asset_dir .. "heart_1.png"
 local heart_0 = asset_dir .. "heart_0.png"
 
 local root = sbar.add("item", { drawing = false })
 
 local heart3 = sbar.add("item", "widgets.battery.1", {
 	position = "right",
-	width = 24,
+	padding_right = 10,
 	background = {
-		color = colors.bg1,
+		color = colors.transparent,
 		border_color = colors.transparent,
-		padding_left = 2,
-		padding_right = 2,
-		border_width = 0,
 	},
 })
 
 local heart2 = sbar.add("item", "widgets.battery.2", {
 	position = "right",
-	width = 24,
 	background = {
-		color = colors.bg1,
+		color = colors.transparent,
 		border_color = colors.transparent,
-		padding_left = 2,
-		padding_right = 2,
 	},
 })
 
 local heart1 = sbar.add("item", "widgets.battery.3", {
 	position = "right",
-	width = 24,
+	padding_left = 10,
+	background = {
+		color = colors.transparent,
+		border_color = colors.bg1,
+	},
+})
+
+sbar.add("bracket", { heart1.name, heart2.name, heart3.name }, {
 	background = {
 		color = colors.bg1,
-		border_color = colors.transparent,
-		padding_left = 2,
-		padding_right = 2,
+		border_color = colors.black0,
+		border_width = 4,
 	},
 })
 
@@ -63,7 +65,7 @@ local remaining_time = sbar.add("item", {
 
 local function update_battery()
 	sbar.exec("pmset -g batt", function(batt_info)
-		local charge_str, _, _ = batt_info:find("(%d+)%%")
+		local charge_str = batt_info:match("(%d+)%%")
 		if not charge_str then
 			return
 		end
@@ -71,12 +73,14 @@ local function update_battery()
 
 		local charging, _, _ = batt_info:find("AC Power")
 
-		local total_health = 6
+		local total_health = 12
 		local current_health = math.floor(charge / 100 * total_health)
 
-		heart1:set({ background = { image = heart_4 } })
-		heart2:set({ background = { image = heart_2 } })
-		heart3:set({ background = { image = heart_0 } })
+		local h1, h2, h3 = heart_4, heart_4, heart_4
+
+		heart1:set({ background = { image = h1 } })
+		heart2:set({ background = { image = h2 } })
+		heart3:set({ background = { image = h3 } })
 	end)
 end
 

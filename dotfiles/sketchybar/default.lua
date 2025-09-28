@@ -10,9 +10,11 @@ sbar.default({
 		corner_radius = 20,
 		height = settings.height,
 		image = {
-			corner_radius = 9,
-			border_color = colors.grey,
-			border_width = 1,
+			border_color = colors.transparent,
+			border_width = 0,
+			padding_left = 0,
+			padding_right = 0,
+			scale = 0.9,
 		},
 	},
 	icon = {
