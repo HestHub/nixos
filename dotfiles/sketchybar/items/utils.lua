@@ -11,21 +11,6 @@ local function toggle()
 	sbar.exec("sketchybar --trigger colors_toggled")
 end
 
-sbar.add("item", "space", {
-	position = "right",
-	label = {
-		drawing = false,
-	},
-	icon = {
-		string = "",
-		padding_left = 10,
-	},
-	background = {
-		border_width = 0,
-		color = colors.transparent,
-	},
-})
-
 local control_button = sbar.add("item", "c.control", {
 	position = "right",
 	label = {

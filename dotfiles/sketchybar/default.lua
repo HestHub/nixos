@@ -1,7 +1,6 @@
 local settings = require("settings")
 local colors = require("colors")
 
--- Equivalent to the --default domain
 sbar.default({
 	background = {
 		border_color = colors.black0,

@@ -25,7 +25,7 @@ return {
 			["Black"] = "Black",
 		},
 	},
-	height = 34,
+	height = 30,
 	paddings = 8,
 	group_paddings = 4,
 	padding = {
