@@ -40,6 +40,11 @@ sbar.default({
 	},
 	popup = {
 		align = "left",
+		font = {
+			family = settings.font_icon.text,
+			style = settings.font_icon.style_map["Bold"],
+			size = settings.font_icon.size,
+		},
 		background = {
 			border_width = 2,
 			corner_radius = 15,

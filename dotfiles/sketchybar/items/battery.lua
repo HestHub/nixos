@@ -1,37 +1,41 @@
 local colors = require("colors")
-local settings = require("settings")
 
-local asset_dir = "assets/battery/"
+local num_hearts = 3
+local states_per_heart = 4
 
-local current_charge = "0"
+local total_states = num_hearts * states_per_heart
 
-local heart3 = sbar.add("item", "battery.3", {
-	position = "right",
-	padding_right = 10,
-	background = {
-		color = colors.transparent,
-		border_color = colors.transparent,
-	},
-})
+local current_charge = {
+	percentage = "N/A",
+	time_remaining = "No estimate",
+}
 
-local heart2 = sbar.add("item", "battery.2", {
-	position = "right",
-	background = {
-		color = colors.transparent,
-		border_color = colors.transparent,
-	},
-})
+local hearts = {}
+local heart_names = {}
 
-local heart1 = sbar.add("item", "battery.1", {
-	position = "right",
-	padding_left = 10,
-	background = {
-		color = colors.transparent,
-		border_color = colors.transparent,
-	},
-})
+for i = num_hearts, 1, -1 do
+	local name = "battery." .. i
+	local padding_opts = {}
 
-local bracket = sbar.add("bracket", { heart1.name, heart2.name, heart3.name }, {
+	if i == 1 then
+		padding_opts.padding_left = 10
+	elseif i == num_hearts then
+		padding_opts.padding_right = 10
+	end
+
+	hearts[i] = sbar.add("item", name, {
+		position = "right",
+		background = {
+			color = colors.transparent,
+			border_color = colors.transparent,
+		},
+		padding_left = padding_opts.padding_left,
+		padding_right = padding_opts.padding_right,
+	})
+	table.insert(heart_names, name)
+end
+
+local bracket = sbar.add("bracket", heart_names, {
 	update_freq = 30,
 	background = {
 		color = colors.bg1,
@@ -40,16 +44,11 @@ local bracket = sbar.add("bracket", { heart1.name, heart2.name, heart3.name }, {
 	},
 })
 
-local remaining_time = sbar.add("item", {
+local popup_item = sbar.add("item", {
 	position = "popup." .. bracket.name,
 	icon = {
 		align = "left",
-		font = {
-			family = settings.font.text,
-			style = settings.font.style_map["Bold"],
-			size = settings.font.size,
-		},
-		padding_left = 12,
+		padding_left = 14,
 	},
 	label = {
 		string = "00:00h",
@@ -59,13 +58,17 @@ local remaining_time = sbar.add("item", {
 })
 
 local function calculate_heart_states(percentage)
-	local total_health = math.floor(percentage / 100 * 12)
+	local states = {}
+	local remaining_health = math.floor(percentage / 100 * total_states)
 
-	local heart1_health = math.min(total_health, 4)
-	local heart2_health = math.min(math.max(0, total_health - 4), 4)
-	local heart3_health = math.min(math.max(0, total_health - 8), 4)
+	print("remaining:" .. remaining_health)
 
-	return heart1_health, heart2_health, heart3_health
+	for i = 1, num_hearts do
+		local health = math.min(remaining_health, states_per_heart)
+		states[i] = health
+		remaining_health = remaining_health - health
+	end
+	return states
 end
 
 local function update_battery()
@@ -74,55 +77,39 @@ local function update_battery()
 		if not charge_str then
 			return
 		end
+
 		local charge = tonumber(charge_str)
-		current_charge = charge_str
+		current_charge.percentage = charge_str
+		local _, _, remaining = batt_info:find(" (%d+:%d+) remaining")
+		current_charge.time_remaining = remaining and (remaining .. "h") or "No estimate"
 
-		local h1, h2, h3 = calculate_heart_states(charge)
+		local heart_states = calculate_heart_states(charge)
+		local charging_prefix = batt_info:match("AC Power") and "charge_" or ""
 
-		local charging = batt_info:match("AC Power") and "charge_" or ""
-
-		local heart1_icon = asset_dir .. charging .. "heart_" .. h1 .. ".png"
-		local heart2_icon = asset_dir .. charging .. "heart_" .. h2 .. ".png"
-		local heart3_icon = asset_dir .. charging .. "heart_" .. h3 .. ".png"
-
-		heart1:set({ background = { image = heart1_icon } })
-		heart2:set({ background = { image = heart2_icon } })
-		heart3:set({ background = { image = heart3_icon } })
+		for i = 1, num_hearts do
+			local icon_path = "assets/battery/" .. charging_prefix .. "heart_" .. heart_states[i] .. ".png"
+			hearts[i]:set({ background = { image = icon_path } })
+		end
 	end)
 end
 
--- Subscribe to events
-bracket:subscribe({ "routine", "power_source_change", "system_woke" }, function()
-	update_battery()
-end)
+local function toggle_popup()
+	local is_drawing = bracket:query().popup.drawing == "on"
+	bracket:set({ popup = { drawing = not is_drawing } })
 
-local function popup()
-	local drawing = bracket:query().popup.drawing
-	bracket:set({ popup = { drawing = "toggle" } })
-
-	if drawing == "off" then
-		sbar.exec("pmset -g batt", function(batt_info)
-			local found, _, remaining = batt_info:find(" (%d+:%d+) remaining")
-			local label = "Time remaining: " .. (found and remaining .. "h" or "No estimate")
-			remaining_time:set({ label = { string = label }, icon = " " .. current_charge .. "%  | " })
-		end)
+	if not is_drawing then
+		popup_item:set({
+			icon = current_charge.percentage .. "%  | ",
+			label = "Time remaining: " .. current_charge.time_remaining,
+		})
 	end
 end
 
-bracket:subscribe("mouse.clicked", function()
-	popup()
-end)
+bracket:subscribe({ "routine", "power_source_change", "system_woke" }, update_battery)
+bracket:subscribe("mouse.clicked", toggle_popup)
 
-heart1:subscribe("mouse.clicked", function()
-	popup()
-end)
-
-heart2:subscribe("mouse.clicked", function()
-	popup()
-end)
-
-heart3:subscribe("mouse.clicked", function()
-	popup()
-end)
+for i = 1, #hearts do
+	hearts[i]:subscribe("mouse.clicked", toggle_popup)
+end
 
 update_battery()
