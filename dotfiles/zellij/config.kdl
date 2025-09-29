@@ -1,19 +1,44 @@
 keybinds clear-defaults=true {
-    tab {
-        bind "h" { GoToPreviousTab; }
-        bind "l" { GoToNextTab; }
-        bind "n" { NewTab; SwitchToMode "normal"; }
-        bind "r" { SwitchToMode "renametab"; TabNameInput 0; }
-        bind "x" { CloseTab; SwitchToMode "normal"; }
-    }
     shared_except "locked" {
-        bind "Super t" { NewTab; SwitchToMode "normal"; }
-        bind "Super 1" { GoToTab 1; SwitchToMode "normal"; }
-        bind "Super 2" { GoToTab 2; SwitchToMode "normal"; }
-        bind "Super 3" { GoToTab 3; SwitchToMode "normal"; }
-        bind "Super 4" { GoToTab 4; SwitchToMode "normal"; }
-        bind "Super 5" { GoToTab 5; SwitchToMode "normal"; }
-        bind "Super w" { CloseFocus; SwitchToMode "normal"; }
+        bind "Super t" { NewTab;}
+        bind "Super w" { CloseFocus; }
+
+        bind "Super 1" { GoToTab 1; }
+        bind "Super 2" { GoToTab 2; }
+        bind "Super 3" { GoToTab 3; }
+        bind "Super 4" { GoToTab 4; }
+        bind "Super 5" { GoToTab 5; }
+
+        bind "Super d" { SwitchToMode "pane"; }
+        bind "Super r" { SwitchToMode "resize"; }
+        bind "Super m" { SwitchToMode "move"; }
+
+        bind "Super h" { MoveFocusOrTab "Left"; }
+        bind "Super l" { MoveFocusOrTab  "Right"; }
+        bind "Super j" { MoveFocusOrTab  "Down"; }
+        bind "Super k" { MoveFocusOrTab  "Up"; }
+
+        bind "Super e" { NextSwapLayout; }
+        bind "Super f" { ToggleFocusFullscreen; }
+    }
+    pane {
+        bind "Esc" { SwitchToMode "Normal"; }
+        bind "l" { NewPane "Right"; SwitchToMode "normal"; }
+        bind "j" { NewPane "Down"; SwitchToMode "normal"; }
+    }
+        resize {
+        bind "Esc" { SwitchToMode "Normal"; }
+        bind "h" "Left" { Resize "Increase Left"; }
+        bind "j" "Down" { Resize "Increase Down"; }
+        bind "k" "Up" { Resize "Increase Up"; }
+        bind "l" "Right" { Resize "Increase Right"; }
+    }
+    move {
+        bind "Esc" { SwitchToMode "Normal"; }
+        bind "h" "Left" { MovePane "Left"; }
+        bind "j" "Down" { MovePane "Down"; }
+        bind "k" "Up" { MovePane "Up"; }
+        bind "l" "Right" { MovePane "Right"; }
     }
 }
 web_client {

@@ -21,8 +21,6 @@ in {
     ./programs/fancontrol-gui.nix
   ];
 
-  
-
   home = {
     username = "hest";
     homeDirectory = "/home/hest";

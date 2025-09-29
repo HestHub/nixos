@@ -9,28 +9,37 @@
     quick-terminal-position = center
     mouse-hide-while-typing = true
 
-    keybind = super+h=goto_split:left
-    keybind = super+j=goto_split:bottom
-    keybind = super+k=goto_split:top
-    keybind = super+l=goto_split:right
-
-    keybind = cmd+d>h=new_split:left
-    keybind = cmd+d>j=new_split:down
-    keybind = cmd+d>k=new_split:up
-    keybind = cmd+d>l=new_split:right
-    keybind = cmd+d>d=close_surface
-
-    keybind = cmd+shift+h=resize_split:left,10
-    keybind = cmd+shift+j=resize_split:down,10
-    keybind = cmd+shift+k=resize_split:up,10
-    keybind = cmd+shift+l=resize_split:right,10
-    keybind = cmd+e=equalize_splits
-
-    keybind = cmd+f=toggle_split_zoom
-
+    # keybind = super+h=goto_split:left
+    # keybind = super+j=goto_split:bottom
+    # keybind = super+k=goto_split:top
+    # keybind = super+l=goto_split:right
+    #
+    # keybind = cmd+d>h=new_split:left
+    # keybind = cmd+d>j=new_split:down
+    # keybind = cmd+d>k=new_split:up
+    # keybind = cmd+d>l=new_split:right
+    # keybind = cmd+d>d=close_surface
+    #
+    # keybind = cmd+shift+h=resize_split:left,10
+    # keybind = cmd+shift+j=resize_split:down,10
+    # keybind = cmd+shift+k=resize_split:up,10
+    # keybind = cmd+shift+l=resize_split:right,10
+    # keybind = cmd+e=equalize_splits
+    #
+    # keybind = cmd+f=toggle_split_zoom
+    #
     keybind = global:cmd+grave_accent=toggle_quick_terminal
 
 
+    keybind = cmd+j=unbind
+    keybind = cmd+k=unbind
+    keybind = cmd+l=unbind
+    keybind = cmd+h=unbind
+
+    keybind = cmd+f=unbind
+    keybind = cmd+e=unbind
+
+    keybind = cmd+d=unbind
     keybind = cmd+t=unbind
     keybind = cmd+w=unbind
     keybind = cmd+1=unbind

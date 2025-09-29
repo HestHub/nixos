@@ -61,8 +61,6 @@ local function calculate_heart_states(percentage)
 	local states = {}
 	local remaining_health = math.floor(percentage / 100 * total_states)
 
-	print("remaining:" .. remaining_health)
-
 	for i = 1, num_hearts do
 		local health = math.min(remaining_health, states_per_heart)
 		states[i] = health
