@@ -2,6 +2,7 @@ local colors = require("colors")
 
 local num_hearts = 3
 local states_per_heart = 4
+local asset_dir = "assets/battery/"
 
 local total_states = num_hearts * states_per_heart
 
@@ -85,7 +86,7 @@ local function update_battery()
 		local charging_prefix = batt_info:match("AC Power") and "charge_" or ""
 
 		for i = 1, num_hearts do
-			local icon_path = "assets/battery/" .. charging_prefix .. "heart_" .. heart_states[i] .. ".png"
+			local icon_path = asset_dir .. charging_prefix .. "heart_" .. heart_states[i] .. ".png"
 			hearts[i]:set({ background = { image = icon_path } })
 		end
 	end)
