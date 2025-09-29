@@ -1,7 +1,7 @@
 local colors = require("colors")
 local settings = require("settings")
 
-local asset_dir = "/Users/hest/dev/me/nixos/dotfiles/sketchybar/assets/battery/"
+local asset_dir = "assets/battery/"
 
 local current_charge = "0"
 
@@ -79,9 +79,11 @@ local function update_battery()
 
 		local h1, h2, h3 = calculate_heart_states(charge)
 
-		local heart1_icon = asset_dir .. "heart_" .. h1 .. ".png"
-		local heart2_icon = asset_dir .. "heart_" .. h2 .. ".png"
-		local heart3_icon = asset_dir .. "heart_" .. h3 .. ".png"
+		local charging = batt_info:match("AC Power") and "charge_" or ""
+
+		local heart1_icon = asset_dir .. charging .. "heart_" .. h1 .. ".png"
+		local heart2_icon = asset_dir .. charging .. "heart_" .. h2 .. ".png"
+		local heart3_icon = asset_dir .. charging .. "heart_" .. h3 .. ".png"
 
 		heart1:set({ background = { image = heart1_icon } })
 		heart2:set({ background = { image = heart2_icon } })
