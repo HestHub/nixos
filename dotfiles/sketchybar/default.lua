@@ -14,7 +14,7 @@ sbar.default({
 			border_width = 0,
 			padding_left = 0,
 			padding_right = 0,
-			scale = 0.9,
+			scale = 0.95,
 		},
 	},
 	icon = {
