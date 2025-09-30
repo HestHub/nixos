@@ -12,7 +12,19 @@ keybinds clear-defaults=true {
         bind "Super d" { SwitchToMode "pane"; }
         bind "Super r" { SwitchToMode "resize"; }
         bind "Super m" { SwitchToMode "move"; }
-
+        bind "Super s" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij-favs.wasm" {
+                floating true
+                cache_dir "~/.zellij-session-cache"
+            }
+        }
+       bind "Super S" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            };
+            SwitchToMode "Normal"
+        }
         bind "Super h" { MoveFocusOrTab "Left"; }
         bind "Super l" { MoveFocusOrTab  "Right"; }
         bind "Super j" { MoveFocus "Down"; }
@@ -41,6 +53,11 @@ keybinds clear-defaults=true {
         bind "l" "Right" { MovePane "Right"; }
     }
 }
+
+plugins {
+    session-manager location="zellij:session-manager"
+}
+
 web_client {
     font "monospace"
 }

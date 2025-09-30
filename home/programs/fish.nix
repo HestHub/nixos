@@ -29,6 +29,7 @@ in
 
       interactiveShellInit = ''
         insulter
+        zellij_tab_name_update
 
         if status is-interactive
           eval (zellij setup --generate-auto-start fish | string collect)
@@ -59,8 +60,8 @@ in
         gfp = "git fetch && git pull";
         ls = "eza -1 -F --group-directories-first";
         lsa = "eza -1 -F --group-directories-first -a";
-        ll = "eza -1 -F --group-directories-first -l --git";
-        lla = "eza -1 -F --group-directories-first -l -a --git";
+        ll = "eza -1 -F --group-directories-first -l --git --classify --no-user ";
+        lla = "eza -1 -F --group-directories-first -l -a --git --classify --no-user ";
         lt = "eza -1 -F -T";
         gitbt = "git log --graph --simplify-by-decoration --pretty=format:'%d' --all";
       };
@@ -76,15 +77,14 @@ in
           end
         '';
 
+        # TODO, mark with Symbol
+        # vim / Gemini/ Yazi, K9s, lazyDocker, lazyGit
         zellij_tab_name_update = {
           onVariable = "PWD";
-
           body = ''
             if set -q ZELLIJ
-              set dirname $PWD
-              set dirname (string split / $dirname)
-              set dirname $dirname[-1]
-              command nohup zellij action rename-tab $dirname >/dev/null 2>&1
+              set dirname (basename $PWD)
+              zellij action rename-tab $dirname
             end
           '';
         };

@@ -6,8 +6,8 @@ layout {
                 format_center  "{tabs}"
                 format_right   ""
                 format_space   ""
-                tab_active     "#[fg=#9399B2,bold,italic] (#{index})"
-                tab_normal     "#[fg=#6C7086] #{index}"
+                tab_active     "#[fg=#97B67C,bold,italic] ({index} {name})"
+                tab_normal     "#[fg=#5E81AC,bold] {index} {name}"
                 border_enabled "false"
             }
         }

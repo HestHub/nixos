@@ -7,7 +7,7 @@ function __insulter_print_message
     set freq 4
     set messages \
         "Go ask your mother" \
-            "Quit typing rubbish" \
+        "Quit typing rubbish" \
         "Okay, I am leaving" \
         "Go play outside" \
         "Did you mean, sudo rm -rf /" \
