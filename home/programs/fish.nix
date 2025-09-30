@@ -76,6 +76,19 @@ in
           end
         '';
 
+        zellij_tab_name_update = {
+          onVariable = "PWD";
+
+          body = ''
+            if set -q ZELLIJ
+              set dirname $PWD
+              set dirname (string split / $dirname)
+              set dirname $dirname[-1]
+              command nohup zellij action rename-tab $dirname >/dev/null 2>&1
+            end
+          '';
+        };
+
         gcp = ''
           git add .
           git commit -m "$argv"
