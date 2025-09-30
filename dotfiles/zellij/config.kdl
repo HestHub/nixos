@@ -15,8 +15,8 @@ keybinds clear-defaults=true {
 
         bind "Super h" { MoveFocusOrTab "Left"; }
         bind "Super l" { MoveFocusOrTab  "Right"; }
-        bind "Super j" { MoveFocusOrTab  "Down"; }
-        bind "Super k" { MoveFocusOrTab  "Up"; }
+        bind "Super j" { MoveFocus "Down"; }
+        bind "Super k" { MoveFocus "Up"; }
 
         bind "Super e" { NextSwapLayout; }
         bind "Super f" { ToggleFocusFullscreen; }
