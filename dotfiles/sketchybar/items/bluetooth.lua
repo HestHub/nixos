@@ -115,6 +115,9 @@ M.button:subscribe({
 			end
 		end
 
+		M.paired = {}
+		M.connected = {}
+
 		if tonumber(state) == 0 then
 			M.button:set({
 				icon = {
