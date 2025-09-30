@@ -29,7 +29,9 @@ in
 
       interactiveShellInit = ''
         insulter
-        zellij_tab_name_update
+
+        zellij_tab_cmd
+        zellij_tab_dir
 
         if status is-interactive
           eval (zellij setup --generate-auto-start fish | string collect)
@@ -79,12 +81,41 @@ in
 
         # TODO, mark with Symbol
         # vim / Gemini/ Yazi, K9s, lazyDocker, lazyGit
-        zellij_tab_name_update = {
-          onVariable = "PWD";
+        zellij_tab_cmd = {
+          onEvent = "fish_preexec";
           body = ''
             if set -q ZELLIJ
-              set dirname (basename $PWD)
-              zellij action rename-tab $dirname
+                if test -n "$argv"
+                    set command $argv[1]
+                    set dirname (basename "$PWD")
+
+                    switch "$command"
+                        case nvim vim
+                            zellij action rename-tab " $dirname"
+                        case gemini
+                            zellij action rename-tab "󰪁 $dirname"
+                        case yazi
+                            zellij action rename-tab "󰍉 $dirname"
+                        case k9s
+                            zellij action rename-tab "󱃾 $dirname"
+                        case lazygit
+                            zellij action rename-tab "󰊢 $dirname"
+                        case lazydocker
+                            zellij action rename-tab "󰡨 $dirname"
+                        case '*'
+
+                    end
+                end
+            end
+          '';
+        };
+
+        zellij_tab_dir = {
+          onEvent = "fish_prompt";
+          body = ''
+            if set -q ZELLIJ
+                set dirname (basename "$PWD")
+                zellij action rename-tab " $dirname"
             end
           '';
         };
