@@ -89,6 +89,10 @@ in
                     set command $argv[1]
                     set dirname (basename "$PWD")
 
+                    if [ "$PWD" = "$HOME" ]
+                        set dirname "~"
+                    end
+
                     switch "$command"
                         case nvim vim
                             zellij action rename-tab " $dirname"
@@ -115,7 +119,12 @@ in
           body = ''
             if set -q ZELLIJ
                 set dirname (basename "$PWD")
-                zellij action rename-tab " $dirname"
+
+                if [ "$PWD" = "$HOME" ]
+                    set dirname "~"
+                end
+
+                zellij action rename-tab " $dirname"
             end
           '';
         };

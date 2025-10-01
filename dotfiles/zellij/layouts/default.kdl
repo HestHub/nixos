@@ -1,13 +1,27 @@
 layout {
     default_tab_template {
-        pane size=1 borderless=true {
+        pane size=2 borderless=true {
             plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
-                format_left    ""
-                format_center  "{tabs}"
-                format_right   ""
+                
+                color_green "#A3BE8C"
+                color_blue  "#81A1C1"
+
+                color_grey0 "#242933"
+                color_grey1 "#2E3440"
+                color_grey2 "#3B4252"
+                color_grey3 "#434C5E"
+                color_grey4 "#4C566A"
+                color_grey5 "#60728A"
+
+                color_white0 "#BBC3D4"
+
+                format_left    "{tabs}"
+                format_center  ""
+                format_right   "{notifications}"
                 format_space   ""
-                tab_active     "#[fg=#97B67C,bold,italic] ({index} {name})"
-                tab_normal     "#[fg=#5E81AC,bold] {index} {name}"
+                //tab_active     "#[bg=$grey0,fg=$green]#[bg=$green,fg=$grey1,bold]{index} #[bg=$grey2,fg=$green,bold] {name}#[bg=$grey0,fg=$grey2]"
+                tab_normal     "#[bg=$grey1,fg=$grey4]#[bg=$grey4,fg=$white0,bold]{index} #[bg=$grey1,fg=$grey5,bold] {name}#[bg=$grey0,fg=$grey1]"
+                tab_active     "#[bg=$grey0,fg=$blue]#[bg=$blue,fg=$grey1,bold]{index} #[bg=$grey2,fg=$blue,bold] {name}#[bg=$grey0,fg=$grey2]"
                 border_enabled "false"
             }
         }
