@@ -2,10 +2,6 @@ local colors = require("colors")
 
 local filler1 = sbar.add("item", {
 	position = "q",
-	background = {
-		border_color = colors.bg1,
-		color = colors.bg1,
-	},
 	icon = {
 		drawing = false,
 	},
@@ -20,10 +16,6 @@ local bluetooth = require("items.bluetooth")
 
 local filler2 = sbar.add("item", {
 	position = "q",
-	background = {
-		border_color = colors.bg1,
-		color = colors.bg1,
-	},
 	icon = {
 		drawing = false,
 	},
@@ -35,5 +27,6 @@ local filler2 = sbar.add("item", {
 sbar.add("bracket", "sound_bracket", { volume.name, mic.name, bluetooth.name, filler1.name, filler2.name }, {
 	background = {
 		color = colors.bg1,
+		border_color = colors.with_alpha(colors.cyan.dim, 0.7),
 	},
 })

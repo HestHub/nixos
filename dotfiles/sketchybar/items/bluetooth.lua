@@ -21,6 +21,7 @@ M.button = sbar.add("item", "bluetooth.button", {
 	padding_left = 0,
 	padding_right = 0,
 	background = {
+		color = colors.transparent,
 		border_color = colors.transparent,
 	},
 	icon = {
@@ -61,7 +62,7 @@ M.button:subscribe("mouse.clicked", function()
 			M.button:set({
 				icon = {
 					string = icons.bluetooth.on,
-					color = colors.blue2,
+					color = colors.cyan.dim,
 				},
 			})
 		else
@@ -69,7 +70,6 @@ M.button:subscribe("mouse.clicked", function()
 			M.button:set({
 				icon = {
 					string = icons.bluetooth.off,
-					-- color = colors.muted.background,
 				},
 			})
 		end
@@ -122,7 +122,6 @@ M.button:subscribe({
 			M.button:set({
 				icon = {
 					string = icons.bluetooth.off,
-					-- color = colors.muted.background,
 				},
 			})
 			return
@@ -131,7 +130,7 @@ M.button:subscribe({
 		M.button:set({
 			icon = {
 				string = icons.bluetooth.on,
-				color = colors.blue2,
+				color = colors.cyan.base,
 			},
 		})
 

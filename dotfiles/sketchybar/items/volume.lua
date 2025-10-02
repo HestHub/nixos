@@ -42,6 +42,7 @@ M.button = sbar.add("item", "M.vol.icon", {
 	background = {
 		corner_radius = 10,
 		border_color = colors.transparent,
+		color = colors.transparent,
 	},
 })
 M.button:subscribe("mouse.clicked", function()
@@ -125,7 +126,7 @@ local function update_volume_display(new_volume)
 			icon = {
 				string = icon,
 				padding_right = is_muted and 8 or 4,
-				color = is_muted and colors.red.base or colors.green.base,
+				color = is_muted and colors.red.base or colors.cyan.dim,
 			},
 			label = {
 				drawing = not is_muted,

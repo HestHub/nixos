@@ -13,6 +13,9 @@ local apple_logo = sbar.add("item", {
 		string = icons.apple,
 		color = colors.magenta.base,
 	},
+	background = {
+		border_color = colors.magenta.dim,
+	},
 	label = { drawing = false },
 	popup = {
 		height = 25,
@@ -32,7 +35,9 @@ apple_logo:subscribe("colors_toggled", function()
 	else
 		apple_logo:set({
 			icon = { color = colors.black1 },
-			background = { color = colors.magenta.base },
+			background = {
+				color = colors.magenta.base,
+			},
 		})
 	end
 end)

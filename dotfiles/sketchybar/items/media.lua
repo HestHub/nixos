@@ -26,6 +26,9 @@ local media = sbar.add("item", {
 		},
 		color = colors.green.dim,
 	},
+	background = {
+		border_color = colors.with_alpha(colors.green.dim, 0.7),
+	},
 	position = "e",
 	padding_left = 1,
 	padding_right = 1,

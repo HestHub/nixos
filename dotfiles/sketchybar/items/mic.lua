@@ -31,7 +31,7 @@ local function update_microphone_display(input_volume)
 			icon = {
 				string = is_muted and icons.mic.off or icons.mic.on,
 				padding_right = is_muted and 8 or 4,
-				color = is_muted and colors.red.base or colors.green.base,
+				color = is_muted and colors.red.base or colors.cyan.dim,
 			},
 		})
 	end)
@@ -40,7 +40,8 @@ end
 M.button = sbar.add("item", "M.mic.icon", {
 	position = "q",
 	background = {
-		border_color = colors.bg1,
+		border_color = colors.transparent,
+		color = colors.transparent,
 	},
 	icon = {
 		padding_left = 8,

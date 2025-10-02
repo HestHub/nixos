@@ -22,6 +22,9 @@ local cal = sbar.add("item", {
 		color = colors.orange.dim,
 		padding_right = 10,
 	},
+	background = {
+		border_color = colors.with_alpha(colors.orange.dim, 0.7),
+	},
 	position = "right",
 	padding_left = 1,
 	padding_right = 0,

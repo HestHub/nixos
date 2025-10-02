@@ -209,7 +209,7 @@ sbar.exec(query_workspaces, function(workspaces_and_monitors)
 
 		local workspace = sbar.add("item", {
 			background = {
-				color = colors.bg1,
+				color = colors.transparent,
 				drawing = true,
 			},
 			click_script = "" .. aerospace .. "workspace " .. workspace_index,
@@ -286,7 +286,7 @@ root:subscribe("colors_toggled", function()
 					highlight_color = colors.green.base,
 				},
 				background = {
-					color = colors.bg1,
+					color = colors.transparent,
 				},
 			})
 		end

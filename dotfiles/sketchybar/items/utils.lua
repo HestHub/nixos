@@ -17,8 +17,8 @@ local control_button = sbar.add("item", "c.control", {
 		drawing = false,
 	},
 	background = {
-		border_width = 0,
 		color = colors.transparent,
+		border_color = colors.with_alpha(colors.yellow.dim, 0.7),
 	},
 	icon = {
 		string = "􀆔",

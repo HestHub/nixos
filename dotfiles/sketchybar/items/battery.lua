@@ -40,7 +40,7 @@ local bracket = sbar.add("bracket", heart_names, {
 	update_freq = 30,
 	background = {
 		color = colors.bg1,
-		border_color = colors.black0,
+		border_color = colors.with_alpha(colors.red.dim, 0.7),
 		border_width = 2,
 	},
 })
