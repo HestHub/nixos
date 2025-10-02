@@ -123,13 +123,21 @@ local function withWindows(f)
 end
 
 local function updateWindow(workspace_index, args)
-	local open_windows = args.open_windows[workspace_index]
-	local focused_workspaces = args.focused_workspaces
+	local open_windows = args.open_windows[workspace_index] or {}
+	local focused_workspace_name = args.focused_workspaces:match("^%s*(.-)%s*$")
 	local visible_workspaces = args.visible_workspaces
 	local notifications = args.notifications
 
-	if open_windows == nil then
-		open_windows = {}
+	local is_focused = tostring(workspace_index) == focused_workspace_name
+
+	local is_visible = false
+	local monitor_id
+	for _, visible_workspace in ipairs(visible_workspaces) do
+		if tostring(visible_workspace.workspace) == tostring(workspace_index) then
+			is_visible = true
+			monitor_id = visible_workspace["monitor-appkit-nsscreen-screens-id"]
+			break
+		end
 	end
 
 	local icon_line = ""
@@ -145,36 +153,44 @@ local function updateWindow(workspace_index, args)
 		icon_line = icon_line .. " " .. icon .. notify .. "  "
 	end
 
-	sbar.animate("tanh", 10, function()
-		for i, visible_workspace in ipairs(visible_workspaces) do
-			if no_app and workspace_index == visible_workspace["workspace"] then
-				local monitor_id = visible_workspace["monitor-appkit-nsscreen-screens-id"]
-				icon_line = " —"
-				workspaces[workspace_index]:set({
-					drawing = true,
-					label = { string = icon_line },
-					display = monitor_id,
-				})
-				return
-			end
-		end
-		if no_app and workspace_index ~= focused_workspaces then
-			workspaces[workspace_index]:set({
-				drawing = false,
-			})
-			return
-		end
-		if no_app and workspace_index == focused_workspaces then
-			icon_line = " —"
-			workspaces[workspace_index]:set({
-				drawing = true,
-				label = { string = icon_line },
-			})
-		end
+	local drawing = true
+	if no_app and not is_visible and not is_focused then
+		drawing = false
+	elseif no_app then
+		icon_line = " —"
+	end
 
+	local border_color = colors.with_alpha(colors.blue2, 0.8)
+	if is_focused then
+		border_color = colors.green.dim
+	end
+
+	local bg_color
+	if color_state.use_color then
+		if is_focused then
+			bg_color = colors.green.base
+		else
+			bg_color = colors.bg1
+		end
+	else
+		bg_color = colors.with_alpha(colors.blue0, 0.8)
+	end
+
+	sbar.animate("tanh", 10, function()
 		workspaces[workspace_index]:set({
-			drawing = true,
-			label = { string = icon_line },
+			drawing = drawing,
+			display = monitor_id,
+			label = {
+				string = icon_line,
+				highlight = is_focused,
+			},
+			icon = {
+				highlight = is_focused,
+			},
+			background = {
+				border_color = border_color,
+				color = bg_color,
+			},
 		})
 	end)
 end
@@ -209,7 +225,7 @@ sbar.exec(query_workspaces, function(workspaces_and_monitors)
 
 		local workspace = sbar.add("item", {
 			background = {
-				color = colors.transparent,
+				color = colors.bg1,
 				drawing = true,
 			},
 			click_script = "" .. aerospace .. "workspace " .. workspace_index,
@@ -226,22 +242,10 @@ sbar.exec(query_workspaces, function(workspaces_and_monitors)
 				padding_right = 12,
 				y_offset = -1,
 			},
+			blur_radius = 30,
 		})
 
 		workspaces[workspace_index] = workspace
-
-		workspace:subscribe("aerospace_workspace_change", function(env)
-			local focused_workspace = env.FOCUSED_WORKSPACE
-			local is_focused = focused_workspace == workspace_index
-
-			sbar.animate("tanh", 10, function()
-				workspace:set({
-					icon = { highlight = is_focused },
-					label = { highlight = is_focused },
-					blur_radius = 30,
-				})
-			end)
-		end)
 	end
 
 	-- Initial setup
