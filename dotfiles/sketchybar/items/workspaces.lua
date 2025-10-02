@@ -8,7 +8,6 @@ local aerospace = settings.aerospace
 local query_workspaces = ""
 	.. aerospace
 	.. "list-workspaces --all --format '%{workspace}%{monitor-appkit-nsscreen-screens-id}' --json"
--- Root is used to handle event subscriptions
 local root = sbar.add("item", { drawing = false, update_freq = 10 })
 local workspaces = {}
 
@@ -30,7 +29,7 @@ local function get_notifications_and_update(open_windows, focused_workspaces, vi
 			open_windows = open_windows,
 			focused_workspaces = focused_workspaces,
 			visible_workspaces = visible_workspaces,
-			notifications = {}, -- no apps, so no notifications
+			notifications = {},
 		}
 		f(args)
 		return
@@ -142,7 +141,7 @@ local function updateWindow(workspace_index, args)
 
 	local icon_line = ""
 	local no_app = true
-	for i, open_window in ipairs(open_windows) do
+	for _, open_window in ipairs(open_windows) do
 		no_app = false
 		local app = open_window
 		local lookup = app_icons[app]
@@ -160,20 +159,24 @@ local function updateWindow(workspace_index, args)
 		icon_line = " —"
 	end
 
-	local border_color = colors.with_alpha(colors.blue2, 0.8)
+	local border_color = colors.with_alpha(colors.blue0, 0.8)
 	if is_focused then
-		border_color = colors.green.dim
+		border_color = colors.with_alpha(colors.green.dim, 0.8)
 	end
 
-	local bg_color
+	local bg_color, label_color, highlight_color
 	if color_state.use_color then
-		if is_focused then
-			bg_color = colors.green.base
-		else
-			bg_color = colors.bg1
-		end
+		bg_color = colors.bg1
+		label_color = colors.with_alpha(colors.blue2, 0.8)
+		highlight_color = colors.with_alpha(colors.green.base, 0.9)
 	else
-		bg_color = colors.with_alpha(colors.blue0, 0.8)
+		label_color = colors.black1
+		highlight_color = colors.white0_normal
+		if is_focused then
+			bg_color = colors.with_alpha(colors.green.dim, 0.8)
+		else
+			bg_color = colors.with_alpha(colors.blue0, 0.8)
+		end
 	end
 
 	sbar.animate("tanh", 10, function()
@@ -181,6 +184,8 @@ local function updateWindow(workspace_index, args)
 			drawing = drawing,
 			display = monitor_id,
 			label = {
+				color = label_color,
+				highlight_color = highlight_color,
 				string = icon_line,
 				highlight = is_focused,
 			},
@@ -290,7 +295,7 @@ root:subscribe("colors_toggled", function()
 					highlight_color = colors.green.base,
 				},
 				background = {
-					color = colors.transparent,
+					color = colors.bg1,
 				},
 			})
 		end
