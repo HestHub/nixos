@@ -29,6 +29,18 @@ return {
       return str
     end
 
+    -- show character count in visual mode
+    local function selectionCount()
+      local isVisualMode = vim.fn.mode():find("[Vv]")
+      if not isVisualMode then
+        return ""
+      end
+      local starts = vim.fn.line("v")
+      local ends = vim.fn.line(".")
+      local lines = starts <= ends and ends - starts + 1 or starts - ends + 1
+      return "| " .. tostring(lines) .. "L " .. tostring(vim.fn.wordcount().visual_chars) .. "C |"
+    end
+
     -- fill space bweteen left-most components and middle of terminal
     local function fill_space()
       local used_space = 0
@@ -197,6 +209,7 @@ return {
         },
 
         lualine_x = {
+          { selectionCount, color = { fg = Snacks.util.color("Special"), gui = "BOLD" } },
           {
             "diff",
             symbols = {
