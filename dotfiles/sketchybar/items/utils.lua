@@ -23,7 +23,7 @@ local control_button = sbar.add("item", "c.control", {
 	icon = {
 		string = "􀆔",
 		padding_left = settings.padding.icon_item.icon.padding_left - 4,
-		padding_right = settings.padding.icon_item.icon.padding_right - 4,
+		padding_right = settings.padding.icon_item.icon.padding_right - 1,
 		color = colors.yellow.dim,
 	},
 })
