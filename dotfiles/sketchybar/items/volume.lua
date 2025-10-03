@@ -61,7 +61,6 @@ end)
 M.button:subscribe("mouse.entered", function()
 	M.button:set({
 		popup = { drawing = true },
-		background = { color = colors.with_alpha(colors.bg1, 0.25) },
 	})
 end)
 

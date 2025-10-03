@@ -132,3 +132,7 @@ control_button:subscribe("colors_toggled", function()
 		})
 	end
 end)
+
+control_button:subscribe("colors_cli_toggle", function()
+	toggle()
+end)

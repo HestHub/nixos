@@ -149,7 +149,7 @@ local function updateWindow(workspace_index, args)
 
 		local notify = notifications[app] or ""
 
-		icon_line = icon_line .. " " .. icon .. notify .. "  "
+		icon_line = icon_line .. " " .. icon .. notify .. ""
 	end
 
 	local drawing = true
@@ -247,7 +247,6 @@ sbar.exec(query_workspaces, function(workspaces_and_monitors)
 				padding_right = 12,
 				y_offset = -1,
 			},
-			blur_radius = 30,
 		})
 
 		workspaces[workspace_index] = workspace
@@ -312,4 +311,5 @@ root:subscribe("colors_toggled", function()
 			})
 		end
 	end
+	updateWindows()
 end)

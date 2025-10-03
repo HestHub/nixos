@@ -1,4 +1,5 @@
 local colors = require("colors")
+local state = require("color_state")
 
 local num_hearts = 3
 local states_per_heart = 4
@@ -40,8 +41,7 @@ local bracket = sbar.add("bracket", heart_names, {
 	update_freq = 30,
 	background = {
 		color = colors.bg1,
-		border_color = colors.with_alpha(colors.red.dim, 0.7),
-		border_width = 2,
+		border_color = colors.with_alpha(colors.red.dim, 0.8),
 	},
 })
 
@@ -112,3 +112,15 @@ for i = 1, #hearts do
 end
 
 update_battery()
+
+bracket:subscribe("colors_toggled", function()
+	if state.use_color then
+		bracket:set({
+			background = { color = colors.bg1 },
+		})
+	else
+		bracket:set({
+			background = { color = colors.with_alpha(colors.red.dim, 0.8) },
+		})
+	end
+end)

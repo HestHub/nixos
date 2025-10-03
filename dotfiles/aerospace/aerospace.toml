@@ -78,7 +78,7 @@ preset = 'qwerty'
 
 
 alt-c = [
-  'exec-and-forget /bin/sh -c "/etc/profiles/per-user/hest/bin/sketchybar --trigger colors_toggled"',
+  'exec-and-forget /bin/sh -c "/etc/profiles/per-user/hest/bin/sketchybar --trigger colors_cli_toggle"',
 ]
 
 alt-x = [
