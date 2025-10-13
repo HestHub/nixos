@@ -67,7 +67,6 @@ in {
     lazydocker
     neofetch
     lazygit
-    gitui
     lf
     nushell
     slack
