@@ -16,6 +16,7 @@ keybinds clear-defaults=true {
             LaunchOrFocusPlugin "file:/Users/hest/dev/me/zellij-favs/target/wasm32-wasip1/release/zellij-favs.wasm" {
                 floating true
                 cache_dir "~/.zellij-session-cache"
+                display_tab_panes true
             }
         }
        bind "Super S" {
