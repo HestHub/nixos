@@ -43,9 +43,9 @@ media:subscribe("mouse.clicked", function()
 
 		sbar.exec("media-control toggle-play-pause && media-control get | jq -r '.playing'", function(playing)
 			if playing:match("true") then
-				media:set({ icon = { string = " 􀊆 " } })
+				media:set({ icon = { string = "􀊆" } })
 			else
-				media:set({ icon = { string = " 􀊄 " } })
+				media:set({ icon = { string = "􀊄" } })
 			end
 		end)
 	end)
@@ -61,9 +61,9 @@ end)
 
 media:subscribe("media_stream_changed", function(env)
 	if env.playing:match("true") then
-		media:set({ icon = { string = " 􀊆 ", padding_right = 5 } })
+		media:set({ icon = { string = "􀊆", padding_right = 5 } })
 	else
-		media:set({ icon = { string = " 􀊄 ", padding_right = 5 } })
+		media:set({ icon = { string = "􀊄", padding_right = 5 } })
 	end
 
 	if

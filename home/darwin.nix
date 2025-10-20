@@ -1,24 +1,9 @@
 {
   pkgs,
-  inputs,
   config,
   ...
 }: let
   username = "hest";
-  gitIncludes = [
-    {
-      condition = "gitdir:~/dev/me/";
-      path = "${config.home.homeDirectory}/.config/git/include_me";
-    }
-    {
-      condition = "gitdir:~/dev/c*/";
-      path = "${config.home.homeDirectory}/.config/git/include_c";
-    }
-    {
-      condition = "gitdir:~/dev/g*/";
-      path = "${config.home.homeDirectory}/.config/git/include_g";
-    }
-  ];
 in {
   imports = [
     ./core.nix
@@ -52,7 +37,7 @@ in {
       wasmtime
       docker
       docker-credential-helpers
-      kubelogin
+      # kubelogin
       postman
       zoom-us
       awscli
@@ -66,6 +51,7 @@ in {
       usbutils
       youtube-music
       blueutil
+      pgadmin4-desktopmode
     ];
   };
 }
