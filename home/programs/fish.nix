@@ -143,27 +143,27 @@ in
       plugins = [
         {
           name = "autopair";
-          src = pkgs.fishPlugins.autopair.src;
+          inherit (pkgs.fishPlugins.autopair) src;
         }
         {
           name = "done";
-          src = pkgs.fishPlugins.done.src;
+          inherit (pkgs.fishPlugins.done) src;
         }
         {
           name = "fzf";
-          src = pkgs.fishPlugins.fzf.src;
+          inherit (pkgs.fishPlugins.fzf) src;
         }
         {
           name = "grc";
-          src = pkgs.fishPlugins.grc.src;
+          inherit (pkgs.fishPlugins.grc) src;
         }
         {
           name = "sponge";
-          src = pkgs.fishPlugins.sponge.src;
+          inherit (pkgs.fishPlugins.sponge) src;
         }
         {
           name = "puffer";
-          src = pkgs.fishPlugins.puffer.src;
+          inherit (pkgs.fishPlugins.puffer) src;
         }
       ];
     };

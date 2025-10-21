@@ -33,13 +33,12 @@
       "colima"
       "mender-artifact"
       "media-control"
+      "azure-cli"
     ];
 
     casks = [
       "alt-tab"
       "mqttx" # not available on arm
-      "microsoft-teams" # old version only on nix
-      "microsoft-auto-update"
       "raycast" # todo
       "sanesidebuttons"
       "steam"

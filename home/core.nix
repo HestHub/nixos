@@ -47,11 +47,14 @@ in {
       "me/config".path = "${config.home.homeDirectory}/.config/git/include_me";
     };
   };
-
-  xdg.enable = true;
-  xdg.configFile."zellij".source = config.lib.file.mkOutOfStoreSymlink zellijPath;
-  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink nvimPath;
-  xdg.configFile."aerospace".source = config.lib.file.mkOutOfStoreSymlink aerospacePath;
+  xdg = {
+    enable = true;
+    configFile = {
+      "zellij".source = config.lib.file.mkOutOfStoreSymlink zellijPath;
+      "nvim".source = config.lib.file.mkOutOfStoreSymlink nvimPath;
+      "aerospace".source = config.lib.file.mkOutOfStoreSymlink aerospacePath;
+    };
+  };
 
   home.packages = with pkgs; [
     alejandra
@@ -59,15 +62,11 @@ in {
     deadnix
     discord
     fzf
-    gh
     git
-    bottom
     jq
     just
     lazydocker
-    neofetch
     lazygit
-    lf
     nushell
     slack
     tldr
@@ -77,7 +76,6 @@ in {
     wget
     zellij
     devenv
-    viu
     age
     sops
     # LSPS
@@ -91,12 +89,10 @@ in {
     nil
     pkgs.dotnetCorePackages.dotnet_9.sdk
     scaleway-cli
-    sqlitebrowser
     serverless
     trufflehog
     gitleaks
     yazi
-    tdf
     gemini-cli
     skopeo
     lazysql
@@ -104,6 +100,10 @@ in {
 
   home.stateVersion = "25.05";
   programs = {
+    diff-so-fancy = {
+      enable = true;
+      enableGitIntegration = true;
+    };
     direnv = {
       enable = true;
       nix-direnv.enable = true;

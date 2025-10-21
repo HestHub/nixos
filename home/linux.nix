@@ -2,16 +2,8 @@
   pkgs,
   system,
   inputs,
-  config,
   ...
-}: let
-  gitIncludes = [
-    {
-      condition = "gitdir:~/dev/";
-      path = "${config.home.homeDirectory}/.config/git/include_me";
-    }
-  ];
-in {
+}: {
   imports = [
     ./core.nix
     ./programs/ghostty.nix

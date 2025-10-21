@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -48,25 +44,27 @@
   };
 
   services = {
-    # Enable the X11 windowing system.
-    xserver.enable = true;
+    xserver = {
+      # Enable the X11 windowing system.
+      enable = true;
+
+      # Enable the GNOME Desktop Environment.
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+
+      # Configure keymap in X11
+      xkb = {
+        layout = "us";
+        variant = "intl";
+      };
+    };
 
     # Enable sound with pipewire.
     pulseaudio.enable = false;
 
-    # Enable the GNOME Desktop Environment.
-    xserver.displayManager.gdm.enable = true;
-    xserver.desktopManager.gnome.enable = true;
-
     # autologin without password
     displayManager.autoLogin.enable = true;
     displayManager.autoLogin.user = "hest";
-
-    # Configure keymap in X11
-    xserver.xkb = {
-      layout = "us";
-      variant = "intl";
-    };
 
     # enable tailscale VPN
     tailscale.enable = true;
@@ -115,20 +113,22 @@
   };
 
   systemd = {
-    # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-    services."getty@tty1".enable = false;
-    services."autovt@tty1".enable = false;
-    services.NetworkManager-wait-online.enable = false;
+    services = {
+      # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
+      "getty@tty1".enable = false;
+      "autovt@tty1".enable = false;
+      NetworkManager-wait-online.enable = false;
 
-    # lact AMD GPU controller
-    services.lact = {
-      description = "AMDGPU Control Daemon";
-      after = ["multi-user.target"];
-      wantedBy = ["multi-user.target"];
-      serviceConfig = {
-        ExecStart = "${pkgs.lact}/bin/lact daemon";
+      # lact AMD GPU controller
+      lact = {
+        description = "AMDGPU Control Daemon";
+        after = ["multi-user.target"];
+        wantedBy = ["multi-user.target"];
+        serviceConfig = {
+          ExecStart = "${pkgs.lact}/bin/lact daemon";
+        };
+        enable = true;
       };
-      enable = true;
     };
   };
 
@@ -214,19 +214,21 @@
   };
 
   nix = {
-    settings.trusted-users = ["root" "hest"];
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    settings = {
+      trusted-users = ["root" "hest"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+
+      auto-optimise-store = true;
+    };
 
     gc = {
       automatic = true;
       dates = "22:22";
       options = "--delete-older-than +3";
     };
-
-    settings.auto-optimise-store = true;
   };
 
   system.stateVersion = "24.05"; # Did you read the comment?

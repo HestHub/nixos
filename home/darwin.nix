@@ -38,16 +38,11 @@ in {
       docker
       docker-credential-helpers
       # kubelogin
-      postman
       zoom-us
-      awscli
-      azure-cli
-      aider-chat
       mono
       netcoredbg
       omnisharp-roslyn
       socat
-      minicom
       usbutils
       youtube-music
       blueutil

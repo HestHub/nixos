@@ -6,37 +6,34 @@
   hostname = "mbp";
   username = "hest";
 in {
-  nix.enable = true;
-  nixpkgs.config.allowUnfree = true;
-  nix.settings.trusted-users = ["root" username];
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-  nix.gc = {
-    automatic = lib.mkDefault true;
-    options = lib.mkDefault "--delete-older-than 1w";
-  };
+  nix = {
+    enable = true;
+    settings.trusted-users = ["root" username];
+    settings.experimental-features = ["nix-command" "flakes"];
+    gc = {
+      automatic = lib.mkDefault true;
+      options = lib.mkDefault "--delete-older-than 1w";
+    };
 
-  nix.optimise.automatic = true;
+    optimise.automatic = true;
+  };
+  nixpkgs.config.allowUnfree = true;
 
   networking.hostName = hostname;
   networking.computerName = hostname;
-  system.defaults.smb.NetBIOSName = hostname;
-  system.primaryUser = "hest";
-
-  users.users."${username}" = {
-    home = "/Users/${username}";
-    description = username;
-    shell = "/etc/profiles/per-user/hest/bin/fish";
-  };
-
-  ###################################################################################
-  #  macOS's System configuration
-  #
-  #  All the configuration options are documented here:
-  #    https://daiderd.com/nix-darwin/manual/index.html#sec-options
-  #  and see the source code of this project to get more undocumented options:
-  #    https://github.com/rgcr/m-cli
-  ###################################################################################
   system = {
+    defaults.smb.NetBIOSName = hostname;
+    primaryUser = "hest";
+
+    ###################################################################################
+    #  macOS's System configuration
+    #
+    #  All the configuration options are documented here:
+    #    https://daiderd.com/nix-darwin/manual/index.html#sec-options
+    #  and see the source code of this project to get more undocumented options:
+    #    https://github.com/rgcr/m-cli
+    ###################################################################################
+
     stateVersion = 5;
 
     # activationScripts are executed every time you boot the system or run `nixos-rebuild` / `darwin-rebuild`.
@@ -146,6 +143,12 @@ in {
         SHOWFULLNAME = true; # show full name in login window
       };
     };
+  };
+
+  users.users."${username}" = {
+    home = "/Users/${username}";
+    description = username;
+    shell = "/etc/profiles/per-user/hest/bin/fish";
   };
 
   programs.fish.enable = true;
