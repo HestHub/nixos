@@ -45,6 +45,7 @@ in {
       "me/key".path = "${config.home.homeDirectory}/.ssh/id_me";
       "me/pub".path = "${config.home.homeDirectory}/.ssh/id_me.pub";
       "me/config".path = "${config.home.homeDirectory}/.config/git/include_me";
+      "gemini" = {};
     };
   };
   xdg = {

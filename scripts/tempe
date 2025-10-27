@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+cd "$(mktemp -d)" || exit
+chmod -R 0700 .
+if [[ $# -eq 1 ]]; then
+  \mkdir -p "$1"
+  cd "$1" || exit
+  chmod -R 0700 .
+fi

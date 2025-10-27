@@ -1,7 +1,11 @@
 let
   insultfunction = builtins.readFile ./fish-functions/insulter.fish;
 in
-  {pkgs, ...}: {
+  {
+    pkgs,
+    config,
+    ...
+  }: {
     home.packages = with pkgs; [
       fish
       fzf
@@ -25,6 +29,8 @@ in
           set -gx DOTNET_ROOT (dirname (realpath (which dotnet)))
           fish_add_path /opt/homebrew/bin
         end
+
+        set -gx GEMINI_API_KEY $(cat ${config.sops.secrets."gemini".path})
       '';
 
       interactiveShellInit = ''
@@ -51,21 +57,29 @@ in
         cd = "z";
         j = "z";
         c = "clear";
+
         lgi = "lazygit";
         ldo = "lazydocker";
         lsq = "lazysql";
+
         cat = "bat";
+        lf = "yazi";
+
         vi = "nvim";
         vim = "nvim";
+        e = "nvim";
+
         cp = "cp -i";
         rm = "rm -i";
+
         gfp = "git fetch && git pull";
+        gitbt = "git log --graph --simplify-by-decoration --pretty=format:'%d' --all";
+
         ls = "eza -1 -F --group-directories-first";
         lsa = "eza -1 -F --group-directories-first -a";
         ll = "eza -1 -F --group-directories-first -l --git --classify --no-user ";
         lla = "eza -1 -F --group-directories-first -l -a --git --classify --no-user ";
         lt = "eza -1 -F -T";
-        gitbt = "git log --graph --simplify-by-decoration --pretty=format:'%d' --all";
       };
 
       functions = {
