@@ -4,4 +4,3 @@ set -u
 
 echo "$PATH" | sed 's/:/\
 /g'
-

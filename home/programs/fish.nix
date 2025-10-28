@@ -54,9 +54,16 @@ in
       shellAbbrs = {
         k = "kubectl";
         g = "git";
+        d = "docker";
         cd = "z";
         j = "z";
         c = "clear";
+
+        comp = "docker compose";
+
+        cpwd = "pwd | tr -d '' | fish_clipboard_copy";
+        ds-delete = "find . -name .DS_Store -delete";
+        paths = "printf '%s\n' $PATH";
 
         lgi = "lazygit";
         ldo = "lazydocker";
@@ -71,6 +78,7 @@ in
 
         cp = "cp -i";
         rm = "rm -i";
+        mv = "mv -i";
 
         gfp = "git fetch && git pull";
         gitbt = "git log --graph --simplify-by-decoration --pretty=format:'%d' --all";
@@ -91,6 +99,10 @@ in
             git pull
             cd $back
           end
+        '';
+
+        mkcd = ''
+          mkdir -p $argv[1]; and cd $argv[1]
         '';
 
         # TODO, mark with Symbol
