@@ -26,7 +26,7 @@
       keymapp
       wineWowPackages.waylandFull
       virtiofsd
-      bitwarden
+      bitwarden-desktop
       wl-clipboard
       icu77
       sqlitebrowser

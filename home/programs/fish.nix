@@ -63,6 +63,7 @@ in
         cpwd = "echo -n (pwd) | fish_clipboard_copy";
         ds-delete = "find . -name .DS_Store -delete";
         paths = "printf '%s\\n' $PATH";
+        tmp = "cd (mktemp -d); or exit";
 
         lgi = "lazygit";
         ldo = "lazydocker";
