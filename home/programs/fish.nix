@@ -60,10 +60,9 @@ in
         c = "clear";
 
         comp = "docker compose";
-
-        cpwd = "pwd | tr -d '' | fish_clipboard_copy";
+        cpwd = "echo -n (pwd) | fish_clipboard_copy";
         ds-delete = "find . -name .DS_Store -delete";
-        paths = "printf '%s\n' $PATH";
+        paths = "printf '%s\\n' $PATH";
 
         lgi = "lazygit";
         ldo = "lazydocker";
