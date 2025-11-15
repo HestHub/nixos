@@ -1,3 +1,4 @@
+
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = true
@@ -17,7 +18,6 @@ $git_commit\
 $git_state\
 $git_metrics\
 $git_status\
-${custom.git-prompt-string}\
 $direnv\
 $env_var\
 $custom\
@@ -56,10 +56,6 @@ error_symbol = '[](bold red_bright)'
 format = ' [ $duration](bold yellow_bright) '
 show_milliseconds = true
 
-[custom.git-prompt-string]
-command = "git-prompt-string || :"
-when = true
-
 [directory]
 truncation_symbol = ''
 read_only = " "
@@ -69,7 +65,20 @@ style = 'bold cyan_bright dimmed'
 format = '[$symbol$branch(:$remote_branch)](bold magenta_bright dimmed)'
 
 [git_status]
-style = 'bold magenta_bright dimmed'
+format = ' ([$conflicted$untracked$renamed$modified$typechanged$deleted$staged$stashed| $ahead_behind](bold magenta_bright dimmed) )'
+up_to_date = ''
+conflicted = '[X\($count\)](bold red_bright dimmed) '
+untracked = '[?\($count\)](bold orange_bright dimmed) '
+modified = '[*\($count\)](bold orange_bright dimmed) '
+renamed = '[»\($count\)](bold green_bright dimmed) '
+deleted = '[-\($count\)](bold red_bright dimmed) '
+staged = '[+\($count\)](bold green_bright dimmed) '
+stashed = '[\$\($count\)](bold yellow_bright dimmed) '
+
+ahead = '↑\($count\) '
+behind = '↓\($count\) '
+diverged = '↕ '
+
 
 [nix_shell]
 format = '[ ](bold white0_reduce_blue)'
