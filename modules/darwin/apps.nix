@@ -34,6 +34,7 @@
       "mender-artifact"
       "media-control"
       "azure-cli"
+      "ollama"
     ];
 
     casks = [

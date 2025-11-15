@@ -31,6 +31,7 @@ in
         end
 
         set -gx GEMINI_API_KEY $(cat ${config.sops.secrets."gemini".path})
+        set -gx STARSHIP_CONFIG ~/.config/starship/starship.toml
       '';
 
       interactiveShellInit = ''

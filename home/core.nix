@@ -8,6 +8,7 @@
   nvimPath = "${projectRoot}/dotfiles/nvim";
   zellijPath = "${projectRoot}/dotfiles/zellij";
   aerospacePath = "${projectRoot}/dotfiles/aerospace";
+  starshipPath = "${projectRoot}/dotfiles/starship";
 in {
   imports = [
     inputs.sops-nix.homeManagerModules.sops
@@ -54,6 +55,7 @@ in {
       "zellij".source = config.lib.file.mkOutOfStoreSymlink zellijPath;
       "nvim".source = config.lib.file.mkOutOfStoreSymlink nvimPath;
       "aerospace".source = config.lib.file.mkOutOfStoreSymlink aerospacePath;
+      "starship".source = config.lib.file.mkOutOfStoreSymlink starshipPath;
     };
   };
 
@@ -97,6 +99,7 @@ in {
     gemini-cli
     skopeo
     lazysql
+    starship
   ];
 
   home.stateVersion = "25.05";
@@ -157,6 +160,10 @@ in {
       enable = true;
     };
 
+    starship = {
+      enable = true;
+      enableTransience = true;
+    };
     ssh = {
       enable = true;
       enableDefaultConfig = false;
