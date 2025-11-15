@@ -35,6 +35,7 @@
       "media-control"
       "azure-cli"
       "ollama"
+      "mikesmithgh/homebrew-git-prompt-string/git-prompt-string"
     ];
 
     casks = [

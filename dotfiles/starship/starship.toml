@@ -17,6 +17,7 @@ $git_commit\
 $git_state\
 $git_metrics\
 $git_status\
+${custom.git-prompt-string}\
 $direnv\
 $env_var\
 $custom\
@@ -54,6 +55,10 @@ error_symbol = '[](bold red_bright)'
 [cmd_duration]
 format = ' [ $duration](bold yellow_bright) '
 show_milliseconds = true
+
+[custom.git-prompt-string]
+command = "git-prompt-string || :"
+when = true
 
 [directory]
 truncation_symbol = ''
