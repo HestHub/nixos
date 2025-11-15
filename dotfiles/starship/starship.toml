@@ -65,7 +65,7 @@ style = 'bold cyan_bright dimmed'
 format = '[$symbol$branch(:$remote_branch)](bold magenta_bright dimmed)'
 
 [git_status]
-format = ' ([$conflicted$untracked$renamed$modified$typechanged$deleted$staged$stashed| $ahead_behind](bold magenta_bright dimmed) )'
+format = ' ([$conflicted$untracked$renamed$modified$typechanged$deleted$staged$stashed$ahead_behind](bold magenta_bright dimmed) )'
 up_to_date = ''
 conflicted = '[X\($count\)](bold red_bright dimmed) '
 untracked = '[?\($count\)](bold orange_bright dimmed) '
@@ -75,10 +75,9 @@ deleted = '[-\($count\)](bold red_bright dimmed) '
 staged = '[+\($count\)](bold green_bright dimmed) '
 stashed = '[\$\($count\)](bold yellow_bright dimmed) '
 
-ahead = '↑\($count\) '
-behind = '↓\($count\) '
-diverged = '↕ '
-
+ahead = '| ↑\($count\) '
+behind = '| ↓\($count\) '
+diverged = '| ↕ ↑${ahead_count}↓${behind_count}'
 
 [nix_shell]
 format = '[ ](bold white0_reduce_blue)'
