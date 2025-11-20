@@ -47,6 +47,9 @@ in {
       youtube-music
       blueutil
       pgadmin4-desktopmode
+      terraform
+      minikube
+      kubernetes-helm
     ];
   };
 }
