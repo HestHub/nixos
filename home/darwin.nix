@@ -50,6 +50,9 @@ in {
       terraform
       minikube
       kubernetes-helm
+      bicep-lsp
+      (lib.lowPrio bicep-lsp)
+      zulu25
     ];
   };
 }

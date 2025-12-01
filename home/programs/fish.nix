@@ -17,7 +17,6 @@ in
       fishPlugins.grc
       fishPlugins.sponge
       fishPlugins.puffer
-      fishPlugins.fifc
     ];
 
     programs.fish = {
@@ -33,7 +32,6 @@ in
 
         set -gx GEMINI_API_KEY $(cat ${config.sops.secrets."gemini".path})
         set -gx STARSHIP_CONFIG ~/.config/starship/starship.toml
-        set -Ux fifc_editor nvim
       '';
 
       interactiveShellInit = ''
@@ -195,10 +193,6 @@ in
         {
           name = "puffer";
           inherit (pkgs.fishPlugins.puffer) src;
-        }
-        {
-          name = "fifc";
-          inherit (pkgs.fishPlugins.fifc) src;
         }
       ];
     };
