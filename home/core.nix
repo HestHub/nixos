@@ -92,7 +92,7 @@ in {
     nil
     pkgs.dotnetCorePackages.dotnet_9.sdk
     scaleway-cli
-    serverless
+    # serverless
     trufflehog
     gitleaks
     yazi
