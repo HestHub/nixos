@@ -100,6 +100,7 @@ in {
     skopeo
     lazysql
     starship
+    opencode
   ];
 
   home.stateVersion = "25.05";
