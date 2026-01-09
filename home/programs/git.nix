@@ -93,6 +93,7 @@
       ".direnv"
       ".pre-commit-config.yaml"
       ".devenv*"
+      ".metals*"
       "devenv.local.nix"
       ".direnv"
       ".pre-commit-config.yaml"

@@ -4,7 +4,7 @@
   ];
   environment.variables.EDITOR = "nvim";
 
-  services.tailscale.enable = true;
+  # services.tailscale.enable = true;
 
   services.aerospace = {
     enable = true;
@@ -36,6 +36,7 @@
       "azure-cli"
       "ollama"
       "mikesmithgh/homebrew-git-prompt-string/git-prompt-string"
+      "coursier"
     ];
 
     casks = [
