@@ -99,6 +99,7 @@
       ".pre-commit-config.yaml"
       ".devenv*"
       "devenv.local.nix"
+      "devenv.nix"
       ".direnv"
       ".pre-commit-config.yaml"
       ".envrc"

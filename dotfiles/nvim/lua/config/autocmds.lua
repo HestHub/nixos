@@ -1,77 +1,28 @@
--- local harpoon_auto_manage_group = vim.api.nvim_create_augroup("HarpoonAutoManage", { clear = true })
+vim.api.nvim_create_user_command("FormatTable", function(opts)
+  -- Define potential paths for the GNU/util-linux version of column
+  local paths = {
+    "/opt/homebrew/opt/util-linux/bin/column", -- Apple Silicon Homebrew
+    "/usr/local/opt/util-linux/bin/column", -- Intel Homebrew
+    "column", -- Fallback/System
+  }
 
--- vim.api.nvim_create_autocmd("BufEnter", {
---   group = harpoon_auto_manage_group,
---   pattern = "*",
---   callback = function(ev)
---     local list = require("harpoon"):list()
---     if not list then
---       return
---     end
---
---     local file_path = vim.api.nvim_buf_get_name(ev.buf)
---     local buftype = vim.bo[ev.buf].buftype
---
---     if file_path == "" or not vim.bo[ev.buf].buflisted then
---       return
---     end
---
---     local ignored_buffers = {
---       terminal = true,
---       quickfix = true,
---       prompt = true,
---       help = true,
---       nofile = true,
---       nowrite = true,
---     }
---     if ignored_buffers[buftype] then
---       return
---     end
---
---     local ok, err = pcall(function()
---       list.add(list)
---     end)
---
---     if not ok then
---       vim.notify("Harpoon error: " .. tostring(err), vim.log.levels.ERROR)
---     end
---   end,
---   desc = "Add buffer to Harpoon on enter",
--- })
+  local cmd_path = "column" -- Default
+  for _, path in ipairs(paths) do
+    if vim.fn.executable(path) == 1 then
+      cmd_path = path
+      break
+    end
+  end
 
--- vim.api.nvim_create_autocmd("BufDelete", {
---   group = harpoon_auto_manage_group,
---   pattern = "*",
---   callback = function(ev)
---     local list = require("harpoon"):list()
---     if not list then
---       return
---     end
---
---     local file_path = vim.api.nvim_buf_get_name(ev.buf)
---
---     if file_path ~= "" then
---       local index_to_remove = nil
---       for i, item in ipairs(list.items) do
---         local abs_path = vim.fn.fnamemodify(item.value, ":p")
---         if abs_path == file_path then
---           index_to_remove = i
---           break
---         end
---       end
---
---       if index_to_remove then
---         print(index_to_remove)
---         -- pcall(list.remove_at, list, index_to_remove)
---         local ok, err = pcall(function()
---           list:remove_at(index_to_remove)
---         end)
---
---         if not ok then
---           vim.notify("Harpoon error: " .. tostring(err), vim.log.levels.ERROR)
---         end
---       end
---     end
---   end,
---   desc = "Remove buffer from Harpoon on delete",
--- })
+  -- Construct the command string
+  -- We use the range passed to the command (opts.line1 to opts.line2)
+  local range = opts.line1 .. "," .. opts.line2
+
+  -- Note: We add spaces around the separator for better MD readability " | "
+  local full_cmd = string.format("%s!%s -t -s '|' -o ' | '", range, cmd_path)
+
+  vim.cmd(full_cmd)
+end, {
+  range = true,
+  desc = "Format Markdown table using GNU column (Homebrew/Nix compatible)",
+})

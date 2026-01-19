@@ -37,6 +37,7 @@
       "ollama"
       "mikesmithgh/homebrew-git-prompt-string/git-prompt-string"
       "coursier"
+      "util-linux"
     ];
 
     casks = [

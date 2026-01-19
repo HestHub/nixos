@@ -39,9 +39,9 @@ in {
       docker-credential-helpers
       # kubelogin
       zoom-us
-      mono
+      # mono
       netcoredbg
-      omnisharp-roslyn
+      roslyn
       socat
       usbutils
       youtube-music
@@ -50,6 +50,7 @@ in {
       terraform
       minikube
       kubernetes-helm
+      graphql-language-service-cli
       bicep-lsp
       (lib.lowPrio bicep-lsp)
       zulu25
