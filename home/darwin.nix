@@ -41,6 +41,7 @@ in {
       zoom-us
       # mono
       netcoredbg
+      dotnetCorePackages.dotnet_8.sdk
       roslyn
       socat
       usbutils

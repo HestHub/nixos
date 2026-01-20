@@ -90,7 +90,6 @@ in {
     unzip
     nodejs
     nil
-    pkgs.dotnetCorePackages.dotnet_9.sdk
     scaleway-cli
     # serverless
     trufflehog

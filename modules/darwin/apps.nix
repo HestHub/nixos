@@ -30,7 +30,8 @@
       "mas"
       "curl" # no not install curl via nixpkgs, it's not working well on macOS!
       "lima-additional-guestagents"
-      "colima"
+      # "colima"
+      "docker"
       "mender-artifact"
       "media-control"
       "azure-cli"
@@ -46,6 +47,7 @@
       "raycast" # todo
       "sanesidebuttons"
       "steam"
+      "rider"
       "keymapp"
       "krita"
       "ghostty"
