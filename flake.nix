@@ -16,6 +16,7 @@
     };
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
     sops-nix.url = "github:Mic92/sops-nix";
 
@@ -45,16 +46,18 @@
 
         home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.sharedModules = [
-            sops-nix.homeManagerModules.sops
-          ];
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            sharedModules = [
+              sops-nix.homeManagerModules.sops
+            ];
 
-          home-manager.users.hest = import ./home/linux.nix;
-          home-manager.extraSpecialArgs = {
-            inherit inputs;
-            system = "x86_64-linux";
+            users.hest = import ./home/linux.nix;
+            extraSpecialArgs = {
+              inherit inputs;
+              system = "x86_64-linux";
+            };
           };
         }
       ];
@@ -68,16 +71,18 @@
 
         home-manager.darwinModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.sharedModules = [
-            sops-nix.homeManagerModules.sops
-          ];
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            sharedModules = [
+              sops-nix.homeManagerModules.sops
+            ];
 
-          home-manager.users.hest = import ./home/darwin.nix;
-          home-manager.extraSpecialArgs = {
-            inherit inputs;
-            system = "aarch64-darwin";
+            users.hest = import ./home/darwin.nix;
+            extraSpecialArgs = {
+              inherit inputs;
+              system = "aarch64-darwin";
+            };
           };
         }
       ];

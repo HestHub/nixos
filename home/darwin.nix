@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  inputs,
   ...
 }: let
   username = "hest";
@@ -37,11 +38,10 @@ in {
       wasmtime
       docker
       docker-credential-helpers
-      # kubelogin
+      inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
       zoom-us
-      # mono
       netcoredbg
-      dotnetCorePackages.dotnet_8.sdk
+      dotnet-sdk_10
       roslyn
       socat
       usbutils
