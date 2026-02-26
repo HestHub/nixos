@@ -47,7 +47,10 @@ in {
       usbutils
       youtube-music
       blueutil
+      pnpm
+      typescript
       pgadmin4-desktopmode
+      awscli2
       terraform
       minikube
       kubernetes-helm

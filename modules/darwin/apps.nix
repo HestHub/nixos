@@ -45,6 +45,7 @@
       "alt-tab"
       "mqttx" # not available on arm
       "raycast" # todo
+      "db-browser-for-sqlite"
       "sanesidebuttons"
       "steam"
       "rider"
