@@ -51,6 +51,7 @@ in {
       typescript
       pgadmin4-desktopmode
       awscli2
+      claude-code
       terraform
       minikube
       kubernetes-helm
