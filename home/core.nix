@@ -90,14 +90,12 @@ in {
     unzip
     nodejs
     nil
-    scaleway-cli
     # serverless
     trufflehog
     gitleaks
     yazi
     gemini-cli
     skopeo
-    lazysql
     starship
     opencode
   ];

@@ -1,4 +1,4 @@
-{...}: {
+{ pkgs, ... }: {
   imports = [
     #./yabai.nix
   ];
@@ -6,8 +6,13 @@
 
   # services.tailscale.enable = true;
 
-  services.aerospace = {
-    enable = true;
+  environment.systemPackages = [pkgs.aerospace];
+  launchd.user.agents.aerospace = {
+    serviceConfig = {
+      ProgramArguments = ["${pkgs.aerospace}/Applications/AeroSpace.app/Contents/MacOS/AeroSpace"];
+      RunAtLoad = true;
+      KeepAlive = true;
+    };
   };
 
   homebrew = {
@@ -32,10 +37,8 @@
       "lima-additional-guestagents"
       # "colima"
       "docker"
-      "mender-artifact"
       "media-control"
       "azure-cli"
-      "ollama"
       "mikesmithgh/homebrew-git-prompt-string/git-prompt-string"
       "coursier"
       "util-linux"
@@ -48,7 +51,6 @@
       "db-browser-for-sqlite"
       "sanesidebuttons"
       "steam"
-      "rider"
       "keymapp"
       "krita"
       "ghostty"
