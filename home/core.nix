@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   config,
+  lib,
   ...
 }: let
   projectRoot = "${config.home.homeDirectory}/dev/me/nixos";
@@ -81,6 +82,7 @@ in {
     devenv
     age
     sops
+    devpod
     # LSPS
     rustup
     go
@@ -88,7 +90,7 @@ in {
     lua
     vtsls
     unzip
-    nodejs
+    nodejs_20
     nil
     # serverless
     trufflehog
@@ -179,7 +181,6 @@ in {
         controlPersist = "no";
       };
     };
-
     ripgrep.enable = true;
     home-manager.enable = true;
   };

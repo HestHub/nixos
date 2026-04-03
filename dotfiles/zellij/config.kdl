@@ -63,5 +63,6 @@ web_client {
     font "monospace"
 }
 theme "nord"
+default_shell "fish"
  
 show_startup_tips false

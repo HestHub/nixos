@@ -34,14 +34,11 @@ in {
 
     packages = with pkgs; [
       kubectl
-      dotnetPackages.Nuget
       wasmtime
       docker
       docker-credential-helpers
       inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
       zoom-us
-      netcoredbg
-      dotnet-sdk_10
       roslyn
       socat
       usbutils

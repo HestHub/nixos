@@ -7,7 +7,6 @@ local Map = vim.keymap.set
 Map({ "x", "n", "s" }, "<leader>w", "<cmd>w<cr><esc>", { desc = "Save File" })
 Map({ "n", "v" }, "d", '"_d')
 Map("n", "c", '"_c', {})
-Map("n", "<leader>U", require("undotree").toggle, { noremap = true, silent = true, desc = "Open UndoTree" })
 
 -- Move selection
 Map("v", "J", ":m '>+1<CR>gv=gv")

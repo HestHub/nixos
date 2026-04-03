@@ -1,4 +1,0 @@
-return {
-  "jiaoshijie/undotree",
-  opts = {},
-}

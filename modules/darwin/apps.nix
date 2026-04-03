@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   imports = [
     #./yabai.nix
   ];
@@ -42,6 +42,7 @@
       "mikesmithgh/homebrew-git-prompt-string/git-prompt-string"
       "coursier"
       "util-linux"
+      "librdkafka"
     ];
 
     casks = [
@@ -51,6 +52,7 @@
       "db-browser-for-sqlite"
       "sanesidebuttons"
       "steam"
+      "dotnet-sdk"
       "keymapp"
       "krita"
       "ghostty"
