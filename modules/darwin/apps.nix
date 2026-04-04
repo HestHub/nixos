@@ -34,9 +34,7 @@
     brews = [
       "mas"
       "curl" # no not install curl via nixpkgs, it's not working well on macOS!
-      "lima-additional-guestagents"
-      # "colima"
-      "docker"
+      # "lima-additional-guestagents"
       "media-control"
       "azure-cli"
       "mikesmithgh/homebrew-git-prompt-string/git-prompt-string"

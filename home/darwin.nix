@@ -31,11 +31,16 @@ in {
   home = {
     username = "${username}";
     homeDirectory = "/Users/${username}";
+    sessionVariables = {
+      DOCKER_HOST = "unix://${config.home.homeDirectory}/.config/colima/default/docker.sock";
+    };
 
     packages = with pkgs; [
       kubectl
       wasmtime
-      docker
+      colima
+      lima-additional-guestagents
+      docker-client
       docker-credential-helpers
       inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
       zoom-us
