@@ -9,6 +9,8 @@
     quick-terminal-position = center
     mouse-hide-while-typing = true
 
+    term = xterm-256color
+
     # keybind = super+h=goto_split:left
     # keybind = super+j=goto_split:bottom
     # keybind = super+k=goto_split:top
