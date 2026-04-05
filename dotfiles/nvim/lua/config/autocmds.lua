@@ -26,3 +26,10 @@ end, {
   range = true,
   desc = "Format Markdown table using GNU column (Homebrew/Nix compatible)",
 })
+
+-- Ensure LSP starts even if UI attached late in a remote session
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+  callback = function()
+    vim.cmd("silent! LspStart")
+  end,
+})

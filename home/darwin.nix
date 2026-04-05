@@ -49,7 +49,6 @@ in {
       usbutils
       youtube-music
       blueutil
-      pnpm
       typescript
       pgadmin4-desktopmode
       awscli2

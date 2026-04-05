@@ -169,6 +169,11 @@ in {
     home-manager.enable = true;
   };
   home.file.".ssh/config_nix".text = ''
+    Host *.devpod
+      StrictHostKeyChecking no
+      UserKnownHostsFile /dev/null
+      LogLevel ERROR
+
     Host *
       ForwardAgent no
       AddKeysToAgent yes
