@@ -61,45 +61,48 @@ in {
   };
 
   home.packages = with pkgs; [
+    # tools
+    age
+    devenv
+    devpod
+    fzf
+    git
+    gitleaks
+    jq
+    just
+    nushell
+    skopeo
+    sops
+    starship
+    tldr
+    tre-command
+    trufflehog
+    unixtools.watch
+    unzip
+    watchexec
+    wget
+
+    # TUI
+    lazydocker
+    lazygit
+    yazi
+    zellij
+
+    # GUI
+    discord
+    slack
+
+    # LSPS
     alejandra
     cargo-nextest
     deadnix
-    discord
-    fzf
-    git
-    jq
-    just
-    lazydocker
-    lazygit
-    nushell
-    slack
-    tldr
-    tre-command
-    unixtools.watch
-    watchexec
-    wget
-    zellij
-    devenv
-    age
-    sops
-    devpod
-    # LSPS
-    rustup
     go
-    python314
     lua
-    vtsls
-    unzip
-    nodejs_20
     nil
-    # serverless
-    trufflehog
-    gitleaks
-    yazi
-    gemini-cli
-    skopeo
-    starship
-    opencode
+    nodejs_20
+    python314
+    rustup
+    vtsls
   ];
 
   home.stateVersion = "25.05";

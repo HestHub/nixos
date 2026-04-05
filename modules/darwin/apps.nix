@@ -34,7 +34,6 @@
     brews = [
       "mas"
       "curl" # no not install curl via nixpkgs, it's not working well on macOS!
-      # "lima-additional-guestagents"
       "media-control"
       "azure-cli"
       "mikesmithgh/homebrew-git-prompt-string/git-prompt-string"
@@ -51,8 +50,6 @@
       "sanesidebuttons"
       "steam"
       "dotnet-sdk"
-      "keymapp"
-      "krita"
       "ghostty"
       "font-sketchybar-app-font"
     ];

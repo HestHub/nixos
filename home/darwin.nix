@@ -36,30 +36,37 @@ in {
     };
 
     packages = with pkgs; [
-      kubectl
+      # GUI
+      inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
+      pgadmin4-desktopmode
+      youtube-music
+      zoom-us
+
+      # LSP
+      (lib.lowPrio bicep-lsp)
+      bicep-lsp
+      graphql-language-service-cli
+      roslyn
+      typescript
       wasmtime
+      zulu25
+
+      # Tools
+      blueutil
       colima
-      lima-additional-guestagents
       docker-client
       docker-credential-helpers
-      inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
-      zoom-us
-      roslyn
-      socat
-      usbutils
-      youtube-music
-      blueutil
-      typescript
-      pgadmin4-desktopmode
-      awscli2
-      claude-code
-      terraform
-      minikube
+      kubectl
       kubernetes-helm
-      graphql-language-service-cli
-      bicep-lsp
-      (lib.lowPrio bicep-lsp)
-      zulu25
+      lima-additional-guestagents
+      minikube
+      socat
+      terraform
+      usbutils
+      usbutils
+
+      # TuI
+      claude-code
     ];
   };
 }
