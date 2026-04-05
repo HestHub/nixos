@@ -1,11 +1,7 @@
 let
   insultfunction = builtins.readFile ./fish-functions/insulter.fish;
 in
-  {
-    pkgs,
-    config,
-    ...
-  }: {
+  {pkgs, ...}: {
     home.packages = with pkgs; [
       fish
       fzf
@@ -30,8 +26,6 @@ in
           fish_add_path /opt/homebrew/bin
         end
 
-        set -gx GEMINI_API_KEY $(cat ${config.sops.secrets."gemini".path})
-        set -gx GOOGLE_GENERATIVE_AI_API_KEY $(cat ${config.sops.secrets."gemini".path})
         set -gx STARSHIP_CONFIG ~/.config/starship/starship.toml
       '';
 
@@ -110,7 +104,7 @@ in
         '';
 
         # TODO, mark with Symbol
-        # vim / Gemini/ Yazi, K9s, lazyDocker, lazyGit
+        # vim / Yazi, K9s, lazyDocker, lazyGit
         zellij_tab_cmd = {
           onEvent = "fish_preexec";
           body = ''
