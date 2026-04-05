@@ -11,7 +11,7 @@ return {
   {
     "mason-org/mason-lspconfig.nvim",
     opts = {
-      ensure_installed = { "bash-language-server", "json-lsp" },
+      ensure_installed = { "bashls", "jsonls" },
     },
   },
 }
