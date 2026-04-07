@@ -39,7 +39,7 @@ in {
       # GUI
       inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
       pgadmin4-desktopmode
-      youtube-music
+      pear-desktop
       zoom-us
 
       # LSP
