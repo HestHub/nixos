@@ -10,6 +10,8 @@
   starshipPath = "${projectRoot}/dotfiles/starship";
 in {
   imports = [
+    ./programs/colima.nix
+    ./programs/devpod.nix
     ./programs/ssh-config.nix
     ./programs/neovim.nix
     inputs.sops-nix.homeManagerModules.sops

@@ -15,7 +15,7 @@ in {
       outLogFile = /tmp/sketchylog;
     };
     configType = "lua";
-    luaPackage = pkgs.lua5_4;
+    luaPackage = pkgs.lua5_5;
     sbarLuaPackage = pkgs.sbarlua;
   };
 }
