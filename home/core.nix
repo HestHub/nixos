@@ -94,6 +94,7 @@ in {
     alejandra
     cargo-nextest
     deadnix
+    statix
     go
     lua
     nil

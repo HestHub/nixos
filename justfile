@@ -21,6 +21,7 @@ build:
 build:
   nix build .#darwinConfigurations.mbp.system --extra-experimental-features 'nix-command flakes' --show-trace --verbose
   sudo ./result/sw/bin/darwin-rebuild switch --impure --flake .#mbp --show-trace --verbose
+  just ssh_keys
 alias b := build
 
 # debug build
