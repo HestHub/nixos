@@ -79,6 +79,8 @@ in
         mv = "mv -i";
 
         gfp = "git fetch && git pull";
+        ai = "ssh -t (basename (pwd)).devpod claude";
+        copilot = "ssh -t (basename (pwd)).devpod  copilot";
         gitbt = "git log --graph --simplify-by-decoration --pretty=format:'%d' --all";
 
         ls = "eza -1 -F --group-directories-first";
