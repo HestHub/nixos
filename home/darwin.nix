@@ -63,7 +63,6 @@ in {
       socat
       terraform
       usbutils
-      usbutils
 
       # TuI
       claude-code

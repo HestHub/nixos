@@ -98,6 +98,7 @@
       ".direnv"
       ".pre-commit-config.yaml"
       ".devenv*"
+      ".devcontainer/"
       "devenv.local.nix"
       "devenv.nix"
       ".direnv"
