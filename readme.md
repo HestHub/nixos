@@ -43,17 +43,17 @@ This repository is home to the nix code that builds my systems:
 | Component                    | NixOS               | MacOS               |
 | ------------------- | ------------------- | ------------------- |
 | **Color Scheme**    | [Nord]              | [Nord]              |
-| **Dev environment** | [direnv] + [devenv] | [direnv] + [devenv] |
+| **Dev environment** | [DevPod]            | [DevPod]            |
 | **Editor**          | [Neovim]            | [Neovim]            |
-| **File Manager**    | [lf]                | [lf]                |
+| **File Manager**    | [Yazi]              | [Yazi]              |
 | **Fonts**           | [Fira Code]         | [Fira Code]         |
-| **Input remapper**  | N/A                 | [Kanata]            |
 | **Launcher**        | Default             | [Raycast]           |
+| **Menu Bar**        | Default                 | [Sketchybar]        |
 | **Multiplexer**     | [Zellij]            | [Zellij]            |
 | **Shell**           | [Fish] + [Nushell]  | [Fish] + [Nushell]  |
 | **Terminal**        | [Ghostty]           | [Ghostty]           |
 | **VPN**             | [Tailscale]         | [Tailscale]         |
-| **Window Manager**  | [PopShell]          | [Yabai]             |
+| **Window Manager**  | [PopShell]          | [Aerospace]         |
 
 ## 📷 Screenshots
 
@@ -377,17 +377,16 @@ Good reads and dotfiles that inspired me:
   - [LazyVim for Ambitious Developers](https://lazyvim-ambitious-devs.phillips.codes/course/chapter-1/)
   
 [PopShell]:https://github.com/pop-os/shell
-[Yabai]:https://github.com/koekeishiya/yabai
+[Aerospace]:https://github.com/nikitabobko/AeroSpace
 [Ghostty]:https://ghostty.org/
 [Zellij]:https://zellij.dev/
 [Raycast]:https://www.raycast.com/
 [Nord]:https://www.nordtheme.com/
 [Tailscale]:https://tailscale.com/
-[Kanata]:https://github.com/jtroo/kanata
-[lf]:https://github.com/gokcehan/lf
+[Yazi]:https://github.com/sxyazi/yazi
 [Fish]:https://fishshell.com/
 [Nushell]:https://www.nushell.sh/
 [Neovim]:https://neovim.io/
 [Fira Code]:https://github.com/tonsky/FiraCode
-[direnv]:https://direnv.net/
-[devenv]:https://devenv.sh/
+[DevPod]:https://devpod.sh/
+[Sketchybar]:https://github.com/FelixKratz/SketchyBar

@@ -1,5 +1,5 @@
 {
-  gitIncludes ? [],
+  pkgs,
   config,
   ...
 }: {
@@ -37,7 +37,28 @@
     enable = true;
     lfs.enable = true;
 
-    includes = gitIncludes;
+    includes =
+      if pkgs.stdenv.isDarwin
+      then [
+        {
+          condition = "gitdir:~/dev/me/";
+          path = "${config.home.homeDirectory}/.config/git/include_me";
+        }
+        {
+          condition = "gitdir:~/dev/c*/";
+          path = "${config.home.homeDirectory}/.config/git/include_c";
+        }
+        {
+          condition = "gitdir:~/dev/g*/";
+          path = "${config.home.homeDirectory}/.config/git/include_g";
+        }
+      ]
+      else [
+        {
+          condition = "gitdir:~/dev/";
+          path = "${config.home.homeDirectory}/.config/git/include_me";
+        }
+      ];
 
     settings = {
       init.defaultBranch = "main";
@@ -104,7 +125,6 @@
       ".direnv"
       ".pre-commit-config.yaml"
       ".envrc"
-      "GEMINI.md"
     ];
   };
 }

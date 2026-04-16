@@ -15,31 +15,7 @@ in {
     ./programs/ssh-config.nix
     ./programs/neovim.nix
     inputs.sops-nix.homeManagerModules.sops
-    (import ./programs/git.nix {
-      inherit pkgs config;
-      gitIncludes =
-        if pkgs.stdenv.isDarwin
-        then [
-          {
-            condition = "gitdir:~/dev/me/";
-            path = "${config.home.homeDirectory}/.config/git/include_me";
-          }
-          {
-            condition = "gitdir:~/dev/c*/";
-            path = "${config.home.homeDirectory}/.config/git/include_c";
-          }
-          {
-            condition = "gitdir:~/dev/g*/";
-            path = "${config.home.homeDirectory}/.config/git/include_g";
-          }
-        ]
-        else [
-          {
-            condition = "gitdir:~/dev/";
-            path = "${config.home.homeDirectory}/.config/git/include_me";
-          }
-        ];
-    })
+    ./programs/git.nix
   ];
 
   sops = {
@@ -63,7 +39,7 @@ in {
   home.packages = with pkgs; [
     # tools
     age
-    devenv
+    # devenv
     devpod
     fzf
     git
@@ -100,7 +76,7 @@ in {
     go
     lua
     nil
-    nodejs_20
+    nodejs_24
     python314
     rustup
     vtsls
@@ -112,16 +88,16 @@ in {
       enable = true;
       enableGitIntegration = true;
     };
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-      silent = true;
-      config = {
-        hide_env_diff = true;
-        log_format = "";
-        global.load_dotenv = true;
-      };
-    };
+    # direnv = {
+    #   enable = true;
+    #   nix-direnv.enable = true;
+    #   silent = true;
+    #   config = {
+    #     hide_env_diff = true;
+    #     log_format = "";
+    #     global.load_dotenv = true;
+    #   };
+    # };
 
     bat = {
       enable = true;
