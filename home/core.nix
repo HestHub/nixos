@@ -46,7 +46,7 @@ in {
     gitleaks
     jq
     just
-    nushell
+    #nushell
     skopeo
     sops
     starship
