@@ -63,9 +63,6 @@ in {
       socat
       terraform
       usbutils
-
-      # TuI
-      claude-code
     ];
   };
 }

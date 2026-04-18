@@ -63,6 +63,7 @@ in {
     lazygit
     yazi
     zellij
+    claude-code
 
     # GUI
     discord
