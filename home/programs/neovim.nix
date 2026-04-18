@@ -7,6 +7,8 @@
   link = subpath: config.lib.file.mkOutOfStoreSymlink "${nvimPath}/${subpath}";
 in {
   # Symlink individual items so programs.neovim can still manage init.lua
+  # force = true handles macOS where init.lua may already exist as a plain file
+  xdg.configFile."nvim/init.lua".force = true;
   xdg.configFile."nvim/lua".source = link "lua";
   xdg.configFile."nvim/lazy-lock.json".source = link "lazy-lock.json";
   xdg.configFile."nvim/lazyvim.json".source = link "lazyvim.json";
