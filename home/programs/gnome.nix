@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.sessionVariables.GTK_THEME = "Nordic";
   home.packages = with pkgs; [
     gnomeExtensions.pop-shell
@@ -10,6 +14,7 @@
 
   gtk = {
     enable = true;
+    gtk4.theme = config.gtk.theme;
     theme = {
       name = "Nordic";
       package = pkgs.nordic;

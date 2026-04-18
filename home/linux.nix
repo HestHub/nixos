@@ -24,7 +24,7 @@
       lact
       tailscale
       keymapp
-      wineWowPackages.waylandFull
+      # wineWowPackages.waylandFull
       virtiofsd
       bitwarden-desktop
       wl-clipboard
