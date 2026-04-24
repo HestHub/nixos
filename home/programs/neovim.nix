@@ -3,17 +3,20 @@
   config,
   ...
 }: let
-  nvimPath = "${config.home.homeDirectory}/dev/me/nixos/dotfiles/nvim";
+  projectRoot = "${config.home.homeDirectory}/dev/me/nixos";
+  nvimPath = "${projectRoot}/dotfiles/nvim";
   link = subpath: config.lib.file.mkOutOfStoreSymlink "${nvimPath}/${subpath}";
 in {
-  # Symlink individual items so programs.neovim can still manage init.lua
-  # force = true handles macOS where init.lua may already exist as a plain file
-  xdg.configFile."nvim/init.lua".force = true;
-  xdg.configFile."nvim/lua".source = link "lua";
-  xdg.configFile."nvim/lazy-lock.json".source = link "lazy-lock.json";
-  xdg.configFile."nvim/lazyvim.json".source = link "lazyvim.json";
-  xdg.configFile."nvim/spell".source = link "spell";
-  xdg.configFile."nvim/stylua.toml".source = link "stylua.toml";
+  xdg = {
+    configFile = {
+      "nvim/init.lua".force = true;
+      "nvim/lua".source = link "lua";
+      "nvim/lazy-lock.json".source = link "lazy-lock.json";
+      "nvim/lazyvim.json".source = link "lazyvim.json";
+      "nvim/spell".source = link "spell";
+      "nvim/stylua.toml".source = link "stylua.toml";
+    };
+  };
 
   programs.neovim = {
     enable = true;

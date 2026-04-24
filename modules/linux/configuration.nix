@@ -45,7 +45,13 @@
 
   services = {
     desktopManager.gnome.enable = true;
-    displayManager.gdm.enable = true;
+    displayManager = {
+      gdm.enable = true;
+
+      # autologin without password
+      autoLogin.enable = true;
+      autoLogin.user = "hest";
+    };
     xserver = {
       # Enable the X11 windowing system.
       enable = true;
@@ -58,10 +64,6 @@
 
     # Enable sound with pipewire.
     pulseaudio.enable = false;
-
-    # autologin without password
-    displayManager.autoLogin.enable = true;
-    displayManager.autoLogin.user = "hest";
 
     # enable tailscale VPN
     tailscale.enable = true;

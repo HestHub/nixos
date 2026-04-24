@@ -1,7 +1,4 @@
 {pkgs, ...}: {
-  imports = [
-    #./yabai.nix
-  ];
   environment.variables.EDITOR = "nvim";
 
   # services.tailscale.enable = true;
