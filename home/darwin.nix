@@ -26,6 +26,9 @@ in {
     "g/config".path = "${config.home.homeDirectory}/.config/git/include_g";
 
     "nuget".path = "${config.home.homeDirectory}/.config/nuget/nuget.config";
+
+    "libre/mail".path = "${config.home.homeDirectory}/.config/sops/libre_mail";
+    "libre/password".path = "${config.home.homeDirectory}/.config/sops/libre_password";
   };
 
   home = {
