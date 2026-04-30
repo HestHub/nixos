@@ -27,6 +27,9 @@
       Numbers = 409203825;
       Tailscale = 1475387142;
     };
+    taps = [
+      "junian/homebrew-dotnet"
+    ];
 
     brews = [
       "mas"
@@ -46,7 +49,8 @@
       "db-browser-for-sqlite"
       "sanesidebuttons"
       "steam"
-      "dotnet-sdk"
+      "dotnet-sdk@10.0"
+      "dotnet-sdk@8.0"
       "ghostty"
       "font-sketchybar-app-font"
     ];

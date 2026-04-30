@@ -64,6 +64,7 @@ in {
     yazi
     zellij
     claude-code
+    gemini-cli
 
     # GUI
     discord
