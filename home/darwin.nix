@@ -11,7 +11,7 @@ in {
     ./programs/k9s.nix
     ./programs/ghostty.nix
     ./programs/fish.nix
-    ./programs/sketchybar.nix
+   # ./programs/sketchybar.nix
   ];
 
   sops.secrets = {
@@ -20,15 +20,6 @@ in {
     "c/pub".path = "${config.home.homeDirectory}/.ssh/id_c.pub";
     "c/config".path = "${config.home.homeDirectory}/.config/git/include_c";
 
-    # c... ssh
-    "g/key".path = "${config.home.homeDirectory}/.ssh/id_g";
-    "g/pub".path = "${config.home.homeDirectory}/.ssh/id_g.pub";
-    "g/config".path = "${config.home.homeDirectory}/.config/git/include_g";
-
-    "nuget".path = "${config.home.homeDirectory}/.config/nuget/nuget.config";
-
-    "libre/mail".path = "${config.home.homeDirectory}/.config/sops/libre_mail";
-    "libre/password".path = "${config.home.homeDirectory}/.config/sops/libre_password";
   };
 
   home = {
@@ -40,22 +31,22 @@ in {
 
     packages = with pkgs; [
       # GUI
-      inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
-      pgadmin4-desktopmode
+     # inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
+     # pgadmin4-desktopmode
       pear-desktop
       zoom-us
 
       # LSP
-      (lib.lowPrio bicep-lsp)
-      bicep-lsp
-      graphql-language-service-cli
-      roslyn
+     # (lib.lowPrio bicep-lsp)
+     # bicep-lsp
+     # graphql-language-service-cli
+     # roslyn
       typescript
       wasmtime
       zulu25
 
       # Tools
-      blueutil
+     # blueutil
       colima
       docker-client
       docker-credential-helpers

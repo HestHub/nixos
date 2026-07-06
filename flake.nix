@@ -2,16 +2,16 @@
   description = "Nix with flakes";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-26.05-darwin";
     fancontrol-gui.url = "github:Maldela/fancontrol-gui";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     darwin = {
-      url = "github:lnl7/nix-darwin";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -21,7 +21,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
 
     dot-secrets = {
-      url = "git+ssh://git@github.com/HestHub/dot-secrets.git";
+      url = "git+ssh://git@codeberg.org/hest/dot-secrets.git";
       flake = false;
     };
     # TODO https://github.com/cachix/git-hooks.nix?tab=readme-ov-file

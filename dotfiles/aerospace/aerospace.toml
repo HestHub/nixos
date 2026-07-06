@@ -1,11 +1,9 @@
 # Availabl commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-  'exec-and-forget /bin/sh -c "sleep 10 && /etc/profiles/per-user/hest/bin/sketchybar --reload"',
-  'exec-and-forget /bin/sh -c "sleep 10 && ~/.config/sketchybar/scripts/media-stream.sh"',
-  'exec-and-forget open -a Tailscale',
+  #'exec-and-forget open -a Tailscale',
 ]
 
-start-at-login = true
+start-at-login = false
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
@@ -22,11 +20,11 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 automatically-unhide-macos-hidden-apps = true
 
 
-exec-on-workspace-change = [
-  '/bin/bash',
-  '-c',
-  '/etc/profiles/per-user/hest/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
-]
+# exec-on-workspace-change = [
+#   '/bin/bash',
+#   '-c',
+#   '/etc/profiles/per-user/hest/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+# ]
 
 # App specficics 
 
@@ -76,15 +74,13 @@ preset = 'qwerty'
 
 [mode.main.binding]
 
-
-alt-c = [
-  'exec-and-forget /bin/sh -c "/etc/profiles/per-user/hest/bin/sketchybar --trigger colors_cli_toggle"',
-]
-
-alt-x = [
-  'exec-and-forget /bin/sh -c "/etc/profiles/per-user/hest/bin/sketchybar --reload"',
-]
-
+# alt-c = [
+#   'exec-and-forget /bin/sh -c "/etc/profiles/per-user/hest/bin/sketchybar --trigger colors_cli_toggle"',
+# ]
+#
+# alt-x = [
+#   'exec-and-forget /bin/sh -c "/etc/profiles/per-user/hest/bin/sketchybar --reload"',
+# ]
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 alt-slash = 'layout tiles horizontal vertical'
@@ -94,7 +90,6 @@ alt-f = [
   'layout floating tiling',
   'mode main',
 ] # Toggle between floating and tiling layout
-
 
 alt-h = 'exec-and-forget /bin/sh -c "/run/current-system/sw/bin/aerospace focus --boundaries-action fail left || /run/current-system/sw/bin/aerospace workspace prev"'
 alt-l = 'exec-and-forget /bin/sh -c "/run/current-system/sw/bin/aerospace focus --boundaries-action fail right || /run/current-system/sw/bin/aerospace workspace next"'

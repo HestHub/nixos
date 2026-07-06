@@ -7,15 +7,10 @@
   username = "hest";
 in {
   nix = {
-    enable = true;
+    enable = false;
+
     settings.trusted-users = ["root" username];
     settings.experimental-features = ["nix-command" "flakes"];
-    gc = {
-      automatic = lib.mkDefault true;
-      options = lib.mkDefault "--delete-older-than 1w";
-    };
-
-    optimise.automatic = true;
   };
   nixpkgs.config.allowUnfree = true;
 
@@ -91,7 +86,7 @@ in {
         NSAutomaticSpellingCorrectionEnabled = false; # disable auto spelling correction(自动拼写检查)
         NSNavPanelExpandedStateForSaveMode = true; # expand save panel by default(保存文件时的路径选择/文件名输入页)
         NSNavPanelExpandedStateForSaveMode2 = true;
-        _HIHideMenuBar = true; # hide menu bar
+        _HIHideMenuBar = false; # hide menu bar
       };
 
       # Customize settings that not supported by nix-darwin directly
@@ -136,6 +131,11 @@ in {
           allowApplePersonalizedAdvertising = false;
         };
         "com.apple.ImageCapture".disableHotPlug = true;
+        "com.mitchellh.ghostty" = {
+          NSUserKeyEquivalents = {
+            "Hide Ghostty" = "@~h";
+          };
+        };
       };
 
       loginwindow = {

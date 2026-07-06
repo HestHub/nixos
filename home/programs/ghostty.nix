@@ -44,11 +44,21 @@
     keybind = cmd+d=unbind
     keybind = cmd+t=unbind
     keybind = cmd+w=unbind
+
     keybind = cmd+1=unbind
     keybind = cmd+2=unbind
     keybind = cmd+3=unbind
     keybind = cmd+4=unbind
     keybind = cmd+5=unbind
+    keybind = cmd+digit_1=unbind
+    keybind = cmd+digit_2=unbind
+    keybind = cmd+digit_3=unbind
+    keybind = cmd+digit_4=unbind
+    keybind = cmd+digit_5=unbind
+    keybind = cmd+digit_6=unbind
+    keybind = cmd+digit_7=unbind
+    keybind = cmd+digit_8=unbind
+    keybind = cmd+digit_9=unbind
   '';
 
   theme = ''

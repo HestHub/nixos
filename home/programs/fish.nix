@@ -19,13 +19,6 @@ in
       enable = true;
 
       shellInit = ''
-        # Check if the operating system is macOS (Darwin)
-        if test (uname) = "Darwin"
-          # Set DOTNET_ROOT only on macOS
-          set -gx DOTNET_ROOT /usr/local/share/dotnet
-          fish_add_path /usr/local/share/dotnet
-          fish_add_path /opt/homebrew/bin
-        end
 
         set -gx STARSHIP_CONFIG ~/.config/starship/starship.toml
       '';

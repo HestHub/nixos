@@ -45,7 +45,6 @@ bootstrap:
 ssh_keys:
   ssh-add --apple-use-keychain ~/.ssh/id_me
   ssh-add --apple-use-keychain ~/.ssh/id_c
-  ssh-add --apple-use-keychain ~/.ssh/id_g
 
 
 # show old profiles
