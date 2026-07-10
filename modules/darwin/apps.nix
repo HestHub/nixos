@@ -39,6 +39,7 @@
       "sanesidebuttons"
       "steam"
       "ghostty"
+      "raycast"
     ];
   };
 }

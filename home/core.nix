@@ -57,6 +57,7 @@ in {
     unzip
     watchexec
     wget
+    gotestsum
 
     # TUI
     lazydocker
@@ -69,6 +70,7 @@ in {
     # GUI
     discord
     slack
+    element-desktop
 
     # LSPS
     alejandra
@@ -90,16 +92,16 @@ in {
       enable = true;
       enableGitIntegration = true;
     };
-    # direnv = {
-    #   enable = true;
-    #   nix-direnv.enable = true;
-    #   silent = true;
-    #   config = {
-    #     hide_env_diff = true;
-    #     log_format = "";
-    #     global.load_dotenv = true;
-    #   };
-    # };
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      silent = true;
+      config = {
+        hide_env_diff = true;
+        log_format = "";
+        global.load_dotenv = true;
+      };
+    };
 
     bat = {
       enable = true;

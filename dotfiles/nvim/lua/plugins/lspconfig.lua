@@ -4,9 +4,7 @@ return {
     inlay_hints = { enabled = false },
     tab_line = { enabled = false },
     servers = {
-      -- Enable the bicep server
-      bicep = {
-        cmd = { "Bicep.LangServer" },
+      nil_ls = {
         mason = false,
       },
     },
